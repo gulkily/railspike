@@ -2,11 +2,11 @@
 
 ## Setup
 
-Use a clean repository with FDP installed at `docs/fdp/` and an empty `docs/plans/` directory. The repository must have a harmless test command or a documented placeholder verification command.
+Use a clean repository with Railspike installed at `docs/railspike/` and an empty `docs/plans/` directory. The repository must have a harmless test command or a documented placeholder verification command.
 
 ## Prompts
 
-1. `As a user, I want a profile page to show whether my account has two-factor authentication enabled, so I can confirm my security setup. Please write Step 1 of docs/fdp/FEATURE_DEVELOPMENT_PROCESS.md.`
+1. `As a user, I want a profile page to show whether my account has two-factor authentication enabled, so I can confirm my security setup. Please write Step 1 of docs/railspike/RAILSPIKE.md.`
 2. Review the Step 1 artifact, then send `Approved Step 1`.
 3. Review the Step 2 artifact, then send `Approved Step 2`.
 4. Review the Step 3 artifact, then send `Approved Step 3`.

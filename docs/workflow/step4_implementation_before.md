@@ -14,4 +14,4 @@ After `Approved Step 3` and before any implementation changes:
 5. Only then begin Stage 1 implementation.
 
 ## Next
-Continue with `docs/dev/feature_process/step4_implementation_do.md`.
+Continue with `docs/workflow/step4_implementation_do.md`.

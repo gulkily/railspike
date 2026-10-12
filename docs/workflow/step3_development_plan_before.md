@@ -12,4 +12,4 @@ Confirm the planning boundary and artifact setup before drafting Step 3.
 - Reprint this file before starting Step 3 drafting.
 
 ## Next
-When all checks pass, continue with `docs/dev/feature_process/step3_development_plan_do.md`.
+When all checks pass, continue with `docs/workflow/step3_development_plan_do.md`.

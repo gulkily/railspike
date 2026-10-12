@@ -1,6 +1,6 @@
 # Private Window Lobby Fallback Artifact Trail
 
-Use this trail to replay and audit the featured FDP example. The v3 record preserves its planning documents and commits, but not the original chat transcript. The prompts below are a verbatim replay sequence assembled from the preserved request text and FDP's approval protocol; they are not presented as a recovered historical transcript.
+Use this trail to replay and audit the featured Railspike example. The v3 record preserves its planning documents and commits, but not the original chat transcript. The prompts below are a verbatim replay sequence assembled from the preserved request text and Railspike's approval protocol; they are not presented as a recovered historical transcript.
 
 ## Recorded Source Request
 
@@ -10,14 +10,14 @@ The exact problem statement preserved in the source Step 1 document is:
 
 ## Replay Prompts
 
-Send these messages verbatim to replay the documented FDP cycle:
+Send these messages verbatim to replay the documented Railspike cycle:
 
-1. `On an approved-members-only instance, a visitor without a saved browser key reaches a Reconnecting page from a protected URL instead of automatically entering the Lobby. Please write Step 1 of FEATURE_DEVELOPMENT_PROCESS.md.`
+1. `On an approved-members-only instance, a visitor without a saved browser key reaches a Reconnecting page from a protected URL instead of automatically entering the Lobby. Please write Step 1 of RAILSPIKE.md.`
 2. `Approved Step 1`
 3. `Approved Step 2`
 4. `Approved Step 3`
 
-The first prompt is a reproducible reconstruction: it combines the source's preserved request text with FDP's standard Step 1 trigger. The source does not preserve the original wording of the follow-up discussion or approvals.
+The first prompt is a reproducible reconstruction: it combines the source's preserved request text with Railspike's standard Step 1 trigger. The source does not preserve the original wording of the follow-up discussion or approvals.
 
 ## Planning Artifacts
 

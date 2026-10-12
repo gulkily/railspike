@@ -1,6 +1,6 @@
 # Private Window Lobby Fallback Comparison
 
-This comparison shows what the recorded FDP cycle required reviewers to make explicit. It is not a model benchmark: no historical unguided session was preserved, and a direct response could still make good choices. The difference is the reviewable evidence the process requires before and during implementation.
+This comparison shows what the recorded Railspike cycle required reviewers to make explicit. It is not a model benchmark: no historical unguided session was preserved, and a direct response could still make good choices. The difference is the reviewable evidence the process requires before and during implementation.
 
 ## Direct Baseline Prompt
 
@@ -12,7 +12,7 @@ Ask the assistant to propose and implement the fix in one pass. Record its respo
 
 ## Review Scorecard
 
-| Decision or evidence | Direct prompt alone requires it? | What the recorded FDP cycle established |
+| Decision or evidence | Direct prompt alone requires it? | What the recorded Railspike cycle established |
 | --- | --- | --- |
 | Select among viable approaches | No; an assistant may choose an approach without recording alternatives. | Step 1 compared a missing-key-only redirect, a server-wide redirect, and a new entry route; it selected the narrow redirect. |
 | Preserve approved-member recovery | No; the prompt names the broken keyless path, not the saved-key behavior. | Step 2 required a usable saved key to retain its existing authentication and return flow. |
@@ -22,7 +22,7 @@ Ask the assistant to propose and implement the fix in one pass. Record its respo
 
 ## Recorded Result
 
-The FDP cycle delivered a missing-key-only Lobby fallback, preserved safe return for approved members, retained visible errors for failed authentication, and recorded focused verification. Its [artifact trail](./private-window-lobby-fallback-artifact-trail.md) provides the plans and commits behind each claim.
+The Railspike cycle delivered a missing-key-only Lobby fallback, preserved safe return for approved members, retained visible errors for failed authentication, and recorded focused verification. Its [artifact trail](./private-window-lobby-fallback-artifact-trail.md) provides the plans and commits behind each claim.
 
 ## Recorded Baseline Run
 
@@ -37,13 +37,13 @@ On October 9, 2026, a clean Codex CLI session using `gpt-5.6-terra` ran the dire
 | Scorecard row | Result | Evidence |
 | --- | --- | --- |
 | Compare viable approaches | Not demonstrated | The baseline response selected an implementation directly and recorded no alternatives. |
-| Preserve saved-key recovery | Failed | The server redirects when no identity hint exists, but a browser-held saved key is not visible to the server. The recorded FDP Step 1 rejected this class of server-side distinction. |
+| Preserve saved-key recovery | Failed | The server redirects when no identity hint exists, but a browser-held saved key is not visible to the server. The recorded Railspike Step 1 rejected this class of server-side distinction. |
 | Keep authentication failures visible | Passed | The focused run included the existing `testAuthenticationFailureIsVisible`, which passed; the new redirect is limited to the missing-key branch. |
 | Retain Lobby as the access boundary | Passed | The baseline reused the existing Lobby route rather than adding another entry surface. |
 | Stage and verify delivery | Partial | It added tests, but did not create a reviewed decision record or stage-scoped commits; the focused run also finished with three failures. |
 
-This is one run of one model, not a claim about all unguided assistants. It shows a concrete way FDP changed this feature's work: the source cycle made the saved-key recovery boundary explicit before code, while the direct run chose the server-side shortcut that violates it.
+This is one run of one model, not a claim about all unguided assistants. It shows a concrete way Railspike changed this feature's work: the source cycle made the saved-key recovery boundary explicit before code, while the direct run chose the server-side shortcut that violates it.
 
 ## How to Interpret a Baseline Run
 
-A baseline is comparable only when it starts from the direct prompt above and is evaluated against the scorecard before adding follow-up requirements. Do not claim that FDP prevents mistakes or that an unguided assistant necessarily fails. Report which scorecard rows the baseline covered, what evidence it produced, and any later correction needed to reach the recorded FDP outcome.
+A baseline is comparable only when it starts from the direct prompt above and is evaluated against the scorecard before adding follow-up requirements. Do not claim that Railspike prevents mistakes or that an unguided assistant necessarily fails. Report which scorecard rows the baseline covered, what evidence it produced, and any later correction needed to reach the recorded Railspike outcome.

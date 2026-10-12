@@ -1,22 +1,22 @@
-# Feature Development Process
+# Railspike
 
 ## Overview
 Feature work flows through four tightly scoped steps with an optional solution assessment upfront. To keep the instructions inside the context window, the detailed guidance for each step now lives in separate files that you open only when you are ready for that step.
 
 ## Repository Boundary
-Instruction files under `docs/dev/feature_process/` belong to the FDP repository. If FDP is included in another repository as a submodule or vendored directory, resolve those paths relative to the FDP repository root, not the host repository root. Planning artifacts still belong in the host repository under `docs/plans/`.
+Instruction files under `docs/workflow/` belong to the Railspike repository. If Railspike is included in another repository as a submodule or vendored directory, resolve those paths relative to the Railspike repository root, not the host repository root. Planning artifacts still belong in the host repository under `docs/plans/`.
 
 ## How to Use This Chain
 1. Start with the highest-numbered approved step (usually Step 1 unless explicitly skipped).
-2. Read only the relevant instruction file in FDP's `docs/dev/feature_process/` directory and reprint it before starting work.
+2. Read only the relevant instruction file in Railspike's `docs/workflow/` directory and reprint it before starting work.
 3. For Steps 3 and 4, use phase files in order: `*_before.md` -> `*_do.md` -> `*_after.md`.
 4. Request approval in the format `Approved Step N` when required, and do not open the next step's files until approval is received.
 
 ## Step Guide
-- **Step 1 – Solution Assessment (Optional)**: resolve uncertainty across multiple approaches. `docs/dev/feature_process/step1_solution_assessment.md`
-- **Step 2 – Feature Description**: capture problem framing, user stories, requirements, and success criteria. `docs/dev/feature_process/step2_feature_description.md`
-- **Step 3 – Development Plan**: break work into atomic stages with dependencies and verification notes. Start with `docs/dev/feature_process/step3_development_plan_before.md`, then follow the `do` and `after` files.
-- **Step 4 – Implementation**: execute the approved artifact on a feature branch and maintain the implementation summary. The artifact may be application changes or explicitly scoped documentation-only work. Start with `docs/dev/feature_process/step4_implementation_before.md`, then follow the `do` and `after` files.
+- **Step 1 – Solution Assessment (Optional)**: resolve uncertainty across multiple approaches. `docs/workflow/step1_solution_assessment.md`
+- **Step 2 – Feature Description**: capture problem framing, user stories, requirements, and success criteria. `docs/workflow/step2_feature_description.md`
+- **Step 3 – Development Plan**: break work into atomic stages with dependencies and verification notes. Start with `docs/workflow/step3_development_plan_before.md`, then follow the `do` and `after` files.
+- **Step 4 – Implementation**: execute the approved artifact on a feature branch and maintain the implementation summary. The artifact may be application changes or explicitly scoped documentation-only work. Start with `docs/workflow/step4_implementation_before.md`, then follow the `do` and `after` files.
 
 Each phase file ends with instructions for when to proceed so you never overrun the context window.
 
@@ -74,7 +74,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - A feature is a releasable vertical slice: normal entry, end-to-end outcome, and required recovery. Component-only work is internal maintenance; split larger stories vertically.
 - Keep work within a day or eight Step 3 stages; otherwise rescope the slice.
 - Avoid database schema changes when possible—lean on existing models/fields
-- Reprint the current step/phase instructions (from the linked FDP file) before you begin that work
+- Reprint the current step/phase instructions (from the linked Railspike file) before you begin that work
 - Add the Plan navigation bar to every Step 1–4 artifact
 - Step 1 starts with `## Original Query`: preserve the request except mechanical grammar, spelling, capitalization, punctuation, and formatting fixes; when needed, follow it with a brief, clearly labeled `## Understood Intent` that clarifies inferred goal/context without inventing scope
 - For Step 3, prefer `## Stage N` headers with flat bullet lists for each stage field so plans stay easy to scan and review

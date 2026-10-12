@@ -10,7 +10,7 @@ Break the feature into atomic implementation stages, identify dependencies, and 
 - Filename: `{feature_name}_step3_development_plan.md`
 
 ## Structure
-Begin with the standard Plan navigation bar (template in `FEATURE_DEVELOPMENT_PROCESS.md`; omit skipped Step 1).
+Begin with the standard Plan navigation bar (template in `RAILSPIKE.md`; omit skipped Step 1).
 
 Then add `## Completion Contract`: normal entry, end-to-end outcome, required recovery, deployment/external verification, and release condition. For documentation-only work, instead state the approved allowed documentation file scope, intended audience/outcome, document completion/recovery boundary, evidence boundary, and which runtime/deployment checks are not applicable.
 
@@ -55,4 +55,4 @@ Additional requirements:
 - Keep stage count manageable; if work exceeds about eight stages or a day of effort, split into separate features before moving on
 
 ## Next
-After drafting the Step 3 plan document, continue with `docs/dev/feature_process/step3_development_plan_after.md`.
+After drafting the Step 3 plan document, continue with `docs/workflow/step3_development_plan_after.md`.

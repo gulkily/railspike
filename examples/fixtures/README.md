@@ -1,6 +1,6 @@
-# FDP Prompt Fixtures
+# Railspike Prompt Fixtures
 
-These fixtures are small, repeatable acceptance tests for the workflow—not tests of a model’s intelligence. Run each in a clean conversation with the named FDP files available to the assistant. Record the assistant response and resulting repository state, then compare it to the fixture’s expected decision and artifacts.
+These fixtures are small, repeatable acceptance tests for the workflow—not tests of a model’s intelligence. Run each in a clean conversation with the named Railspike files available to the assistant. Record the assistant response and resulting repository state, then compare it to the fixture’s expected decision and artifacts.
 
 | Fixture | Path exercised | Expected result |
 | --- | --- | --- |

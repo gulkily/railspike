@@ -10,7 +10,7 @@ Resolve uncertainty when there are multiple viable approaches, complex trade-off
 - Filename: `{feature_name}_step1_solution_assessment.md`
 
 ## Structure
-- Standard Plan navigation bar (template in `FEATURE_DEVELOPMENT_PROCESS.md`)
+- Standard Plan navigation bar (template in `RAILSPIKE.md`)
 - `## Original Query` first: preserve the request except grammar, spelling, capitalization, punctuation, and formatting fixes; do not summarize or omit anything
 - When the query alone would leave the requested outcome unclear, follow it with `## Understood Intent`: a brief, clearly labeled statement of the inferred goal and relevant context. Do not invent scope or replace the original query; omit this section when it adds no useful clarification.
 - Problem statement (1 sentence)
@@ -22,4 +22,4 @@ Resolve uncertainty when there are multiple viable approaches, complex trade-off
 - Favor bullets over paragraphs for fast comparisons
 
 ## Next
-Share the document for review and stop. Do not create Step 2 until the user explicitly responds with “Approved Step 1.” When approval arrives, continue with `docs/dev/feature_process/step2_feature_description.md`.
+Share the document for review and stop. Do not create Step 2 until the user explicitly responds with “Approved Step 1.” When approval arrives, continue with `docs/workflow/step2_feature_description.md`.

@@ -1,4 +1,4 @@
-# Contributing to FDP
+# Contributing to Railspike
 
 Contributions are welcome when they make the workflow clearer, more testable, or easier to use without weakening its approval and evidence boundaries.
 

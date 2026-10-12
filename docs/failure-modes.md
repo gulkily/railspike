@@ -1,6 +1,6 @@
-# FDP Failure Modes and Recovery
+# Railspike Failure Modes and Recovery
 
-FDP is intentionally strict at the points where AI-assisted work most often becomes hard to review. Treat these as stop conditions, not workarounds.
+Railspike is intentionally strict at the points where AI-assisted work most often becomes hard to review. Treat these as stop conditions, not workarounds.
 
 ## Approval was skipped
 

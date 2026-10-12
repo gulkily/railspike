@@ -6,7 +6,7 @@ Operators gained one read-only `./v3 status` command for repository, read-model,
 
 ## The Feature Cycle
 
-| FDP step | Decision or result | Why it matters |
+| Railspike step | Decision or result | Why it matters |
 | --- | --- | --- |
 | 1 — Solution assessment | Aggregate existing read-model, lock, and task-queue state; defer a broader lifecycle-status system. | The smallest useful change avoids inventing a second operational truth. |
 | 2 — Feature description | Make the command read-only, actionable under partial failure, and explicit about what detailed commands own. | An operator can assess health without a command that changes state or hides unavailable data. |

@@ -1,0 +1,55 @@
+# HN Writeup Readiness Checklist
+
+_Maintainer working checklist. It records launch preparation; it is not part of the user-facing workflow._
+
+Use this checklist to make Railspike easy to evaluate in a few minutes and to ensure the Hacker News post is backed by a concrete, honest demonstration.
+
+## Product Proof
+
+- [x] State the project in one clear sentence: Railspike is a file-based, approval-gated workflow for keeping AI-assisted feature work scoped, reviewable, and verified.
+- [x] Add one complete, small feature example that follows Steps 1–4 from the original request through the implementation summary: [Private Window Lobby Fallback](./examples/private-window-lobby-fallback.md).
+- [ ] Include the original historical prompt transcript from that example; it was not preserved in the v3 source record.
+- [x] Include a verbatim reproducible prompt sequence, resulting planning artifacts, and stage-scoped commits: [Private Window Lobby Fallback artifact trail](./examples/private-window-lobby-fallback-artifact-trail.md).
+- [x] Show the outcome of the example and explain how the process changed the work relative to an unguided AI session: [Private Window Lobby Fallback comparison](./examples/private-window-lobby-fallback-comparison.md).
+- [x] Publish a reproducible direct-prompt comparison and scorecard: [Private Window Lobby Fallback comparison](./examples/private-window-lobby-fallback-comparison.md), including one recorded baseline run.
+- [x] Keep claims narrow and support them with the example; do not claim that Railspike eliminates hallucinations or replaces engineering judgment.
+
+## First Run Experience
+
+- [x] Add a compact quick-start section with the recommended installation method and the first prompt to send an AI assistant.
+- [x] Show the approval loop with a concrete `Approved Step N` example.
+- [x] Explain where plans live, what gets committed, and how Railspike is updated in a consuming repository.
+- [ ] Verify the renamed quick start and file-mention behavior with the supported assistants. Historical subtree verification does not validate the current submodule installation or autocomplete.
+
+## Workflow Clarity and Validation
+
+- [x] Add a Mermaid overview diagram showing the Step 1–4 flow, approval gates, planning artifacts, branches, and commits.
+- [x] Add a user-path diagram for normal work and for returning to planning when scope changes.
+- [x] Turn the key paths into reproducible end-to-end prompt fixtures with expected artifacts or decisions.
+- [x] Cover common failure modes: skipped approval, scope expansion during Step 4, documentation-only work, and missing verification or stage commit.
+- [x] Make risks prominent in the workflow and show how they block dependent work until resolved.
+
+## Repository Readiness
+
+- [x] Add a license appropriate for intended reuse. (MIT)
+- [x] Decide and document the release/versioning approach. See [Releases and Versioning](./docs/RELEASES.md).
+- [ ] Create a tagged first release once the new launch materials are committed, pushed, and reviewed on the public repository.
+- [ ] Verify Markdown links, paths, commands, and Mermaid rendering from a clean checkout after the launch-material commit is publicly available. Run local link/path and submodule-workflow checks; GitHub rendering still needs published review.
+- [x] Add contribution guidance if outside contributions are wanted.
+- [x] Clearly label the remaining maintainer-only checklist material so it does not look like user-facing workflow guidance.
+
+## HN Post
+
+- [x] Use a plain, descriptive title that states what Railspike does. See [HN post draft](./HN_POST_DRAFT.md).
+- [x] Open with the problem: AI coding assistants can move faster than review and scope control.
+- [x] Explain the mechanism briefly: small instruction files, explicit approvals, planning artifacts, and stage-scoped commits.
+- [x] Link to the quick start and the complete worked example.
+- [x] Name the intended audience and the tradeoff: extra process is useful for feature work where reviewability matters, but can be excessive for trivial changes.
+- [x] Include a short "what this is not" note: Railspike is not an autonomous-agent framework, a replacement for judgment, or a universal process.
+- [x] Invite specific feedback, such as whether the gates are useful, where the process is too rigid, and which assistant integrations would matter.
+
+## Launch Gate
+
+- [x] A newcomer can understand the thesis, run the first workflow, and inspect proof of the result in under five minutes.
+- [x] The post makes no claim that the repository cannot demonstrate.
+- [ ] The repository has a stable, shareable link and all linked material is public and usable.

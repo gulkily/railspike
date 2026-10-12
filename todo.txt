@@ -1,0 +1,26 @@
+get it ready for a hn writeup
+x
+
+draw mermaid diagrams for user paths and use for writing e2e tests
+
+add more highlighting of risks
+x
+
+cross-link all the plans, and also link to commits in the completed plan (yes, it's tricky)
+x
+
+add one more sentence of detail per option in step 1
+x
+
+save the original query in step 1 (with fixed typos and formatting, otherwise unaltered)
+x
+
+avoid making things that are incomplete features
+x
+
+how to make it easier to start a new task?
+	currently requires typing "[...] please write step 1 of @feature_development_process.md"
+
+document how the agent updates Railspike with native Git commands
+	outline upstream changes and offer to commit the submodule pointer or leave it for review
+	installation remains one git submodule add command; no CLI utility

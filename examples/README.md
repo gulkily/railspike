@@ -1,6 +1,8 @@
-# FDP Examples
+# Railspike Examples
 
-These are completed feature cycles from [v3](https://github.com/gulkily/v3), retold as concise, auditable examples of FDP in use. Start with the featured case; each page links to the original Step 1–4 artifacts and implementation commits.
+These historical cycles used the workflow under its former name, FDP. Current explanations and replay prompts use Railspike; source records and commit links retain their original names.
+
+These are completed feature cycles from [v3](https://github.com/gulkily/v3), retold as concise, auditable examples of Railspike in use. Start with the featured case; each page links to the original Step 1–4 artifacts and implementation commits.
 
 ## Featured Case
 

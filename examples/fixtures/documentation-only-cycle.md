@@ -4,7 +4,7 @@
 
 Use a clean repository. Send:
 
-> As a maintainer, I want a troubleshooting guide for recovering from a stale local cache, so operators can restore normal access. This is documentation-only: the allowed scope is `docs/troubleshooting/` and `README.md`; do not change application, test, CI, deployment, or generated files. Please write Step 2 of docs/fdp/FEATURE_DEVELOPMENT_PROCESS.md.
+> As a maintainer, I want a troubleshooting guide for recovering from a stale local cache, so operators can restore normal access. This is documentation-only: the allowed scope is `docs/troubleshooting/` and `README.md`; do not change application, test, CI, deployment, or generated files. Please write Step 2 of docs/railspike/RAILSPIKE.md.
 
 Then review and explicitly approve Steps 2 and 3 before implementation.
 

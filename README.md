@@ -1,6 +1,8 @@
-# Feature Development Process (FDP)
+# Railspike
 
-FDP is a file-based, approval-gated workflow for keeping AI-assisted feature work scoped, reviewable, and verified.
+<img src="./railspike-logo.png" alt="Railspike rail and spike logo" width="96" height="96">
+
+Railspike is a file-based, approval-gated workflow for keeping AI-assisted feature work scoped, reviewable, and verified.
 
 Use it with Claude Code, GitHub Copilot, or Codex when a feature needs a decision record and deliberate review points—not just a plausible patch.
 
@@ -14,7 +16,9 @@ If you frequently see Claude/Codex derail because requirements evolve mid-stream
 
 ## Quick start
 
-The supported installation is a Git submodule at `docs/fdp`. FDP deliberately has no bootstrap script: before FDP is installed, use the visible Git commands below rather than executing downloaded code in the consuming repository.
+Install Railspike as a Git submodule at `docs/railspike` with one Git command. Updates are handled by your agent using native Git; there is no CLI utility.
+
+[Main instructions](./RAILSPIKE.md) · [Worked example](./examples/private-window-lobby-fallback.md) · [Website](https://gulkily.github.io/railspike/)
 
 From the **root of a clean, non-bare Git working tree**, run these read-only checks first. Stop if a check does not have the stated result; do not clean, reset, stash, remove, or overwrite anything to make it pass.
 
@@ -27,25 +31,28 @@ pwd -P
 git rev-parse --is-bare-repository
 
 # Must print nothing. This includes staged, unstaged, and untracked files.
-git status --porcelain
+git status --porcelain --untracked-files=all --ignore-submodules=none
 
-# Must exit successfully; docs/fdp must not exist, including as a symlink.
-test ! -e docs/fdp && test ! -L docs/fdp
+# Must exit successfully; docs/railspike must not exist, including as a symlink.
+test ! -L docs
+test ! -e docs/railspike && test ! -L docs/railspike
 ```
 
-When all checks pass, add FDP. This command writes `.gitmodules`, stages the new submodule entry, and creates `docs/fdp`; it does not create a commit.
+When all checks pass, add Railspike. This command writes `.gitmodules`, stages the new submodule entry, and creates `docs/railspike`; it does not create a commit.
 
 ```bash
-git submodule add --branch master https://github.com/gulkily/fdp.git docs/fdp
+git submodule add --branch master https://github.com/gulkily/railspike.git docs/railspike
 git status --short
-git diff --cached -- .gitmodules docs/fdp
+git diff --cached -- .gitmodules docs/railspike
 ```
 
-Inspect the displayed changes, then commit them through your normal repository workflow. Do not continue if the output shows files beyond `.gitmodules` and `docs/fdp`.
+Inspect the displayed changes, then commit them through your normal repository workflow. Do not continue if the output shows files beyond `.gitmodules` and `docs/railspike`.
+
+Type `@railspike` and select `RAILSPIKE.md` if your assistant offers it. If file mentions are unavailable, refer explicitly to `docs/railspike/RAILSPIKE.md`. Autocomplete depends on the assistant and its workspace indexing.
 
 In your project, create `docs/plans/` if it does not exist. Then send your supported assistant this first prompt (adapt the story, but keep the explicit step request):
 
-> As a user, I would like to export my saved searches as CSV, please write Step 1 of `@fdp`.
+> As a user, I would like to export my saved searches as CSV, please write Step 1 of `@railspike`.
 
 If the decision is straightforward, you may skip Step 1 and ask for Step 2 instead. Review each artifact before continuing. For example:
 
@@ -56,50 +63,76 @@ After `Approved Step 3`, the assistant creates a feature branch, commits the app
 The first run should take only a few minutes: read the four-step overview, send the prompt, and inspect the resulting Step 1 artifact. Do not approve a step you have not reviewed.
 
 ## Repo layout
-- `FEATURE_DEVELOPMENT_PROCESS.md` – one-page overview of the entire chain plus key rules and warning signs.
-- `docs/dev/feature_process/` – canonical instructions for each step. The assistant reprints these every time it advances.
+- `RAILSPIKE.md` – one-page overview of the entire chain plus key rules and warning signs.
+- `docs/workflow/` – canonical instructions for each step. The assistant reprints these every time it advances.
   - `step1_solution_assessment.md`
   - `step2_feature_description.md`
   - `step3_development_plan_before.md`, `step3_development_plan_do.md`, `step3_development_plan_after.md`
   - `step4_implementation_before.md`, `step4_implementation_do.md`, `step4_implementation_after.md`
-  - `step3_development_plan.md`, `step4_implementation.md` (compatibility entrypoints)
 - `docs/plans/` (create per feature) – where you store the working artifacts: `{feature}_stepN_*.md` plus any auxiliary research. Move large efforts into `docs/plans/{feature}/` and update a local README for navigation.
 
 ## Reusing across projects
 
-When cloning a project that already includes FDP, initialize its submodules with either command:
+When cloning a project that already includes Railspike, either clone with `--recurse-submodules` or initialize just Railspike afterward:
+
 ```bash
-git clone --recurse-submodules <project-repository-url>
-git submodule update --init --recursive
+git submodule update --init -- docs/railspike
 ```
 
-To update FDP, start from the consuming repository root only after the same clean-host check above passes. The submodule must also be initialized, clean, on `master`, and configured for the expected origin and branch. Each command below is either an inspection or operates only inside `docs/fdp`; the final merge refuses non-fast-forward history.
+This checks out the revision recorded by the host project, often in detached HEAD state. It does not update to the latest upstream revision.
 
+### Ask your agent to update Railspike
+
+> Update Railspike at `docs/railspike` using the Git workflow in its README. Stop if the host or submodule has unreviewed changes or unexpected configuration. Fast-forward only. Outline the upstream changes, old and new revisions, and any required actions; show me the host-project diff. Then offer to commit only the submodule-pointer change or leave it uncommitted for review. Do not commit until I choose.
+
+The agent should read this procedure before updating. From the **host repository root**, the following guarded commands check the installation and fetch `master`. A clean detached checkout from clone initialization is supported, as is a clean `master` checkout. Run the entire block, stopping on any error:
+
+<!-- railspike-update-start -->
 ```bash
-# Every inspection must match its comment.
-git status --porcelain                         # no output
-git -C docs/fdp status --porcelain             # no output
-git -C docs/fdp branch --show-current          # master
-git config --file .gitmodules --get submodule.docs/fdp.url       # https://github.com/gulkily/fdp.git
-git config --file .gitmodules --get submodule.docs/fdp.branch    # master
-git -C docs/fdp remote get-url origin          # https://github.com/gulkily/fdp.git
-
-git -C docs/fdp fetch origin master
-git -C docs/fdp merge --ff-only FETCH_HEAD
-git diff --submodule=log -- docs/fdp
+(
+set -eu
+stop() { printf '%s\n' "$*" >&2; exit 1; }
+expected_url=https://github.com/gulkily/railspike.git
+[ "$(git rev-parse --is-bare-repository)" = false ] || stop 'Use a non-bare host repository.'
+[ "$(git rev-parse --show-toplevel)" = "$(pwd -P)" ] || stop 'Start at the host repository root.'
+[ -z "$(git status --porcelain --untracked-files=all --ignore-submodules=none)" ] || stop 'Review host changes before updating.'
+[ ! -L docs ] && [ ! -L docs/railspike ] || stop 'Refusing a symlinked installation path.'
+[ "$(git ls-files -s -- docs/railspike | cut -d ' ' -f 1)" = 160000 ] || stop 'Expected a registered Railspike submodule.'
+[ "$(git config --file .gitmodules --get submodule.docs/railspike.path)" = docs/railspike ] || stop 'Unexpected submodule path.'
+[ "$(git config --file .gitmodules --get submodule.docs/railspike.url)" = "$expected_url" ] || stop 'Unexpected registered URL.'
+[ -f docs/railspike/.git ] || stop 'Initialize Railspike with git submodule update --init -- docs/railspike first.'
+[ "$(git -C docs/railspike rev-parse --show-toplevel)" = "$(pwd -P)/docs/railspike" ] || stop 'Unexpected submodule checkout.'
+[ -z "$(git -C docs/railspike status --porcelain --untracked-files=all --ignore-submodules=none)" ] || stop 'Review submodule changes before updating.'
+[ "$(git -C docs/railspike remote get-url origin)" = "$expected_url" ] || stop 'Unexpected submodule origin.'
+for configured_branch in "$(git config --file .gitmodules --get submodule.docs/railspike.branch || :)" "$(git config --local --get submodule.docs/railspike.branch || :)"; do
+  case "$configured_branch" in ''|master) ;; *) stop 'Unexpected update branch.' ;; esac
+done
+case "$(git -C docs/railspike branch --show-current)" in
+  ''|master) ;; *) stop 'Expected master or a detached checkout.' ;;
+esac
+old_revision=$(git -C docs/railspike rev-parse HEAD)
+git -C docs/railspike fetch origin master
+git -C docs/railspike merge-base --is-ancestor "$old_revision" FETCH_HEAD || stop 'Upstream diverged or local commits are ahead; inspect history.'
+git -C docs/railspike -c merge.autostash=false merge --ff-only FETCH_HEAD
+new_revision=$(git -C docs/railspike rev-parse HEAD)
+printf 'Railspike: %s -> %s\n' "$old_revision" "$new_revision"
+git -C docs/railspike log --oneline "$old_revision..$new_revision"
+git diff --submodule=log -- docs/railspike
 git status --short
+)
 ```
+<!-- railspike-update-end -->
 
-Review the resulting `docs/fdp` pointer change, then commit it through your normal repository workflow. Neither workflow creates a consuming-repository commit.
+After a successful update, summarize the relevant upstream changes and required actions, inspecting the upstream diff as needed. If the revision changed, offer **commit the pointer update** or **leave it uncommitted for review**. On approval, recheck that only `docs/railspike` changed, stage that path alone, and commit it. An already-current installation needs no commit.
 
-If `docs/fdp` is uninitialized, run `git submodule update --init -- docs/fdp` and restart the checks. If a path is occupied, a repository is dirty, the checkout is detached, configuration differs, or the fast-forward merge refuses to proceed, stop and inspect that state; do not use `reset`, `clean`, `stash`, or deletion commands as a recovery shortcut.
+If a check fails, stop and explain it. Do not reset, clean, stash, delete files, change remotes, or force an update to make a check pass. Fetch can change remote-tracking metadata even when an update is refused. If a network operation or update is interrupted, inspect the current checkout and host diff before retrying; do not assume rollback.
 
 ## Examples
 
-See [FDP Examples](./examples/) for three completed v3 feature cycles: a concise security-and-recovery case, a medium-complexity operational command, and a recovery-oriented offline-reading deep dive. Each example links to its Step 1–4 source artifacts and stage commits.
+See [Railspike Examples](./examples/) for three completed v3 feature cycles: a concise security-and-recovery case, a medium-complexity operational command, and a recovery-oriented offline-reading deep dive. Each example links to its Step 1–4 source artifacts and stage commits.
 
 ## How to run the chain with your AI pair
-1. Kick things off with a plain request like `As a user, I would like to <story>, please write Step 1 of FEATURE_DEVELOPMENT_PROCESS.md.` Make the story explicit so the assistant starts from the user’s perspective.
+1. Kick things off with a plain request like `As a user, I would like to <story>, please write Step 1 of RAILSPIKE.md.` Make the story explicit so the assistant starts from the user’s perspective.
 2. Let the assistant draft the artifact in `docs/plans/`, then review/edit it directly or issue follow-up instructions until you’re satisfied.
 3. When the doc hits the bar, reply verbatim with `Approved Step N, please continue to Step N+1.` The bot must stop until that phrase arrives, so you control scope creep.
 4. Repeat the review/approval loop for each step. Keep Step 1-3 planning docs uncommitted through drafting/review.
@@ -147,7 +180,7 @@ flowchart TB
     class BR,S4 commit
 ```
 
-The plan artifacts live in the consuming repository’s `docs/plans/`; the FDP instruction files can remain under `docs/fdp/`. Approval gates stop forward progress. The feature branch begins only after Step 3, with a planning-doc commit; every Step 4 stage then gets its own auditable commit.
+The plan artifacts live in the consuming repository’s `docs/plans/`; the Railspike instruction files can remain under `docs/railspike/`. Approval gates stop forward progress. The feature branch begins only after Step 3, with a planning-doc commit; every Step 4 stage then gets its own auditable commit.
 
 **Returning to planning: a scope change during Step 4 sends work back to Step 2.**
 
@@ -182,7 +215,7 @@ Returning to planning is a feature, not a failure: a new requirement or unresolv
 
 ## Documentation checks
 
-Run these before sharing an FDP change. The link check validates local Markdown paths; review rendered Mermaid diagrams on GitHub after publication because GitHub owns the renderer.
+Run these before sharing a Railspike change. The link check validates local Markdown paths; review rendered Mermaid diagrams on GitHub after publication because GitHub owns the renderer.
 
 ```bash
 # Python 2.7+ or Python 3 (recommended; no third-party packages)
@@ -193,6 +226,7 @@ perl scripts/check-markdown-links.pl
 
 # Node.js remains an optional equivalent
 node scripts/check-markdown-links.mjs
+bash scripts/check-railspike-git-workflow.sh
 git diff --check
 git status --short
 ```
@@ -210,7 +244,7 @@ Each step/phase file lists guardrails plus "Next" instructions so the model alwa
 Every Step 1–4 artifact begins with a relative-link bar to the others, keeping the feature record navigable in GitHub.
 
 ## Tips for stubborn assistants
-- **Reprint instructions**: before starting a step/phase, force the assistant to paste the relevant `docs/dev/feature_process/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
+- **Reprint instructions**: before starting a step/phase, force the assistant to paste the relevant `docs/workflow/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
 - **Call out risks early**: Step 2 records impact, early validation, and mitigation; Step 3 gates dependents on unresolved risks.
 - **Shared component inventory**: Step 2 explicitly asks which canonical UI/API bits already exist. Reuse them; duplication is the fastest way models drift.
 - **Finish a feature, not a layer**: Each cycle has a normal entry point, end-to-end outcome, and required recovery. Component-only work is internal maintenance.
@@ -223,4 +257,4 @@ Every Step 1–4 artifact begins with a relative-link bar to the others, keeping
 - When a feature exceeds eight stages, start a new Step 2/3 cycle; each must remain a usable vertical slice.
 
 ## Getting help
-Because every instruction lives in plain Markdown, you can diff tweaks, annotate lines for your assistant, or even inline reminders like “STOP after this file.” When in doubt, start from `FEATURE_DEVELOPMENT_PROCESS.md` and follow the breadcrumbs.
+Because every instruction lives in plain Markdown, you can diff tweaks, annotate lines for your assistant, or even inline reminders like “STOP after this file.” When in doubt, start from `RAILSPIKE.md` and follow the breadcrumbs.

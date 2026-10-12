@@ -6,7 +6,7 @@ A visitor opening a protected page without a usable saved browser key now reache
 
 ## The Feature Cycle
 
-| FDP step | Decision or result | Why it matters |
+| Railspike step | Decision or result | Why it matters |
 | --- | --- | --- |
 | 1 — Solution assessment | Extend the absent-key outcome in the existing recovery client. | It preserves the existing server access gate and avoids a second anonymous entry surface. |
 | 2 — Feature description | Keep the safe requested destination; distinguish absent keys from malformed keys and authentication failures. | The new path helps a genuine first-time/private-window visitor without hiding a real recovery problem. |
@@ -33,7 +33,7 @@ This is deliberately not a blanket unauthenticated redirect. Only an absent usab
 
 ## Audit Trail
 
-- See the [direct-prompt comparison](./private-window-lobby-fallback-comparison.md) for the review controls FDP added beyond an unstructured implementation request.
+- See the [direct-prompt comparison](./private-window-lobby-fallback-comparison.md) for the review controls Railspike added beyond an unstructured implementation request.
 - Use the [artifact trail](./private-window-lobby-fallback-artifact-trail.md) to replay the cycle from its recorded request, prompts, plans, and stage commits.
 - Read the original [Step 1–4 artifacts and stage commits](./SOURCES.md#private-window-lobby-fallback).
 - The source cycle completed in [Stage 1](https://github.com/gulkily/v3/commit/e07c5fd3e2dd4692e60bff25436c2762bbf6290d) and [Stage 2](https://github.com/gulkily/v3/commit/e0455270c38236c9e3a0c0298548b29bedef8170).

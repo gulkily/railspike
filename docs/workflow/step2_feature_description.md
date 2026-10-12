@@ -10,7 +10,7 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 - Filename: `{feature_name}_step2_feature_description.md`
 
 ## Structure
-- Standard Plan navigation bar (template in `FEATURE_DEVELOPMENT_PROCESS.md`; omit skipped Step 1)
+- Standard Plan navigation bar (template in `RAILSPIKE.md`; omit skipped Step 1)
 - Problem: 1–2 sentences
 - User stories: bullet list in the format “As [role], I want [goal] so that [benefit]”
 - Core requirements: 3–5 bullets capturing non-negotiable behaviors
@@ -31,4 +31,4 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 - Keep the doc lightweight enough to consume at a glance
 
 ## Next
-Deliver the document, request confirmation, and wait for "Approved Step 2." Once approved, continue with `docs/dev/feature_process/step3_development_plan_before.md`.
+Deliver the document, request confirmation, and wait for "Approved Step 2." Once approved, continue with `docs/workflow/step3_development_plan_before.md`.

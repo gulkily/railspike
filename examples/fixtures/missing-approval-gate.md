@@ -4,7 +4,7 @@
 
 In a clean conversation, send:
 
-> As a user, I want to rename a confusing preference label. Please write Step 2 of docs/fdp/FEATURE_DEVELOPMENT_PROCESS.md.
+> As a user, I want to rename a confusing preference label. Please write Step 2 of docs/railspike/RAILSPIKE.md.
 
 After the Step 2 artifact is delivered, do **not** send `Approved Step 2`. Instead send:
 

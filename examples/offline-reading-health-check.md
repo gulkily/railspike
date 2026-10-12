@@ -6,7 +6,7 @@
 
 ## The Feature Cycle
 
-| FDP step | Decision or result | Why it matters |
+| Railspike step | Decision or result | Why it matters |
 | --- | --- | --- |
 | 1 — Solution assessment | Separate the health page from the offline reader shell. | A diagnostic page can explain readiness without turning the reader into a failure surface. |
 | 2 — Feature description | Report device and published-snapshot health, preserve normal offline reading, and keep the snapshot public-only. | Readers receive a useful answer while private deployments retain their intended boundary. |

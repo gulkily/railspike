@@ -14,4 +14,4 @@ Finalize Step 3 for review, enforce approval gating, and hand off cleanly to Ste
 6. Keep Step 1-3 planning docs uncommitted here; Step 4 handles the planning-doc commit as the first commit on the feature branch.
 
 ## Next
-After the user responds `Approved Step 3`, continue with `docs/dev/feature_process/step4_implementation_before.md`.
+After the user responds `Approved Step 3`, continue with `docs/workflow/step4_implementation_before.md`.

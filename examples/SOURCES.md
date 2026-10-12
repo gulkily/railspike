@@ -1,6 +1,8 @@
 # Example Source Evidence
 
-These public case studies summarize completed FDP cycles from [gulkily/v3](https://github.com/gulkily/v3). They retain material decisions, verification results, limitations, and recovery behavior; they do not reproduce private local paths, credentials, or environment-specific URLs.
+These historical cycles used the workflow under its former name, FDP. Current explanations and replay prompts use Railspike; source records and commit links retain their original names.
+
+These public case studies summarize completed Railspike cycles from [gulkily/v3](https://github.com/gulkily/v3). They retain material decisions, verification results, limitations, and recovery behavior; they do not reproduce private local paths, credentials, or environment-specific URLs.
 
 ## Private Window Lobby Fallback
 
