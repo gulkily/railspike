@@ -12,7 +12,7 @@ Backwards compatibility is explicitly out of scope: the maintainer is the only k
 - [x] After updating Railspike, the agent outlines the changes and offers the user a choice: commit the submodule-pointer update or leave it uncommitted for review. Do not commit automatically.
 - [x] Document a copyable request for the agent to update Railspike, with repository-state checks and fast-forward-only updates. The agent reports the old and new revisions, summarizes relevant upstream changes and any required user actions, shows the host-project diff, and asks whether to commit only the pointer update or leave it uncommitted.
 - [x] Standardize the display name as **Railspike** and repository/path spelling as `railspike`; use “formerly FDP” only where historical context helps.
-- [x] Use `gulkily/railspike` as the repository, with canonical URL `https://github.com/gulkily/railspike` and clone URL `https://github.com/gulkily/railspike.git`. References are updated; renaming the hosted repository remains pending.
+- [x] Use `gulkily/railspike` as the repository, with canonical URL `https://github.com/gulkily/railspike` and clone URL `https://github.com/gulkily/railspike.git`. References and the local origin are updated; the prepared work is published to the new repository on `master`.
 - [x] Use `docs/railspike` as the installation path in host projects.
 - [x] Replace active references to `docs/fdp` with `docs/railspike` without supporting the old path.
 - [x] Use `RAILSPIKE.md` as the main instruction filename, replacing `FEATURE_DEVELOPMENT_PROCESS.md`; in host projects it will be `docs/railspike/RAILSPIKE.md`.
@@ -41,11 +41,12 @@ Backwards compatibility is explicitly out of scope: the maintainer is the only k
 - [x] Preserve clean-working-tree checks, occupied-path checks, and fast-forward-only updates in the Railspike installation and update workflow.
 - [x] Update the workflow fixture in [scripts/check-railspike-git-workflow.sh](./scripts/check-railspike-git-workflow.sh) to match the chosen names and paths. Keep its temporary-directory prefix and cleanup guard in agreement.
 - [x] Exercise a fresh Railspike install and subsequent Railspike updates in disposable repositories, including clone/init, update, and dirty-state refusal. Legacy FDP installations are outside the test scope.
-- [ ] Rename the hosted repository when the renamed documentation and installation instructions are ready; update its description, homepage, topics, and any configured integrations.
-- [ ] Update local Git remotes and ensure the local checkout directory uses `railspike`; adjust editor/workspace references affected by the move.
+- [x] Publish the prepared work to the new `gulkily/railspike` repository on `master`. The maintainer created a new repository instead of renaming `gulkily/fdp`; the old repository remains separate. The maintainer has set the project description.
+- [ ] Set the homepage to `https://gulkily.github.io/railspike/` and review topics and any desired integrations.
+- [x] Update local origin to `https://github.com/gulkily/railspike.git`. The checkout already uses `/home/wsl/railspike`; no directory move was needed.
 - [x] Keep `master` as the branch name for now; a rename to `main` is out of scope.
-- [x] Verify the current hosted repository's default branch is `master` and use it consistently. Correct the HN draft's `blob/main` example link to match. Recheck after the hosted rename.
-- [ ] Verify fresh clones from the canonical Railspike URL work after the hosted rename. Update active repository links; old URL redirects are not a release requirement.
+- [x] Verify the new hosted repository's default branch is `master` and use it consistently. The HN draft's example links use `master`.
+- [x] Verify a fresh public clone from `https://github.com/gulkily/railspike.git` on `master`; all 46 Markdown files pass local link checks. Active repository links use the canonical URL; old URL redirects are not required.
 
 ## Logo and website
 
@@ -84,12 +85,12 @@ Backwards compatibility is explicitly out of scope: the maintainer is the only k
 - Markdown links pass both in the working tree and a clean export of the staged files. Whitespace and the README's exact Git update block pass local checks. Disposable fixtures cover installation, initialization at the recorded revision, attached/detached updates, no-op updates, dirty state, wrong origin/branch, unreviewed pointers, ahead/divergent history, and unavailable upstream.
 - Chromium checks passed at 1280, 580, 390, and 320 px, including local assets/links under `/railspike/`, visible mobile navigation, and keyboard navigation. Desktop/mobile screenshots were visually reviewed. Autocomplete and GitHub Markdown/Mermaid rendering still need checks in their actual environments.
 - Historical plans, source quotations, original commit links, and the copyright attribution retain FDP where appropriate. The ignored HN readiness checklist is included in the intended launch files because this checklist and the draft link to it.
-- GitHub CLI is not authenticated. `gulkily/railspike` is not yet available through an unauthenticated clone check. The existing origin (`gulkily/fdp`) reports `master` as its default branch and is retained until the hosted rename succeeds.
+- Publishing follow-up: the maintainer created `gulkily/railspike` as a new repository. Git push succeeded, publishing implementation commit `563659b` on `master`, and a fresh public clone passed Markdown checks. Local origin now uses the canonical URL. GitHub confirms `master` as the default branch.
+- GitHub CLI and repository-settings API credentials remain unavailable, even though Git push works. Pages is not enabled and the homepage is unset. The existing `gulkily/fdp` repository was not renamed or modified.
 
 ## Remaining publishing steps
 
-1. Authenticate GitHub CLI, then rename `gulkily/fdp` to `gulkily/railspike`; set the description and homepage to the new project name and `https://gulkily.github.io/railspike/`. Review topics and configured integrations.
-2. Update the local origin to `https://github.com/gulkily/railspike.git`, publish the reviewed branch, and merge it into `master` through the repository's normal workflow. Update any maintainer-owned host installations separately.
-3. Enable GitHub Pages from the `master` branch, `/` (root), and enforce HTTPS. The root `index.html` and `.nojekyll` are ready for this configuration.
-4. Verify the live page, images, links, fresh clone, GitHub Markdown/Mermaid rendering, and assistant file mentions before promoting the URLs.
-5. Only afterward, choose and publish the first release. HN submission remains a separate follow-up.
+1. Enable GitHub Pages from the `master` branch, `/` (root), and enforce HTTPS. The root `index.html` and `.nojekyll` are published and ready. This requires GitHub Settings access or authenticated API access; current Git push access does not provide it.
+2. Set the repository homepage to `https://gulkily.github.io/railspike/`; review topics and any desired integrations. Update any maintainer-owned host installations separately.
+3. Verify the live page, images, links, GitHub Markdown/Mermaid rendering, and assistant file mentions before promoting the URLs. Public clone and local Markdown-link checks already pass.
+4. Only afterward, choose and publish the first release. HN submission remains a separate follow-up.
