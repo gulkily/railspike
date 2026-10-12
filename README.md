@@ -10,9 +10,9 @@ Use it with Claude Code, Codex, GitHub Copilot, or another agent that can read y
 
 [Website](https://gulkily.github.io/railspike/) · [RAILSPIKE.md](RAILSPIKE.md) · [Step files](docs/workflow/)
 
-## Why I built this
+## Why we built this
 
-I wanted plans that live in the repo, that I can edit in my own editor and come back to the next day, with explicit review points when the direction changes.
+We wanted plans that live in the repo, that we can edit in our own editor and come back to the next day, with explicit review points when the direction changes.
 
 So Railspike puts every plan in a Markdown file. You can read it in VS Code, Obsidian, vim, or a GitHub diff. You can edit it directly or ask the agent to change it. The instructions require the agent to stop until you type `Approved Step N`. These are instructions the agent follows, not a technical enforcement mechanism.
 
