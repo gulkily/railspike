@@ -44,3 +44,18 @@ Debug mode: enabled
   - The failure-mode bullets are condensed paraphrases of the guide; the guide is linked for the full signals.
   - Claims in the HN draft (for example about hallucinations) were deliberately left out because the README does not state them.
   - `BACKLOG.md` remains an uncommitted maintainer edit, excluded here.
+
+## Stage 4 - Text-first styling
+- Changes:
+  - Inline stylesheet in `index.html`: system serif body, system monospace code, 42rem measure, light and dark through `prefers-color-scheme`, left-ruled code blocks, and a gold accent for the wordmark and code rules.
+  - The install command now sits directly after the intro paragraph, and the sentence about supported agents and "no CLI" moved below it (split so the review note stays next to the command), to keep the install command on the first phone screen. Wording is otherwise unchanged.
+- Verification:
+  - First screen (iframe at exact viewport size): install command ends at 573 px of 640 px at 360×640 and 421 px of 720 px at 1280×720. Before the reorder it ended at 714 px on the phone.
+  - No horizontal overflow at 360 px (scrollWidth 345 = clientWidth) or 1280 px.
+  - Contrast (WCAG): light text 17.2, muted 8.1, links 8.0 (7.2 on code), accent 5.5; dark text 14.9, muted 8.4, links 8.8 (7.9 on code), accent 9.6.
+  - Light render at 1100 px and dark render (media query unwrapped, because headless Chrome could not emulate the system preference) inspected.
+  - The README sentence about reviewing `.gitmodules` still matches verbatim.
+- Notes:
+  - Page is about 10 KB with no scripts or third-party requests.
+  - Real OS dark-mode switching and non-Chromium browsers were not tested.
+  - `BACKLOG.md` remains an uncommitted maintainer edit, excluded here.

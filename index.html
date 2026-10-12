@@ -16,6 +16,27 @@
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta name="twitter:card" content="summary">
+  <style>
+    :root { color-scheme: light dark; --bg:#fff; --fg:#1b1b1b; --muted:#505050; --rule:#d6d6d6; --code:#f3f3f1; --link:#0b4f9c; --accent:#8a6100; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#131313; --fg:#e8e6e1; --muted:#b0aea8; --rule:#3a3a3a; --code:#1e1e1d; --link:#8ab4f8; --accent:#e3b341; } }
+    * { box-sizing: border-box; }
+    body { margin: 0 auto; max-width: 42rem; padding: 1rem 1rem 3rem; background: var(--bg); color: var(--fg); font: 1.0625rem/1.55 ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif; }
+    header { padding: .5rem 0 .25rem; }
+    header p { margin: 0; font: 700 .9rem/1.4 ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace; letter-spacing: .02em; color: var(--accent); }
+    h1 { margin: .35rem 0 .75rem; font-size: clamp(1.55rem, 5.5vw, 2.15rem); line-height: 1.15; }
+    h2 { margin: 2rem 0 .5rem; padding-top: .75rem; border-top: 1px solid var(--rule); font-size: 1.25rem; line-height: 1.25; }
+    h3 { margin: 1.25rem 0 .35rem; font-size: 1rem; }
+    p, ul { margin: .6rem 0; }
+    li { margin: .4rem 0; }
+    ul { padding-left: 1.25rem; }
+    a { color: var(--link); text-underline-offset: .15em; }
+    a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+    code, pre { font-family: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace; font-size: .85rem; }
+    :not(pre) > code { background: var(--code); padding: .05em .3em; border-radius: 3px; }
+    pre { margin: .75rem 0; padding: .7rem .85rem; background: var(--code); border-left: 3px solid var(--accent); white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.5; }
+    footer { margin-top: 2.5rem; padding-top: .75rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
+    footer a { color: inherit; }
+  </style>
 </head>
 <body>
 <header>
@@ -24,12 +45,12 @@
 </header>
 <main>
   <p>Railspike is a set of Markdown instructions your agent follows. The agent writes requirements and a staged plan into your repo, then stops until you approve each one. After that it works on a branch, one stage at a time, verifying and committing each stage with a record of what changed.</p>
-  <p>Use it with Claude Code, Codex, GitHub Copilot, or another agent that can read your project files. There is no CLI and there are no runtime dependencies; installation and updates use Git.</p>
 
   <h2>Install</h2>
   <p>From the root of a clean Git working tree:</p>
   <pre><code>git submodule add https://github.com/gulkily/railspike.git docs/railspike</code></pre>
-  <p>Review and commit <code>.gitmodules</code> and the submodule pointer. Then give your agent a task:</p>
+  <p>Review and commit <code>.gitmodules</code> and the submodule pointer.</p>
+  <p>Use it with Claude Code, Codex, GitHub Copilot, or another agent that can read your project files. There is no CLI and there are no runtime dependencies; installation and updates use Git. Then give your agent a task:</p>
   <pre><code>I want to export my saved searches as CSV. Write Step 1 of @railspike.</code></pre>
   <p>Open the file the agent wrote in <code>docs/plans/</code>, edit it or ask for changes, and when it says what you want, reply <code>Approved Step 1</code>. Repeat for each step. The <a href="https://github.com/gulkily/railspike#quick-start">quick start</a> has the full walkthrough.</p>
   <h2>A real example</h2>
