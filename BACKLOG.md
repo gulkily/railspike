@@ -6,7 +6,7 @@ Maintainer follow-up work. Completed plans and superseded drafts remain availabl
 
 - [ ] Confirm GitHub Pages publishes `master` from `/` (root) with HTTPS at `https://gulkily.github.io/railspike/`; verify the live navigation, images, and external links.
 - [ ] Set the repository homepage to the website URL and review topics and desired integrations.
-- [ ] Walk through installation and the first planning artifact with supported assistants. Verify whether `@railspike` offers `RAILSPIKE.md`, retain the explicit-path fallback, and assess whether starting a task can be simpler.
+- [ ] Walk through installation and the first planning artifact with supported agents. Verify whether `@railspike` offers `RAILSPIKE.md`, retain the explicit-path fallback, and assess whether starting a task can be simpler.
 - [ ] Update any maintainer-owned host installations, prompts, and documentation to the Railspike repository and `docs/railspike` path.
 - [ ] Review both README Mermaid diagrams on GitHub in light and dark themes. Keep them compact and readable at a glance, with clear approval/commit boundaries, legible labels, and no confusing crossing edges; adjust layout as needed.
 - [ ] Create better replacement examples and end-to-end prompt fixtures, including normal work and returning to planning after a scope change. Follow the evidence requirements in the [HN readiness checklist](./HN_WRITEUP_READINESS_CHECKLIST.md).

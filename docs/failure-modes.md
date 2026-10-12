@@ -4,7 +4,7 @@ Railspike is intentionally strict at the points where AI-assisted work most ofte
 
 ## Approval was skipped
 
-**Signal:** The assistant starts a later step or changes implementation before the user explicitly says `Approved Step N`.
+**Signal:** The agent starts a later step or changes implementation before the user explicitly says `Approved Step N`.
 
 **Recovery:** Stop. Review or revise the current artifact; do not keep later work as implicitly approved. Resume only from the last explicitly approved step. If implementation began before `Approved Step 3`, discard or set aside the unapproved implementation and return to planning.
 

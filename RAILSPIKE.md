@@ -61,7 +61,7 @@ Each step MUST be a separate file in `docs/plans/`:
 
 ## Key Rules
 
-**AI coding assistant**
+**AI coding agent**
 - Recommend Step 1 for complex features or whenever multiple solutions exist
 - Stay in the current step; do not draft/edit later deliverables without approval
 - After delivering each step, explicitly request “Approved Step N” and pause until the user responds with that exact phrase

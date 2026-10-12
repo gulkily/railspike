@@ -12,7 +12,7 @@ The repository has not yet declared its first public release tag. The first tag 
 
 ## Railspike rename (unreleased)
 
-Feature Development Process (FDP) is now Railspike. This is a breaking rename with no backwards compatibility: the maintainer is the only known user. The canonical repository is `gulkily/railspike`, host installations use `docs/railspike`, the main instructions are `RAILSPIKE.md`, and per-step instructions live in `docs/workflow/`. The assistant shorthand is `@railspike`; select `@RAILSPIKE.md` when available. Legacy entrypoints and aliases are not provided.
+Feature Development Process (FDP) is now Railspike. This is a breaking rename with no backwards compatibility: the maintainer is the only known user. The canonical repository is `gulkily/railspike`, host installations use `docs/railspike`, the main instructions are `RAILSPIKE.md`, and per-step instructions live in `docs/workflow/`. The agent shorthand is `@railspike`; select `@RAILSPIKE.md` when available. Legacy entrypoints and aliases are not provided.
 
 The four-step workflow and approval rules are unchanged. Installation remains one `git submodule add` command. An agent handles Git updates, outlines the changes, and asks whether to commit the pointer or leave it for review. The proposed `rsp` utility was abandoned.
 

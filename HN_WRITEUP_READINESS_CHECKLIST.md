@@ -14,10 +14,10 @@ Use this checklist to make Railspike easy to evaluate in a few minutes and to en
 
 ## First Run Experience
 
-- [x] Add a compact quick-start section with the recommended installation method and the first prompt to send an AI assistant.
+- [x] Add a compact quick-start section with the recommended installation method and the first prompt to send an AI agent.
 - [x] Show the approval loop with a concrete `Approved Step N` example.
 - [x] Explain where plans live, what gets committed, and how Railspike is updated in a consuming repository.
-- [ ] Verify the renamed quick start and file-mention behavior with the supported assistants. Historical subtree verification does not validate the current submodule installation or autocomplete.
+- [ ] Verify the renamed quick start and file-mention behavior with the supported agents. Historical subtree verification does not validate the current submodule installation or autocomplete.
 
 ## Workflow Clarity and Validation
 
@@ -39,13 +39,13 @@ Use this checklist to make Railspike easy to evaluate in a few minutes and to en
 ## HN Post
 
 - [x] Use a plain, descriptive title that states what Railspike does. See [HN post draft](./HN_POST_DRAFT.md).
-- [x] Open with the problem: AI coding assistants can move faster than review and scope control.
+- [x] Open with the problem: AI coding agents can move faster than review and scope control.
 - [x] Explain the mechanism briefly: small instruction files, explicit approvals, planning artifacts, and stage-scoped commits.
 - [x] Link to the quick start.
 - [ ] Link to a replacement worked example once it is ready.
 - [x] Name the intended audience and the tradeoff: extra process is useful for feature work where reviewability matters, but can be excessive for trivial changes.
 - [x] Include a short "what this is not" note: Railspike is not an autonomous-agent framework, a replacement for judgment, or a universal process.
-- [x] Invite specific feedback, such as whether the gates are useful, where the process is too rigid, and which assistant integrations would matter.
+- [x] Invite specific feedback, such as whether the gates are useful, where the process is too rigid, and which agent integrations would matter.
 
 ## Launch Gate
 

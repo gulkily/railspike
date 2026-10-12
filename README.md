@@ -8,11 +8,11 @@ Use it with Claude Code, GitHub Copilot, or Codex when a feature needs a decisio
 
 ## Why use this?
 - Keeps multi-step feature work inside the model context window by splitting guidance across files.
-- Forces approvals between steps so the assistant cannot sprint ahead without human review.
+- Forces approvals between steps so the agent cannot sprint ahead without human review.
 - Encourages reuse of shared UI/API components instead of letting the AI fork markup or payloads.
 - Limits plan bloat so every deliverable stays within a page and can be reviewed quickly.
 
-If you frequently see Claude/Codex derail because requirements evolve mid-stream, treat this repo as the “rails” that keep both you and the assistant honest.
+If you frequently see Claude/Codex derail because requirements evolve mid-stream, treat this repo as the “rails” that keep both you and the agent honest.
 
 ## Quick start
 
@@ -48,9 +48,9 @@ git diff --cached -- .gitmodules docs/railspike
 
 Inspect the displayed changes, then commit them through your normal repository workflow. Do not continue if the output shows files beyond `.gitmodules` and `docs/railspike`.
 
-Type `@railspike` and select `RAILSPIKE.md` if your assistant offers it. If file mentions are unavailable, refer explicitly to `docs/railspike/RAILSPIKE.md`. Autocomplete depends on the assistant and its workspace indexing.
+Type `@railspike` and select `RAILSPIKE.md` if your agent offers it. If file mentions are unavailable, refer explicitly to `docs/railspike/RAILSPIKE.md`. Autocomplete depends on the agent and its workspace indexing.
 
-In your project, create `docs/plans/` if it does not exist. Then send your supported assistant this first prompt (adapt the story, but keep the explicit step request):
+In your project, create `docs/plans/` if it does not exist. Then send your supported agent this first prompt (adapt the story, but keep the explicit step request):
 
 > As a user, I would like to export my saved searches as CSV, please write Step 1 of `@railspike`.
 
@@ -58,13 +58,13 @@ If the decision is straightforward, you may skip Step 1 and ask for Step 2 inste
 
 > Approved Step 1, please continue to Step 2.
 
-After `Approved Step 3`, the assistant creates a feature branch, commits the approved planning documents first, then makes a separate commit—with the matching Step 4 summary update—for every completed stage. See the [failure-mode guide](./docs/failure-modes.md) for recovery guidance.
+After `Approved Step 3`, the agent creates a feature branch, commits the approved planning documents first, then makes a separate commit—with the matching Step 4 summary update—for every completed stage. See the [failure-mode guide](./docs/failure-modes.md) for recovery guidance.
 
 The first run should take only a few minutes: read the four-step overview, send the prompt, and inspect the resulting Step 1 artifact. Do not approve a step you have not reviewed.
 
 ## Repo layout
 - `RAILSPIKE.md` – one-page overview of the entire chain plus key rules and warning signs.
-- `docs/workflow/` – canonical instructions for each step. The assistant reprints these every time it advances.
+- `docs/workflow/` – canonical instructions for each step. The agent reprints these every time it advances.
   - `step1_solution_assessment.md`
   - `step2_feature_description.md`
   - `step3_development_plan_before.md`, `step3_development_plan_do.md`, `step3_development_plan_after.md`
@@ -128,9 +128,9 @@ After a successful update, summarize the relevant upstream changes and required 
 
 If a check fails, stop and explain it. Do not reset, clean, stash, delete files, change remotes, or force an update to make a check pass. Fetch can change remote-tracking metadata even when an update is refused. If a network operation or update is interrupted, inspect the current checkout and host diff before retrying; do not assume rollback.
 
-## How to run the chain with your AI pair
-1. Kick things off with a plain request like `As a user, I would like to <story>, please write Step 1 of RAILSPIKE.md.` Make the story explicit so the assistant starts from the user’s perspective.
-2. Let the assistant draft the artifact in `docs/plans/`, then review/edit it directly or issue follow-up instructions until you’re satisfied.
+## How to run the chain with your agent
+1. Kick things off with a plain request like `As a user, I would like to <story>, please write Step 1 of RAILSPIKE.md.` Make the story explicit so the agent starts from the user’s perspective.
+2. Let the agent draft the artifact in `docs/plans/`, then review/edit it directly or issue follow-up instructions until you’re satisfied.
 3. When the doc hits the bar, reply verbatim with `Approved Step N, please continue to Step N+1.` The bot must stop until that phrase arrives, so you control scope creep.
 4. Repeat the review/approval loop for each step. Keep Step 1-3 planning docs uncommitted through drafting/review.
 5. After `Approved Step 3`, create the Step 4 feature branch and make the first commit with only the approved Step 1-3 docs.
@@ -245,8 +245,8 @@ Each step/phase file lists guardrails plus "Next" instructions so the model alwa
 
 Every Step 1–4 artifact begins with a relative-link bar to the others, keeping the feature record navigable in GitHub.
 
-## Tips for stubborn assistants
-- **Reprint instructions**: before starting a step/phase, force the assistant to paste the relevant `docs/workflow/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
+## Tips for stubborn agents
+- **Reprint instructions**: before starting a step/phase, force the agent to paste the relevant `docs/workflow/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
 - **Call out risks early**: Step 2 records impact, early validation, and mitigation; Step 3 gates dependents on unresolved risks.
 - **Shared component inventory**: Step 2 explicitly asks which canonical UI/API bits already exist. Reuse them; duplication is the fastest way models drift.
 - **Finish a feature, not a layer**: Each cycle has a normal entry point, end-to-end outcome, and required recovery. Component-only work is internal maintenance.
@@ -254,9 +254,9 @@ Every Step 1–4 artifact begins with a relative-link bar to the others, keeping
 - **Documentation-only cycles**: Declare this work type and its allowed documentation file scope in Step 2, retain it in Step 3's Completion Contract, and do not alter application source, tests, CI, deployment configuration, or generated artifacts without returning for approval.
 
 ## Extending the process
-- Need a domain-specific checklist? Fork one of the step files, add the extra bullets, and point your assistant to the customized version.
+- Need a domain-specific checklist? Fork one of the step files, add the extra bullets, and point your agent to the customized version.
 - Supporting artifacts (mockups, DB diagrams) belong beside the step docs in `docs/plans/{feature}/`. Reference them inside the deliverables but keep the main files concise.
 - When a feature exceeds eight stages, start a new Step 2/3 cycle; each must remain a usable vertical slice.
 
 ## Getting help
-Because every instruction lives in plain Markdown, you can diff tweaks, annotate lines for your assistant, or even inline reminders like “STOP after this file.” When in doubt, start from `RAILSPIKE.md` and follow the breadcrumbs.
+Because every instruction lives in plain Markdown, you can diff tweaks, annotate lines for your agent, or even inline reminders like “STOP after this file.” When in doubt, start from `RAILSPIKE.md` and follow the breadcrumbs.
