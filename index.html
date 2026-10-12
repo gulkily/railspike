@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#c08000">
   <title>Railspike — Shape the plan before the agent builds</title>
   <meta name="description" content="Review options, combine approaches, and revise Markdown plans before approving agent-driven work. For development, documentation, bug fixes, test suites, and checklists.">
   <link rel="canonical" href="https://gulkily.github.io/railspike/">
@@ -16,69 +16,73 @@
   <meta property="og:image:alt" content="Railspike rail and spike logo">
   <meta name="twitter:card" content="summary">
   <style>
-    :root { color-scheme: light; --ink:#101010; --paper:#fff; --muted:#505050; --line:#d7d7d2; --wash:#f5f5f0; }
+    :root { color-scheme:light dark; --paper:#fff; --ink:#121212; --muted:#55524a; --line:#dcd8cc; --wash:#f7f5ee; --bar:#c08000; --bar-ink:#121212; --link:#8a5a00; --code-bg:#17140f; --code-ink:#f5f1e6; --mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace; --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+    @media (prefers-color-scheme:dark) { :root { --paper:#14120e; --ink:#ece8dd; --muted:#b4ad9c; --line:#3a352a; --wash:#1d1a13; --link:#e3a820; --code-bg:#0b0a07; } }
     * { box-sizing:border-box; }
     html { scroll-padding-top:24px; }
-    body { margin:0; color:var(--ink); background:var(--paper); font-family:Arial,Helvetica,sans-serif; line-height:1.6; }
-    a { color:inherit; text-underline-offset:4px; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:var(--sans); line-height:1.6; }
+    a { color:var(--link); text-underline-offset:3px; }
     a:hover { text-decoration-thickness:2px; }
-    a:focus-visible, input:focus-visible { outline:3px solid var(--ink); outline-offset:5px; }
-    .skip { position:absolute; left:16px; top:-100px; background:#fff; padding:12px; z-index:2; }
+    a:focus-visible, input:focus-visible { outline:3px solid var(--link); outline-offset:3px; }
+    .skip { position:absolute; left:16px; top:-100px; background:var(--paper); color:var(--ink); padding:12px; z-index:2; }
     .skip:focus { top:12px; }
-    .site-header { border-bottom:2px solid var(--ink); }
-    .header-inner, main, .footer-inner { max-width:1200px; margin:auto; padding:0 28px; }
-    .header-inner { padding-top:14px; padding-bottom:14px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-    .brand { display:inline-flex; align-items:center; gap:12px; text-decoration:none; }
-    .brand img { display:block; width:54px; height:54px; object-fit:contain; }
-    .brand-name { font-size:1.8rem; font-weight:900; letter-spacing:-.065em; line-height:1; text-transform:uppercase; }
-    .nav { display:flex; gap:28px; align-items:center; flex-wrap:wrap; }
-    .nav a { font-size:.8rem; font-weight:800; text-transform:uppercase; letter-spacing:.045em; text-decoration:none; }
+    .site-header { background:var(--bar); color:var(--bar-ink); border-bottom:1px solid var(--ink); }
+    .header-inner, main, .footer-inner, .menu-inner { max-width:1100px; margin:auto; padding:0 24px; }
+    .header-inner { padding-top:10px; padding-bottom:10px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand { display:inline-flex; align-items:center; gap:12px; text-decoration:none; color:var(--bar-ink); }
+    .brand img { display:block; width:44px; height:44px; border-radius:4px; border:1px solid var(--ink); background:#fff; }
+    .brand-name { font-family:var(--mono); font-size:1.5rem; font-weight:800; letter-spacing:-.02em; }
+    .tagline { font-family:var(--mono); font-size:.8rem; font-weight:700; text-align:right; }
+    .menu { border-bottom:1px solid var(--line); background:var(--wash); }
+    .menu-inner { padding-top:8px; padding-bottom:8px; }
+    .nav { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:0 6px; font-family:var(--mono); font-size:.82rem; }
+    .nav a { text-decoration:none; font-weight:700; }
     .nav a:hover { text-decoration:underline; }
-    .button { display:inline-block; padding:12px 20px; background:var(--ink); color:#fff; border:2px solid var(--ink); font-weight:700; text-decoration:none; }
-    .button:hover { background:#fff; color:var(--ink); }
-    .hero { padding:84px 0 72px; display:grid; grid-template-columns:1.5fr 1fr; gap:56px; align-items:center; }
-    .eyebrow { font-size:.75rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
-    h1 { font-size:clamp(2.8rem,5.5vw,4.8rem); line-height:1.02; letter-spacing:-.065em; margin:20px 0 24px; max-width:780px; }
-    .lead { color:var(--muted); font-size:1.2rem; max-width:620px; }
-    .actions { display:flex; gap:24px; align-items:center; flex-wrap:wrap; margin-top:32px; }
-    .hero-aside { border-left:2px solid var(--ink); padding-left:28px; }
-    .hero-aside p { margin:0 0 20px; }
-    .hero-aside strong { display:block; font-size:1.15rem; }
+    .nav a + a::before { content:"/"; color:var(--muted); font-weight:400; margin-right:6px; display:inline-block; }
+    .button { display:inline-block; padding:10px 18px; background:var(--bar); color:var(--bar-ink); border:1px solid var(--ink); border-radius:4px; font-weight:700; text-decoration:none; }
+    .button:hover { background:var(--ink); color:var(--paper); }
+    .hero { padding:56px 0 48px; display:grid; grid-template-columns:1.5fr 1fr; gap:40px; align-items:start; }
+    .eyebrow { font-family:var(--mono); font-size:.75rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0; }
+    h1 { font-size:clamp(2rem,4.4vw,3.3rem); line-height:1.05; letter-spacing:-.04em; margin:16px 0 20px; max-width:760px; }
+    h1 { text-wrap:balance; }
+    .lead { color:var(--muted); font-size:1.15rem; max-width:620px; }
+    .actions { display:flex; gap:20px; align-items:center; flex-wrap:wrap; margin-top:28px; }
+    .hero-aside { border:1px solid var(--line); border-top:3px solid var(--bar); background:var(--wash); padding:20px 22px; border-radius:4px; }
+    .hero-aside p { margin:0 0 18px; }
+    .hero-aside p:last-child { margin-bottom:0; }
+    .hero-aside strong { display:block; font-family:var(--mono); font-size:.95rem; }
     .hero-aside span { color:var(--muted); }
-    section { border-top:1px solid var(--line); padding:56px 0; }
-    h2 { margin:8px 0 24px; font-size:clamp(1.8rem,3vw,2.7rem); line-height:1.15; letter-spacing:-.04em; }
-    h3 { font-size:1.1rem; margin:10px 0; }
-    .steps { list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:28px; padding:0; margin:32px 0; }
-    .steps li { border-top:3px solid var(--ink); padding-top:16px; }
-    .step-number { font-family:monospace; font-size:.85rem; font-weight:bold; }
-    .steps p { color:var(--muted); margin:0; }
-    .note { border-left:3px solid var(--ink); padding:12px 20px; background:var(--wash); }
-    .split { display:grid; grid-template-columns:1fr 1.3fr; gap:48px; }
+    section { border-top:1px solid var(--line); padding:48px 0; }
+    h2 { margin:8px 0 20px; font-size:clamp(1.6rem,3vw,2.3rem); line-height:1.15; letter-spacing:-.03em; padding-bottom:10px; border-bottom:1px solid var(--ink); }
+    h3 { font-family:var(--mono); font-size:1rem; margin:10px 0; }
+    .steps { list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:16px; padding:0; margin:28px 0; }
+    .steps li { border:1px solid var(--line); border-top:3px solid var(--bar); border-radius:4px; padding:14px 16px; background:var(--wash); }
+    .step-number { font-family:var(--mono); font-size:.75rem; font-weight:700; color:var(--muted); }
+    .steps p { color:var(--muted); margin:0; font-size:.95rem; }
+    .note { border:1px solid var(--line); border-left:4px solid var(--bar); padding:12px 18px; background:var(--wash); border-radius:4px; }
+    .split { display:grid; grid-template-columns:1fr 1.3fr; gap:40px; }
     .split > * { min-width:0; }
     .preflight { list-style:none; padding:0; margin:20px 0; }
     .preflight li { margin:12px 0; }
     .preflight label { display:flex; align-items:baseline; gap:10px; cursor:pointer; }
-    .preflight input { flex-shrink:0; accent-color:var(--ink); }
-    pre { padding:20px; background:var(--ink); color:#fff; overflow-x:auto; white-space:pre-wrap; overflow-wrap:anywhere; font-size:.88rem; line-height:1.7; }
-    code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
-    blockquote { margin:20px 0; border-left:3px solid var(--ink); padding:4px 20px; }
-    footer { border-top:2px solid var(--ink); }
-    .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; padding-top:24px; padding-bottom:24px; font-size:.85rem; }
+    .preflight input { flex-shrink:0; accent-color:var(--bar); }
+    pre { padding:16px 18px; background:var(--code-bg); color:var(--code-ink); border:1px solid var(--bar); border-radius:4px; overflow-x:auto; white-space:pre-wrap; overflow-wrap:anywhere; font-size:.88rem; line-height:1.7; }
+    code { font-family:var(--mono); font-size:.92em; }
+    blockquote { margin:20px 0; border-left:4px solid var(--bar); padding:4px 18px; background:var(--wash); }
+    footer { border-top:1px solid var(--ink); background:var(--wash); }
+    .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; padding-top:20px; padding-bottom:20px; font-family:var(--mono); font-size:.8rem; }
     @media (max-width:800px) {
-      .hero { grid-template-columns:1fr; gap:28px; padding:48px 0; }
+      .hero { grid-template-columns:1fr; gap:28px; padding:40px 0; }
       .steps { grid-template-columns:repeat(2,1fr); }
       .split { grid-template-columns:1fr; gap:20px; }
     }
     @media (max-width:580px) {
-      .header-inner, main, .footer-inner { padding-left:16px; padding-right:16px; }
-      .header-inner { flex-wrap:wrap; gap:16px; }
-      .brand { gap:8px; }
-      .brand img { width:42px; height:42px; }
-      .brand-name { font-size:1.4rem; }
-      .nav { width:100%; justify-content:space-between; gap:12px; }
-      .nav a { font-size:.72rem; }
-      .nav .button { padding:8px 12px; }
-      section { padding:36px 0; }
+      .header-inner, main, .footer-inner, .menu-inner { padding-left:16px; padding-right:16px; }
+      .brand img { width:38px; height:38px; }
+      .brand-name { font-size:1.25rem; }
+      .tagline { display:none; }
+      .nav { justify-content:flex-start; }
+      section { padding:32px 0; }
       .steps { grid-template-columns:1fr; }
     }
   </style>
@@ -88,21 +92,25 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="./" aria-label="Railspike home">
-        <img src="./railspike-logo.png" alt="" width="54" height="54">
+        <img src="./railspike-logo.png" alt="" width="44" height="44">
         <span class="brand-name">Railspike</span>
       </a>
-      <nav class="nav" aria-label="Main navigation">
-        <a href="#workflow">Workflow</a>
-        <a href="https://github.com/gulkily/railspike#quick-start">Docs <span aria-hidden="true">↗</span></a>
-        <a class="button" href="#get-started">Get started</a>
-      </nav>
+      <span class="tagline">Shape the plan before the agent builds</span>
     </div>
   </header>
+  <div class="menu">
+    <nav class="menu-inner nav" aria-label="Main navigation">
+      <a href="#workflow">Workflow</a>
+      <a href="#get-started">Get started</a>
+      <a href="https://github.com/gulkily/railspike#quick-start">Docs <span aria-hidden="true">↗</span></a>
+      <a href="https://github.com/gulkily/railspike">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
   <main id="main">
     <div class="hero">
       <div>
         <p class="eyebrow">A file-based workflow for your agent</p>
-        <h1>Shape the plan before<br>the agent builds.</h1>
+        <h1>Shape the plan before the agent builds.</h1>
         <p class="lead">Review the options. Combine the parts that fit. Revise the requirements and plan until they describe what you actually want—then approve the next step.</p>
         <div class="actions"><a class="button" href="#get-started">Start with one Git command</a><a href="#workflow">Explore the workflow</a></div>
       </div>

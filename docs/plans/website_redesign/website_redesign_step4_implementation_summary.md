@@ -18,3 +18,18 @@ Debug mode: enabled
   - Runtime, deployment, and release checks not applicable to this stage.
 - Notes:
   - The icon has an opaque white background, which will show as a white tile on dark backgrounds; Stage 2 handles placement in dark mode.
+
+## Stage 2 - Modernized QDB look
+- Changes:
+  - `index.html`: replaced the stylesheet and header markup only; page content, section order, and links are unchanged. The only markup edit besides the header is replacing the hero headline's forced line break with a space (same words) and balancing its wrap.
+  - Amber title bar with the logo and wordmark, a slim slash-separated menu (Workflow / Get started / Docs / GitHub), bordered blocks with amber top rules, monospace labels and code, system font stacks.
+  - Light and dark color schemes via `prefers-color-scheme`; theme-color set to the amber.
+- Verification:
+  - Rendered with headless Chrome at 1200 px (light, dark) and 360 px: layout intact, no clipped content.
+  - Overflow check at 360 px: `scrollWidth` equals `clientWidth`, so no horizontal scroll.
+  - Amber used for bars and borders; link text uses a darker amber (light) or brighter amber (dark) for contrast. Contrast was judged visually, not measured with a tool.
+  - `git diff --check` clean; changed files within allowed scope.
+  - Deployment and release checks not applicable to this stage.
+- Notes:
+  - The logo keeps its opaque white tile, shown as a badge on the amber bar; dark mode needs no separate asset.
+  - Keyboard focus styles were restyled but not yet exercised; Stage 4 and 5 cover keyboard walkthroughs.
