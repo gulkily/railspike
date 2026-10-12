@@ -2,27 +2,117 @@
 
 <img src="./railspike-logo.png" alt="Railspike rail and spike logo" width="96" height="96">
 
-**Shape the plan before the agent builds.**
+**Make your coding agent write the plan down first.**
 
-Railspike structures agent-driven work for planning, documentation, development, bug fixes, test suites, and checklists. Editable Markdown plans give you clear points to review, revise, and approve the work.
+Railspike is a set of Markdown instructions your agent follows. The agent writes requirements and a staged plan into your repo, then stops until you approve each one. After that it builds on a branch, with one commit per stage.
 
-Use it with Claude Code, GitHub Copilot, or Codex. Compare approaches, combine the parts that fit, and change the requirements or stages until they describe what you actually want.
+It works with Claude Code, Codex, GitHub Copilot, and any other agent that can read files in your project. There's nothing to install beyond the files themselves: no CLI, no dependencies.
 
-## Why use this?
-- Shape the direction in Step 1: question assumptions, combine compatible options, and revise the recommendation before approving it.
-- Review and edit requirements and staged plans as plain files, including across sessions.
-- Keep explicit approval points between steps, then verify and commit each delivery stage with its summary.
-- Keep guidance and plans small enough to review without burying the decisions.
+[Website](https://gulkily.github.io/railspike/) · [RAILSPIKE.md](RAILSPIKE.md) · [Step files](docs/workflow/)
 
-Use Railspike alongside your agent's plan mode when you want a written decision process you can reshape and carry forward. Planning drafts stay editable and uncommitted until Step 3 is approved; the approved plans then become the first commit before delivery.
+## Why I built this
 
-The deliverable can be code, documentation, a test suite, or a checklist. You can also stop at a planning handoff and resume later; a finished plan does not imply that implementation is complete. Documentation-only work keeps its approved file boundary and uses checks appropriate to the document.
+I wanted plans that live in the repo, that I can edit in my own editor and come back to the next day, with explicit review points when the direction changes.
+
+So Railspike puts every plan in a Markdown file. You can read it in VS Code, Obsidian, vim, or a GitHub diff. You can edit it directly or ask the agent to change it. The instructions require the agent to stop until you type `Approved Step N`. These are instructions the agent follows, not a technical enforcement mechanism.
 
 ## Quick start
 
-Install Railspike as a Git submodule at `docs/railspike` with one Git command. Updates are handled by your agent using native Git; there is no CLI utility.
+### 1. Add Railspike
 
-[Main instructions](./RAILSPIKE.md) · [Website](https://gulkily.github.io/railspike/)
+From the root of a clean Git working tree, add Railspike as a submodule. The path `docs/railspike` must be unused, and neither it nor `docs` may be a symlink.
+
+```bash
+git submodule add https://github.com/gulkily/railspike.git docs/railspike
+```
+
+A submodule pins the instructions to a revision and lets you review upstream updates. Review and commit `.gitmodules` and the submodule pointer. See the [installation checks](#installation-checks) for the exact preflight and review commands, and [Reusing across projects](#reusing-across-projects) for initialization and updates.
+
+### 2. Give your agent a task
+
+```text
+I want to export my saved searches as CSV. Write Step 1 of @railspike.
+```
+
+If your agent doesn't autocomplete `@railspike`, select `RAILSPIKE.md` if offered, or give it `docs/railspike/RAILSPIKE.md` directly. For a change with an obvious approach, start at Step 2.
+
+### 3. Review and approve
+
+Open the file the agent wrote in `docs/plans/`. Edit it, or ask for changes:
+
+```text
+Use option A's export flow with option B's privacy checks.
+Leave scheduled exports out of scope.
+```
+
+Ask the agent to recheck the combined approach’s tradeoffs and update the recommendation. When it says what you want, reply:
+
+```text
+Approved Step 1
+```
+
+Repeat for each step. Don't approve a file you haven't read.
+
+## The four steps
+
+| Step | The agent writes | You decide |
+|---|---|---|
+| 1. Assess (optional) | Up to four approaches with tradeoffs and a recommendation | Which approach, or which parts of two to combine |
+| 2. Define | Problem, user stories, requirements, out of scope, risks, success criteria | What "done" means |
+| 3. Plan | Numbered stages with dependencies and how each one gets verified | Whether the stages are small and in the right order |
+| 4. Build | Code, docs, tests, or checklists, one stage at a time, plus a running summary | Whether the result matches the plan |
+
+Each Step 1–3 plan file should fit on one page. If it doesn't, the scope is probably too big.
+
+### How commits work
+
+The plan files stay uncommitted while you revise them. When you type `Approved Step 3`, the agent creates a feature branch. The first commit contains only the approved plans. Then each stage gets its own commit, together with its section of the Step 4 summary. So a three-stage plan ends with at least four commits.
+
+### When scope changes
+
+If something new comes up during Step 4, the agent stops and goes back to Step 2. You review and approve the revised scope and plan before building continues.
+
+```mermaid
+flowchart LR
+  S1[Step 1<br/>Assess] -->|Approved| S2[Step 2<br/>Define]
+  S2 -->|Approved| S3[Step 3<br/>Plan]
+  S3 -->|Approved| B[Branch +<br/>plan commit]
+  B --> S4[Step 4<br/>Build stage by stage]
+  S4 -->|scope change| S2
+```
+
+## When to use it
+
+Use it when a change touches more than a few files, when there's a real choice between approaches, or when the work will run across more than one session. A reviewed plan is useful on its own, even if you build it later or hand it to someone else.
+
+For a one-line fix it's overkill.
+
+Use it for planning, documentation, development, bug fixes, test suites, and checklists. For documentation-only work, Step 2 lists which files may change and Step 3 retains that boundary. Verification covers document integrity, evidence, links, and allowed file scope; runtime checks apply only when the document makes claims that need them.
+
+## Tips
+
+- **Make the agent reprint the step file** before it starts each step. You'll both be working from the same instructions, and you'll see right away if it skipped one.
+- **Ask about existing components in Step 2.** Agents drift fastest when they rebuild something that already exists.
+- **Keep Step 4 to the plan.** New ideas go back to Step 2. That's the point of the gates.
+- **Split anything over eight stages** into a second Step 2/3 cycle.
+
+## What's in this repo
+
+```text
+RAILSPIKE.md          The entry point. The agent reads this first.
+docs/workflow/        One instruction file per step (Steps 3 and 4 have before/do/after phases).
+docs/failure-modes.md What to do when a run goes wrong.
+```
+
+See the [failure-mode guide](./docs/failure-modes.md) for recovery and the [maintainer backlog](./BACKLOG.md) for project follow-up.
+
+Your plans go in your project's `docs/plans/`, not here. The agent opens only the step file it needs, so it never has to hold one huge prompt in context.
+
+## Customizing
+
+Every instruction is plain Markdown. To add a checklist for your domain, copy a step file, edit it, and point your agent at your copy. Mockups, diagrams, and research notes can go next to the plans in `docs/plans/{feature}/`.
+
+## Installation checks
 
 From the **root of a clean, non-bare Git working tree**, run these read-only checks first. Stop if a check does not have the stated result; do not clean, reset, stash, remove, or overwrite anything to make it pass.
 
@@ -51,34 +141,6 @@ git diff --cached -- .gitmodules docs/railspike
 ```
 
 Inspect the displayed changes, then commit them through your normal repository workflow. Do not continue if the output shows files beyond `.gitmodules` and `docs/railspike`.
-
-Type `@railspike` and select `RAILSPIKE.md` if your agent offers it. If file mentions are unavailable, refer explicitly to `docs/railspike/RAILSPIKE.md`. Autocomplete depends on the agent and its workspace indexing.
-
-In your project, create `docs/plans/` if it does not exist. Then send your supported agent this first prompt (adapt the story, but keep the explicit step request):
-
-> As a user, I would like to export my saved searches as CSV, please write Step 1 of `@railspike`.
-
-If the decision is straightforward, you may skip Step 1 and ask for Step 2 instead. Review and revise the current artifact before continuing. For example, if the proposed CSV approaches differ in setup and privacy safeguards:
-
-> Combine option A’s simple export flow with option B’s privacy safeguards. Leave scheduled exports out of scope and update the recommendation.
-
-You can edit the file directly or ask the agent to revise it. Combining options should produce a coherent recommendation with its tradeoffs checked again. When the revised artifact matches your intent:
-
-> Approved Step 1, please continue to Step 2.
-
-After `Approved Step 3`, the agent creates a feature branch, commits the approved planning documents first, then makes a separate commit—with the matching Step 4 summary update—for every completed stage. See the [failure-mode guide](./docs/failure-modes.md) for recovery guidance.
-
-The first run should take only a few minutes: read the four-step overview, send the prompt, and inspect the resulting Step 1 artifact. Do not approve a step you have not reviewed.
-
-## Repo layout
-- `RAILSPIKE.md` – one-page overview of the entire chain plus key rules and warning signs.
-- `docs/workflow/` – canonical instructions for each step. The agent reprints these every time it advances.
-  - `step1_solution_assessment.md`
-  - `step2_feature_description.md`
-  - `step3_development_plan_before.md`, `step3_development_plan_do.md`, `step3_development_plan_after.md`
-  - `step4_implementation_before.md`, `step4_implementation_do.md`, `step4_implementation_after.md`
-- `docs/plans/` (create per feature) – where you store the working artifacts: `{feature}_stepN_*.md` plus any auxiliary research. Move large efforts into `docs/plans/{feature}/` and update a local README for navigation.
-- [BACKLOG.md](./BACKLOG.md) – remaining maintainer tasks, including launch verification and replacement examples.
 
 ## Reusing across projects
 
@@ -136,88 +198,6 @@ After a successful update, summarize the relevant upstream changes and required 
 
 If a check fails, stop and explain it. Do not reset, clean, stash, delete files, change remotes, or force an update to make a check pass. Fetch can change remote-tracking metadata even when an update is refused. If a network operation or update is interrupted, inspect the current checkout and host diff before retrying; do not assume rollback.
 
-## How to run the chain with your agent
-1. Kick things off with a plain request like `As a user, I would like to <story>, please write Step 1 of RAILSPIKE.md.` Make the story explicit so the agent starts from the user’s perspective.
-2. Let the agent draft the current artifact in `docs/plans/`. Compare and combine compatible options in Step 1; revise requirements in Step 2 and stages in Step 3. Edit directly or request changes until the current artifact matches your intent.
-3. When the doc hits the bar, reply verbatim with `Approved Step N, please continue to Step N+1.` The bot must stop until that phrase arrives, so you control scope creep.
-4. Repeat the review/approval loop for each step. Keep Step 1-3 planning docs uncommitted through drafting/review.
-5. After `Approved Step 3`, create the Step 4 feature branch and make the first commit with only the approved Step 1-3 docs.
-6. During Step 4, make at least one stage-scoped commit per completed stage, and include that stage's Step 4 summary update in the same commit.
-
-The strict per-step files mean you always paste a small, targeted instruction block into the chat; no more scrolling through a 4k-token mega-brief.
-
-## Workflow at a glance
-
-**Approval chain: each planning step needs explicit approval before the next begins.**
-
-```mermaid
-flowchart TB
-    subgraph PLAN ["Planning (uncommitted, docs/plans/)"]
-        direction LR
-        A([Feature request])
-        S1["Step 1 (optional):<br/>Solution assessment"]
-        S2["Step 2:<br/>Feature description"]
-        S3["Step 3:<br/>Development plan"]
-    end
-    subgraph IMPL ["Implementation (feature branch)"]
-        direction LR
-        BR["Create branch +<br/>commit Steps 1–3"]
-        S4["Stage N: implement, verify,<br/>commit with summary update"]
-        M{"More<br/>stages?"}
-        F["Final verification<br/>and handoff"]
-    end
-    A -.->|Complex| S1
-    A -->|Simple| S2
-    S1 -->|Approved Step 1| S2
-    S1 -.->|Revise| S1
-    S2 -->|Approved Step 2| S3
-    S2 -.->|Revise| S2
-    PLAN -->|Approved Step 3| IMPL
-    S3 -.->|Revise| S3
-    BR --> S4
-    S4 --> M
-    M -->|Next stage| S4
-    M -->|Done| F
-    classDef gate fill:#bf870033,stroke:#bf8700,stroke-width:2px
-    classDef commit fill:#1a7f3733,stroke:#1a7f37,stroke-width:2px
-    classDef stop fill:#cf222e33,stroke:#cf222e,stroke-width:2px
-    class S1,S2,S3 gate
-    class BR,S4 commit
-```
-
-The plan artifacts live in the consuming repository’s `docs/plans/`; the Railspike instruction files can remain under `docs/railspike/`. Approval gates stop forward progress. The feature branch begins only after Step 3, with a planning-doc commit; every Step 4 stage then gets its own auditable commit.
-
-**Returning to planning: a scope change during Step 4 sends work back to Step 2.**
-
-```mermaid
-flowchart TB
-    subgraph PLAN ["Planning (uncommitted, docs/plans/)"]
-        direction LR
-        N([Feature request]) --> S2["Step 2:<br/>Feature description"]
-        S2 --> S3["Step 3:<br/>Development plan"]
-        S3 --> A{"Approved<br/>Step 3?"}
-        A -.->|Revise| S3
-    end
-    subgraph IMPL ["Implementation (feature branch)"]
-        direction LR
-        I["Implement<br/>stage"] --> Q{"New requirement,<br/>risk, or scope?"}
-        Q -->|No change| V["Verify, update summary,<br/>commit stage"]
-        V --> D{"More<br/>stages?"}
-        D -->|Next stage| I
-        D -->|Done| H([Handoff])
-        Q -.->|Scope changed| R["Stop affected work;<br/>return to Step 2 above"]
-    end
-    PLAN -->|Approved Step 3| IMPL
-    classDef gate fill:#bf870033,stroke:#bf8700,stroke-width:2px
-    classDef commit fill:#1a7f3733,stroke:#1a7f37,stroke-width:2px
-    classDef stop fill:#cf222e33,stroke:#cf222e,stroke-width:2px
-    class A,Q,D gate
-    class V commit
-    class R stop
-```
-
-Returning to planning is a feature, not a failure: a new requirement or unresolved risk changes the approved boundary, so it must be reviewed before implementation resumes.
-
 ## Documentation checks
 
 Run these before sharing a Railspike change. The link check validates local Markdown paths; review rendered Mermaid diagrams on GitHub after publication because GitHub owns the renderer.
@@ -241,30 +221,10 @@ git diff --check
 git status --short
 ```
 
-## What each step enforces
-| Step | Goal | Key outputs |
-| --- | --- | --- |
-| Step 1 – Solution Assessment (optional) | Resolve ambiguity across competing approaches. | Original query (mechanically corrected only), plus a brief labeled understood-intent note when needed, then a ≤1-page pros/cons doc ending with a recommendation. |
-| Step 2 – Feature Description | Nail down problem context, user stories, requirements, shared components, and success criteria. | `{feature}_step2_feature_description.md` |
-| Step 3 – Development Plan | Break work into atomic stages with dependencies, verification notes, and component touchpoints. Prefer `## Stage N` headers plus flat bullets for each stage field. | `{feature}_step3_development_plan.md` |
-| Step 4 – Implementation | Execute the approved artifact sequentially on a feature branch, logging applicable verification in a Step 4 summary. The artifact may be application changes or explicitly scoped documentation-only work. Prefer `## Stage N - title` headers plus bullets for changes, verification, and notes. | `{feature}_step4_implementation_summary.md` |
+## Contributing
 
-Each step/phase file lists guardrails plus "Next" instructions so the model always knows when to stop.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the link checker and workflow tests. Bugs and ideas go in [Issues](https://github.com/gulkily/railspike/issues).
 
-Every Step 1–4 artifact begins with a relative-link bar to the others, keeping the feature record navigable in GitHub.
+## License
 
-## Tips for stubborn agents
-- **Reprint instructions**: before starting a step/phase, force the agent to paste the relevant `docs/workflow/stepX...` file back to you. This keeps both sides aligned and provides an audit trail.
-- **Call out risks early**: Step 2 records impact, early validation, and mitigation; Step 3 gates dependents on unresolved risks.
-- **Shared component inventory**: Step 2 explicitly asks which canonical UI/API bits already exist. Reuse them; duplication is the fastest way models drift.
-- **Finish a feature, not a layer**: Each cycle has a normal entry point, end-to-end outcome, and required recovery. Component-only work is internal maintenance.
-- **Proportional verification**: Step 4 records verification appropriate to the approved artifact. Documentation-only work still requires document-integrity, evidence, link/path, and allowed-file-scope checks, but runtime, UI, deployment, migration, and release checks are not required unless the approved documents make a claim that needs them.
-- **Documentation-only cycles**: Declare this work type and its allowed documentation file scope in Step 2, retain it in Step 3's Completion Contract, and do not alter application source, tests, CI, deployment configuration, or generated artifacts without returning for approval.
-
-## Extending the process
-- Need a domain-specific checklist? Fork one of the step files, add the extra bullets, and point your agent to the customized version.
-- Supporting artifacts (mockups, DB diagrams) belong beside the step docs in `docs/plans/{feature}/`. Reference them inside the deliverables but keep the main files concise.
-- When a feature exceeds eight stages, start a new Step 2/3 cycle; each must remain a usable vertical slice.
-
-## Getting help
-Because every instruction lives in plain Markdown, you can diff tweaks, annotate lines for your agent, or even inline reminders like “STOP after this file.” When in doubt, start from `RAILSPIKE.md` and follow the breadcrumbs.
+[MIT](LICENSE)

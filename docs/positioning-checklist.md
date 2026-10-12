@@ -7,6 +7,7 @@ Work on one item at a time. Commit each completed item with its checklist update
 - [x] 3. Center README and workflow guidance on reviewing, revising, and combining options; describe planning, documentation, development, bug fixes, test suites, and checklists.
 - [x] 4. Update website copy and metadata with the same positioning and a concrete revision prompt; verify desktop and mobile layout.
 - [x] 5. Align the HN draft and readiness checklist; prepare a concise GitHub description and run final consistency checks.
+- [x] Merge the revised README draft: restore Markdown structure, retain logo and Git procedures, and keep unfinished case studies deferred.
 - [ ] 6. After selection, write and verify case studies from the approved candidates. Distinguish planning from completed delivery and report verification limits.
 
 ## Follow-up outside repository copy
@@ -27,3 +28,4 @@ This description is ready to paste into repository settings; updating the hosted
 - Item 3: README and Step 1 now explain revision and option combinations; approval gates, artifact names, and commit cadence remain intact. Markdown links pass.
 - Item 4: browser checks pass at widths 1280, 800, 580, 390, and 320 with no page overflow; mobile screenshot reviewed. Page title and social title match, and installation checkboxes remain available.
 - Item 5: HN copy aligned; GitHub description is within 350 characters. All Markdown links and the native Git workflow fixture pass; whitespace checks pass and old terminology search is empty. Hosted description and case studies remain pending.
+- README merge: tracked-file Markdown links, native Git workflow fixture, and whitespace checks pass. The source draft is retained unchanged and untracked; its unfinished case study remains deferred.
