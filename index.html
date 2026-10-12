@@ -63,9 +63,22 @@ Keep exceptions narrow: briefly disclose log-write failures or request genuinely
 d84023f docs(stage 1): keep debug reports in Markdown logs
 4b36f75 docs(stage 2): explain quiet debug handoffs and recovery</code></pre>
   <p>Browse them in the <a href="https://github.com/gulkily/railspike/tree/68663ca/docs/plans/quiet_debug_mode">feature folder</a> or the <a href="https://github.com/gulkily/railspike/commit/d84023f">first stage commit</a>.</p>
+  <h2>Limits and failure modes</h2>
+  <ul>
+    <li><strong>The gates are instructions, not enforcement.</strong> The instructions require the agent to stop until you type <code>Approved Step N</code>. These are instructions the agent follows, not a technical enforcement mechanism.</li>
+    <li><strong>It does not read for you.</strong> A request for revisions does not approve the next step, and you should not approve a file you have not read.</li>
+    <li><strong>It adds process.</strong> Use it when a change touches more than a few files, when there is a real choice between approaches, or when the work will run across more than one session. For a one-line fix it is overkill.</li>
+    <li><strong>Plans must stay small.</strong> Each Step 1–3 file should fit on one page; if it does not, the scope is probably too big.</li>
+  </ul>
+  <p>The <a href="https://github.com/gulkily/railspike/blob/master/docs/failure-modes.md">failure-modes guide</a> lists signals and recovery steps. The three you are most likely to meet:</p>
+  <ul>
+    <li><strong>Approval was skipped.</strong> The agent started a later step before you approved. Stop, review the current artifact, and resume only from the last explicitly approved step.</li>
+    <li><strong>Scope expands during Step 4.</strong> A new requirement or risk is needed to finish a stage. The agent should not fold it in; it records the discovery and returns to Step 2, then Step 3.</li>
+    <li><strong>A stage commit or its verification is missing.</strong> Do not begin the next stage; run the check, update the summary, and commit the stage first.</li>
+  </ul>
 </main>
 <footer>
-  <p><a href="https://github.com/gulkily/railspike">Source on GitHub</a> · <a href="https://github.com/gulkily/railspike/blob/master/LICENSE">MIT license</a></p>
+  <p><a href="https://github.com/gulkily/railspike">Source on GitHub</a> · <a href="https://github.com/gulkily/railspike#quick-start">Quick start</a> · <a href="https://github.com/gulkily/railspike/blob/master/RAILSPIKE.md">RAILSPIKE.md</a> · <a href="https://github.com/gulkily/railspike/blob/master/docs/failure-modes.md">Failure modes</a> · <a href="https://github.com/gulkily/railspike/blob/master/LICENSE">MIT license</a></p>
 </footer>
 </body>
 </html>

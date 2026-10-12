@@ -31,3 +31,16 @@ Debug mode: enabled
 - Notes:
   - This feature was chosen over the website redesign because it is compact and complete; its outcome is a documentation change, so Step 4 evidence is commit subjects rather than a running demo.
   - `BACKLOG.md` remains an uncommitted maintainer edit, excluded here.
+
+## Stage 3 - Limits, failure modes, and footer
+- Changes:
+  - `index.html` gains a "Limits and failure modes" section: gates are instructions, not enforcement; it does not read for you; it adds process and is overkill for a one-line fix; plans must stay small; plus three failure modes (approval skipped, scope expands in Step 4, stage commit or verification missing) with recovery.
+  - Footer links: source, quick start, `RAILSPIKE.md`, failure-modes guide, license.
+- Verification:
+  - Script check: each limit and recovery statement was matched against `README.md` and `docs/failure-modes.md`; one sentence that went beyond the source ("nothing in Git or the tooling prevents it") was replaced with the README's own wording.
+  - Link check: repository files linked exist in the working tree; hash-pinned example links verified in Stage 2.
+  - Page is 7.5 KB, no scripts or styles.
+- Notes:
+  - The failure-mode bullets are condensed paraphrases of the guide; the guide is linked for the full signals.
+  - Claims in the HN draft (for example about hallucinations) were deliberately left out because the README does not state them.
+  - `BACKLOG.md` remains an uncommitted maintainer edit, excluded here.
