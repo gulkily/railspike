@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Railspike — make your coding agent write the plan down first</title>
   <meta name="description" content="Railspike is a set of Markdown instructions your coding agent follows: it writes requirements and a staged plan into your repo, then stops until you approve each one.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131313" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://gulkily.github.io/railspike/">
   <link rel="icon" type="image/png" sizes="512x512" href="./railspike-logo.png">
   <meta property="og:type" content="website">
@@ -22,6 +25,10 @@
     * { box-sizing: border-box; }
     body { margin: 0 auto; max-width: 42rem; padding: 1rem 1rem 3rem; background: var(--bg); color: var(--fg); font: 1.0625rem/1.55 ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif; }
     header { padding: .5rem 0 .25rem; }
+    .skip { position: absolute; left: .5rem; top: -4rem; padding: .5rem .75rem; background: var(--bg); color: var(--fg); border: 1px solid var(--fg); z-index: 1; }
+    .skip:focus { top: .5rem; }
+    .brand { display: flex; align-items: center; gap: .5rem; }
+    .brand img { display: block; width: 28px; height: 28px; background: #fff; border: 1px solid var(--rule); }
     header p { margin: 0; font: 700 .9rem/1.4 ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace; letter-spacing: .02em; color: var(--accent); }
     h1 { margin: .35rem 0 .75rem; font-size: clamp(1.55rem, 5.5vw, 2.15rem); line-height: 1.15; }
     h2 { margin: 2rem 0 .5rem; padding-top: .75rem; border-top: 1px solid var(--rule); font-size: 1.25rem; line-height: 1.25; }
@@ -39,11 +46,12 @@
   </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header>
-  <p><strong>Railspike</strong></p>
+  <p class="brand"><img src="./railspike-logo.png" alt="" width="28" height="28"><strong>Railspike</strong></p>
   <h1>Make your coding agent write the plan down first.</h1>
 </header>
-<main>
+<main id="main">
   <p>Railspike is a set of Markdown instructions your agent follows. The agent writes requirements and a staged plan into your repo, then stops until you approve each one. After that it works on a branch, one stage at a time, verifying and committing each stage with a record of what changed.</p>
 
   <h2>Install</h2>

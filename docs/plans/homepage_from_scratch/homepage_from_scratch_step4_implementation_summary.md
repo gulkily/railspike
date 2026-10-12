@@ -59,3 +59,17 @@ Debug mode: enabled
   - Page is about 10 KB with no scripts or third-party requests.
   - Real OS dark-mode switching and non-Chromium browsers were not tested.
   - `BACKLOG.md` remains an uncommitted maintainer edit, excluded here.
+
+## Stage 5 - Metadata, logo reference, and accessibility
+- Changes:
+  - Head: added `color-scheme` and light/dark `theme-color` (replacing the old amber value, which belonged to the removed design); all other tags kept.
+  - Header shows the existing `railspike-logo.png` at 28 px next to the wordmark (decorative `alt=""`, explicit width and height); the file name is unchanged so the logo feature can replace it without markup changes.
+  - Added a skip link, `id="main"` on `<main>`; styles for both.
+- Verification:
+  - Head comparison against `master`'s `index.html`: canonical, icon, `og:url`, `og:image` and its width, height, and alt, `og:type`, and `twitter:card` are identical; only `theme-color` differs, intentionally.
+  - Keyboard: 11 focusable elements, the skip link first; it moves from -64 px to 8 px on focus and `#main` exists. Focus ring is defined on links.
+  - Headings: one `h1`, then `h2` and `h3` in order; header, main, and footer landmarks present.
+  - First screen rechecked after the logo was added: install command ends at 581 px of 640 px at 360×640 and 428 px of 720 px at 1280×720; no horizontal overflow; page is 10.1 KB.
+- Notes:
+  - Social preview text is the new claim; the preview image is still the current logo until the logo feature ships.
+  - `BACKLOG.md` remains an uncommitted maintainer edit, excluded here.
