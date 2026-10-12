@@ -73,3 +73,17 @@ Debug mode: enabled
 - Notes:
   - Social preview text is the new claim; the preview image is still the current logo until the logo feature ships.
   - `BACKLOG.md` remains an uncommitted maintainer edit, excluded here.
+
+## Stage 6 - Release verification
+- Changes:
+  - None to `index.html`; verification only.
+- Verification:
+  - Weight and dependencies: 10.1 KB (limit 50 KB); no `<script>`, external stylesheet, font, image, or `url()` reference, so the page needs no third-party request and works with scripting disabled by construction.
+  - Excerpts: the request, Option A, option headings, and recommendation are exact substrings of `git show 68663ca:<file>`; the commit list equals `git log` for the feature folder.
+  - Links: 8 repository links fetched, all HTTP 200 (including the hash-pinned file, tree, and commit links); `node scripts/check-markdown-links.mjs` passes for 42 Markdown files. The canonical Pages URL is not fetched because it serves `master` until merge.
+  - Layout and contrast: first screen, overflow, and contrast results from Stages 4 and 5 stand; no markup has changed since.
+  - Scope: only `index.html` and this feature's plan files changed on the branch; `BACKLOG.md` is an uncommitted maintainer edit outside any stage.
+- Notes:
+  - Pending the maintainer: review of copy and rendered page in light, dark, and phone widths, then merge to `master`; live-URL check after Pages deploys.
+  - Not exercised: real OS dark-mode toggle, non-Chromium browsers, and screen readers.
+  - Not done by design: the golden-glow logo and the paper are separate backlog features; the page links repository docs until the paper exists.
