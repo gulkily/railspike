@@ -87,3 +87,13 @@ Debug mode: enabled
   - Pending the maintainer: review of copy and rendered page in light, dark, and phone widths, then merge to `master`; live-URL check after Pages deploys.
   - Not exercised: real OS dark-mode toggle, non-Chromium browsers, and screen readers.
   - Not done by design: the golden-glow logo and the paper are separate backlog features; the page links repository docs until the paper exists.
+
+## Follow-up - Copy-in install option
+- Changes:
+  - One sentence added to the install section of `index.html`: the files can be copied into a project instead of using a submodule, a vendored directory works, RAILSPIKE.md covers path resolution, and the copy is updated by hand.
+- Verification:
+  - "Vendored directory" and path resolution are stated in `RAILSPIKE.md` § Repository Boundary; the README documents only the submodule route, so the copy-in option is the maintainer's addition and the update-by-hand clause is an inference from not having a submodule pointer.
+  - Install command still ends at 581 px of 640 px at 360×640; anchor link returns HTTP 200; page unchanged otherwise.
+- Notes:
+  - Requested after Step 4 completed; treated as a one-sentence copy change inside the approved file scope, so no new plan cycle.
+  - The README still describes only the submodule route; aligning it is separate work.

@@ -57,7 +57,7 @@
   <h2>Install</h2>
   <p>From the root of a clean Git working tree:</p>
   <pre><code>git submodule add https://github.com/gulkily/railspike.git docs/railspike</code></pre>
-  <p>Review and commit <code>.gitmodules</code> and the submodule pointer.</p>
+  <p>Review and commit <code>.gitmodules</code> and the submodule pointer. If you would rather not use a submodule, you can copy the files into your project instead (a vendored directory works too, and <a href="https://github.com/gulkily/railspike/blob/master/RAILSPIKE.md#repository-boundary">RAILSPIKE.md</a> covers how its paths resolve); you then update your copy by hand.</p>
   <p>Use it with Claude Code, Codex, GitHub Copilot, or another agent that can read your project files. There is no CLI and there are no runtime dependencies; installation and updates use Git. Then give your agent a task:</p>
   <pre><code>I want to export my saved searches as CSV. Write Step 1 of @railspike.</code></pre>
   <p>Open the file the agent wrote in <code>docs/plans/</code>, edit it or ask for changes, and when it says what you want, reply <code>Approved Step 1</code>. Repeat for each step. The <a href="https://github.com/gulkily/railspike#quick-start">quick start</a> has the full walkthrough.</p>
