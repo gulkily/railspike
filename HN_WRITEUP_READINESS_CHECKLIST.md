@@ -7,12 +7,10 @@ Use this checklist to make Railspike easy to evaluate in a few minutes and to en
 ## Product Proof
 
 - [x] State the project in one clear sentence: Railspike is a file-based, approval-gated workflow for keeping AI-assisted feature work scoped, reviewable, and verified.
-- [x] Add one complete, small feature example that follows Steps 1–4 from the original request through the implementation summary: [Private Window Lobby Fallback](./examples/private-window-lobby-fallback.md).
-- [ ] Include the original historical prompt transcript from that example; it was not preserved in the v3 source record.
-- [x] Include a verbatim reproducible prompt sequence, resulting planning artifacts, and stage-scoped commits: [Private Window Lobby Fallback artifact trail](./examples/private-window-lobby-fallback-artifact-trail.md).
-- [x] Show the outcome of the example and explain how the process changed the work relative to an unguided AI session: [Private Window Lobby Fallback comparison](./examples/private-window-lobby-fallback-comparison.md).
-- [x] Publish a reproducible direct-prompt comparison and scorecard: [Private Window Lobby Fallback comparison](./examples/private-window-lobby-fallback-comparison.md), including one recorded baseline run.
-- [x] Keep claims narrow and support them with the example; do not claim that Railspike eliminates hallucinations or replaces engineering judgment.
+- [ ] Create better replacement examples; the previous case studies and prompt fixtures have been removed for now.
+- [ ] Include a complete feature cycle with its original request, reproducible prompts, planning artifacts, verification, and stage commits.
+- [ ] Explain the outcome and support any comparison with recorded evidence.
+- [x] Keep claims narrow; do not claim that Railspike eliminates hallucinations or replaces engineering judgment.
 
 ## First Run Experience
 
@@ -25,7 +23,7 @@ Use this checklist to make Railspike easy to evaluate in a few minutes and to en
 
 - [x] Add a Mermaid overview diagram showing the Step 1–4 flow, approval gates, planning artifacts, branches, and commits.
 - [x] Add a user-path diagram for normal work and for returning to planning when scope changes.
-- [x] Turn the key paths into reproducible end-to-end prompt fixtures with expected artifacts or decisions.
+- [ ] Add replacement end-to-end prompt fixtures with expected artifacts or decisions alongside the new examples.
 - [x] Cover common failure modes: skipped approval, scope expansion during Step 4, documentation-only work, and missing verification or stage commit.
 - [x] Make risks prominent in the workflow and show how they block dependent work until resolved.
 
@@ -43,13 +41,14 @@ Use this checklist to make Railspike easy to evaluate in a few minutes and to en
 - [x] Use a plain, descriptive title that states what Railspike does. See [HN post draft](./HN_POST_DRAFT.md).
 - [x] Open with the problem: AI coding assistants can move faster than review and scope control.
 - [x] Explain the mechanism briefly: small instruction files, explicit approvals, planning artifacts, and stage-scoped commits.
-- [x] Link to the quick start and the complete worked example.
+- [x] Link to the quick start.
+- [ ] Link to a replacement worked example once it is ready.
 - [x] Name the intended audience and the tradeoff: extra process is useful for feature work where reviewability matters, but can be excessive for trivial changes.
 - [x] Include a short "what this is not" note: Railspike is not an autonomous-agent framework, a replacement for judgment, or a universal process.
 - [x] Invite specific feedback, such as whether the gates are useful, where the process is too rigid, and which assistant integrations would matter.
 
 ## Launch Gate
 
-- [x] A newcomer can understand the thesis, run the first workflow, and inspect proof of the result in under five minutes.
+- [ ] Verify that a newcomer can understand the thesis, run the first workflow, and inspect a replacement example in under five minutes.
 - [x] The post makes no claim that the repository cannot demonstrate.
 - [ ] The repository has a stable, shareable link and all linked material is public and usable.

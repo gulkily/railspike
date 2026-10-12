@@ -58,8 +58,6 @@
     pre { padding:20px; background:var(--ink); color:#fff; overflow-x:auto; white-space:pre-wrap; overflow-wrap:anywhere; font-size:.88rem; line-height:1.7; }
     code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
     blockquote { margin:20px 0; border-left:3px solid var(--ink); padding:4px 20px; }
-    .example { background:var(--wash); padding:28px; }
-    .example ul { padding-left:20px; }
     footer { border-top:2px solid var(--ink); }
     .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; padding-top:24px; padding-bottom:24px; font-size:.85rem; }
     @media (max-width:800px) {
@@ -78,7 +76,6 @@
       .nav .button { padding:8px 12px; }
       section { padding:36px 0; }
       .steps { grid-template-columns:1fr; }
-      .example { padding:20px; }
     }
   </style>
 </head>
@@ -103,7 +100,7 @@
         <p class="eyebrow">A file-based workflow for your AI pair</p>
         <h1>Keep feature work<br>on track.</h1>
         <p class="lead">Give your assistant a clear scope, a plan you approve, and a record you can review. Railspike turns feature work into four deliberate steps, written in plain Markdown.</p>
-        <div class="actions"><a class="button" href="#get-started">Start with one Git command</a><a href="#example">See a worked example ↗</a></div>
+        <div class="actions"><a class="button" href="#get-started">Start with one Git command</a><a href="#workflow">Explore the workflow ↗</a></div>
       </div>
       <aside class="hero-aside" aria-label="What the workflow gives you">
         <p><strong>A decision before a diff.</strong><span>Surface assumptions and risks before implementation begins.</span></p>
@@ -140,26 +137,6 @@
         <h3>3. Review, then approve</h3>
         <p>Read the artifact before replying <code>Approved Step 1</code>. Continue through the approval loop. For straightforward work, you can start at Step 2.</p>
         <p>For updates, <a href="https://github.com/gulkily/railspike#ask-your-agent-to-update-railspike">ask your agent to run the Git update workflow</a>. It summarizes the changes and offers to commit the pointer or leave it for review.</p>
-      </div>
-    </section>
-    <section id="example" class="split" aria-labelledby="example-title">
-      <div>
-        <p class="eyebrow">Follow the evidence</p>
-        <h2 id="example-title">A small feature.<br>A complete decision trail.</h2>
-        <p>In the recorded Private Window Lobby Fallback example, visitors without a saved browser key needed a usable entry path while approved members still needed to recover their saved access.</p>
-        <p>The case study links the assessment, requirements, plan, implementation stages, and verification. Historical source records use the former name, FDP.</p>
-        <a href="https://github.com/gulkily/railspike/blob/master/examples/private-window-lobby-fallback.md">Read the worked example ↗</a>
-      </div>
-      <div class="example">
-        <p class="eyebrow">Private Window Lobby Fallback</p>
-        <h3>What the review made explicit</h3>
-        <ul>
-          <li>Limit the fallback to visitors with a missing browser key.</li>
-          <li>Preserve the return path for approved members.</li>
-          <li>Keep authentication failures visible.</li>
-          <li>Record focused verification alongside each stage.</li>
-        </ul>
-        <p><a href="https://github.com/gulkily/railspike/blob/master/examples/private-window-lobby-fallback-artifact-trail.md">Inspect the artifacts and commits</a></p>
       </div>
     </section>
     <section aria-labelledby="fit-title">

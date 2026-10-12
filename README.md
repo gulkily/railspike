@@ -18,7 +18,7 @@ If you frequently see Claude/Codex derail because requirements evolve mid-stream
 
 Install Railspike as a Git submodule at `docs/railspike` with one Git command. Updates are handled by your agent using native Git; there is no CLI utility.
 
-[Main instructions](./RAILSPIKE.md) · [Worked example](./examples/private-window-lobby-fallback.md) · [Website](https://gulkily.github.io/railspike/)
+[Main instructions](./RAILSPIKE.md) · [Website](https://gulkily.github.io/railspike/)
 
 From the **root of a clean, non-bare Git working tree**, run these read-only checks first. Stop if a check does not have the stated result; do not clean, reset, stash, remove, or overwrite anything to make it pass.
 
@@ -58,7 +58,7 @@ If the decision is straightforward, you may skip Step 1 and ask for Step 2 inste
 
 > Approved Step 1, please continue to Step 2.
 
-After `Approved Step 3`, the assistant creates a feature branch, commits the approved planning documents first, then makes a separate commit—with the matching Step 4 summary update—for every completed stage. See the [worked example](./examples/private-window-lobby-fallback.md), [prompt fixtures](./examples/fixtures/), and [failure-mode guide](./docs/failure-modes.md).
+After `Approved Step 3`, the assistant creates a feature branch, commits the approved planning documents first, then makes a separate commit—with the matching Step 4 summary update—for every completed stage. See the [failure-mode guide](./docs/failure-modes.md) for recovery guidance.
 
 The first run should take only a few minutes: read the four-step overview, send the prompt, and inspect the resulting Step 1 artifact. Do not approve a step you have not reviewed.
 
@@ -126,10 +126,6 @@ git status --short
 After a successful update, summarize the relevant upstream changes and required actions, inspecting the upstream diff as needed. If the revision changed, offer **commit the pointer update** or **leave it uncommitted for review**. On approval, recheck that only `docs/railspike` changed, stage that path alone, and commit it. An already-current installation needs no commit.
 
 If a check fails, stop and explain it. Do not reset, clean, stash, delete files, change remotes, or force an update to make a check pass. Fetch can change remote-tracking metadata even when an update is refused. If a network operation or update is interrupted, inspect the current checkout and host diff before retrying; do not assume rollback.
-
-## Examples
-
-See [Railspike Examples](./examples/) for three completed v3 feature cycles: a concise security-and-recovery case, a medium-complexity operational command, and a recovery-oriented offline-reading deep dive. Each example links to its Step 1–4 source artifacts and stage commits.
 
 ## How to run the chain with your AI pair
 1. Kick things off with a plain request like `As a user, I would like to <story>, please write Step 1 of RAILSPIKE.md.` Make the story explicit so the assistant starts from the user’s perspective.

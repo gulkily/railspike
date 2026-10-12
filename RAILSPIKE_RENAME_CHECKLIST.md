@@ -28,7 +28,8 @@ Backwards compatibility is explicitly out of scope: the maintainer is the only k
 
 - [x] Update the title, introduction, installation commands, update commands, prompts, diagrams, and example labels in [README.md](./README.md).
 - [x] Update product references in [RAILSPIKE.md](./RAILSPIKE.md), `docs/workflow/`, [CONTRIBUTING.md](./CONTRIBUTING.md), [docs/RELEASES.md](./docs/RELEASES.md), and [docs/failure-modes.md](./docs/failure-modes.md).
-- [x] Update current explanatory copy in `examples/` and `examples/fixtures/`, including prompts and installation paths where applicable.
+- [x] Remove the current examples and prompt fixtures, plus their website, README, and launch-draft links, at the maintainer's request.
+- [ ] Create better replacement examples later; scope and content remain to be decided.
 - [x] Preserve historical accuracy in `docs/plans/`, source quotations, and completed case studies. Add context for the old name where needed; do not rewrite commit hashes or unrelated `gulkily/v3` source URLs.
 - [x] Audit filenames containing `fdp`, especially historical plans and `scripts/check-fdp-git-workflow.sh`; rename only where useful, updating every referring link.
 - [x] Update [HN_POST_DRAFT.md](./HN_POST_DRAFT.md) and [HN_WRITEUP_READINESS_CHECKLIST.md](./HN_WRITEUP_READINESS_CHECKLIST.md) with the new name, final links, and matching product description.
@@ -45,7 +46,7 @@ Backwards compatibility is explicitly out of scope: the maintainer is the only k
 - [ ] Set the homepage to `https://gulkily.github.io/railspike/` and review topics and any desired integrations.
 - [x] Update local origin to `https://github.com/gulkily/railspike.git`. The checkout already uses `/home/wsl/railspike`; no directory move was needed.
 - [x] Keep `master` as the branch name for now; a rename to `main` is out of scope.
-- [x] Verify the new hosted repository's default branch is `master` and use it consistently. The HN draft's example links use `master`.
+- [x] Verify the new hosted repository's default branch is `master` and use it consistently. Active repository file links use `master`.
 - [x] Verify a fresh public clone from `https://github.com/gulkily/railspike.git` on `master`; all 46 Markdown files pass local link checks. Active repository links use the canonical URL; old URL redirects are not required.
 
 ## Logo and website
@@ -54,12 +55,12 @@ Backwards compatibility is explicitly out of scope: the maintainer is the only k
 - [x] Check the existing logo at the header's 54 px and 42 px sizes and produce optimized web/favicon variants as needed.
 - [x] Add the logo to the README with appropriate alternative text and consistent sizing.
 - [x] Host the initial website as a GitHub Pages project site at `https://gulkily.github.io/railspike/`, using `gulkily/railspike`. Defer a separate organization and custom domain.
-- [x] Keep the initial website to one landing page with a workflow overview, installation instructions, and links to the repository and worked example.
+- [x] Keep the initial website to one landing page with a workflow overview, installation instructions, and a link to the repository. Worked examples are deferred.
 - [x] Use `index.html` at the repository root as the GitHub Pages entrypoint, using [railspike-header.html](./railspike-header.html) as the starting point.
 - [x] Build the agreed landing page in root-level `index.html`.
 - [ ] Verify the chosen website URL when publishing.
 - [x] Replace the HTML's placeholder `/about`, `/docs`, and `/get-started` links with working destinations. Make the home link, navigation, and asset paths work under the `/railspike/` hosting base path.
-- [x] Build out the page with a concise workflow description, four-step overview, installation/get-started instructions, worked example, and repository link.
+- [x] Build out the page with a concise workflow description, four-step overview, installation/get-started instructions, and repository link.
 - [x] Refine the current “Railspike — Developer Tools” title to describe this project; add a description, favicon, and sharing metadata using the final site URL.
 - [x] Check the header at narrow widths, keyboard navigation and focus visibility, logo clarity, and access to essential navigation on mobile.
 - [ ] Configure GitHub Pages hosting and HTTPS; verify published navigation and images at `https://gulkily.github.io/railspike/` before promoting the URL.
@@ -70,7 +71,7 @@ Backwards compatibility is explicitly out of scope: the maintainer is the only k
 - [x] Search for `FDP`, `fdp`, `Feature Development Process`, and old repository URLs, including untracked launch drafts. Review each remaining match as intentional history or a missed rename; remove legacy compatibility aliases or pointers.
 - [x] Run `python scripts/check-markdown-links.py` and `git diff --check`; run the Perl/Node equivalents if their implementations change.
 - [x] Run `bash scripts/check-railspike-git-workflow.sh` after updating the fixture.
-- [ ] Manually check HTML links, external repository/example links, and rendered Markdown/Mermaid; the local Markdown checker does not validate these.
+- [ ] Manually check HTML links, external repository links, and rendered Markdown/Mermaid; the local Markdown checker does not validate these.
 - [ ] Walk through the README as a new user, from installation to the first planning artifact, with the renamed prompt and paths.
 - [x] Record the rename as an unreleased breaking change in `docs/RELEASES.md`, including canonical paths, prompt, and the lack of backwards compatibility. Release version selection remains deferred.
 - [x] Review the final diff and commit the intended documentation, logo, and HTML assets. Exclude unrelated local/editor files.

@@ -12,7 +12,7 @@ Railspike is a set of Markdown instruction files. An assistant produces a concis
 
 The intended audience is people using Codex, Claude Code, or Copilot on feature work where reviewability matters. It adds process, so it is probably excessive for a trivial edit or a one-line fix.
 
-The [quick start](https://github.com/gulkily/railspike#quick-start) and a [complete worked example](https://github.com/gulkily/railspike/blob/master/examples/private-window-lobby-fallback.md) are in the repository. The example includes its planning artifacts, stage commits, and a direct-prompt comparison with one recorded baseline run.
+The [quick start](https://github.com/gulkily/railspike#quick-start) covers installation, the first prompt, and the approval loop.
 
 This is not an autonomous-agent framework, a replacement for engineering judgment, or a universal process. It does not prevent hallucinations or guarantee a good design; it makes the decisions, risks, approval points, and verification record easier to inspect.
 
