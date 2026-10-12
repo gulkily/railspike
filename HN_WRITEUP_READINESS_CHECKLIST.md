@@ -6,8 +6,8 @@ Use this checklist to make Railspike easy to evaluate in a few minutes and to en
 
 ## Product Proof
 
-- [x] State the project in one clear sentence: Railspike is a file-based, approval-gated workflow for keeping AI-assisted feature work scoped, reviewable, and verified.
-- [ ] Create better replacement examples; the previous case studies and prompt fixtures have been removed for now.
+- [x] State the project in one clear sentence: Railspike helps you review, combine, and revise agent plans in Markdown before approving work on code, documentation, tests, or checklists.
+- [ ] Select and write replacement examples from the [case-study candidates](./docs/case-study-candidates.md); case studies are the last item in the [positioning checklist](./docs/positioning-checklist.md).
 - [ ] Include a complete feature cycle with its original request, reproducible prompts, planning artifacts, verification, and stage commits.
 - [ ] Explain the outcome and support any comparison with recorded evidence.
 - [x] Keep claims narrow; do not claim that Railspike eliminates hallucinations or replaces engineering judgment.
@@ -15,6 +15,7 @@ Use this checklist to make Railspike easy to evaluate in a few minutes and to en
 ## First Run Experience
 
 - [x] Add a compact quick-start section with the recommended installation method and the first prompt to send an AI agent.
+- [x] Show a concrete request to combine options and revise the recommendation before approval.
 - [x] Show the approval loop with a concrete `Approved Step N` example.
 - [x] Explain where plans live, what gets committed, and how Railspike is updated in a consuming repository.
 - [ ] Verify the renamed quick start and file-mention behavior with the supported agents. Historical subtree verification does not validate the current submodule installation or autocomplete.
@@ -39,11 +40,11 @@ Use this checklist to make Railspike easy to evaluate in a few minutes and to en
 ## HN Post
 
 - [x] Use a plain, descriptive title that states what Railspike does. See [HN post draft](./HN_POST_DRAFT.md).
-- [x] Open with the problem: AI coding agents can move faster than review and scope control.
+- [x] Open with the problem: the first plan needs discussion, revision, and a persistent record before work begins.
 - [x] Explain the mechanism briefly: small instruction files, explicit approvals, planning artifacts, and stage-scoped commits.
 - [x] Link to the quick start.
 - [ ] Link to a replacement worked example once it is ready.
-- [x] Name the intended audience and the tradeoff: extra process is useful for feature work where reviewability matters, but can be excessive for trivial changes.
+- [x] Name the intended audience and the tradeoff: extra process is useful for work with meaningful scope and decisions, but can be excessive for trivial changes.
 - [x] Include a short "what this is not" note: Railspike is not an autonomous-agent framework, a replacement for judgment, or a universal process.
 - [x] Invite specific feedback, such as whether the gates are useful, where the process is too rigid, and which agent integrations would matter.
 
