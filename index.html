@@ -3,111 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Railspike — make your coding agent write the plan down first</title>
-  <meta name="description" content="Railspike is a set of Markdown instructions your coding agent follows: it writes requirements and a staged plan into your repo, then stops until you approve each one.">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#131313" media="(prefers-color-scheme: dark)">
+  <title>Introducing Railspike and the plan-prompt</title>
+  <meta name="description" content="Railspike is a prompting framework we created to help our agentic developers and us stay on track in our work.">
   <link rel="canonical" href="https://gulkily.github.io/railspike/">
   <link rel="icon" type="image/png" sizes="512x512" href="./railspike-logo.png">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Railspike — make your coding agent write the plan down first">
-  <meta property="og:description" content="Markdown instructions that make your coding agent write requirements and a staged plan into your repo, then stop until you approve each one.">
+  <meta property="og:title" content="Introducing Railspike and the plan-prompt">
+  <meta property="og:description" content="Railspike is a prompting framework we created to help our agentic developers and us stay on track in our work.">
   <meta property="og:url" content="https://gulkily.github.io/railspike/">
   <meta property="og:image" content="https://gulkily.github.io/railspike/railspike-logo.png">
   <meta property="og:image:alt" content="Railspike rail and spike logo">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta name="twitter:card" content="summary">
-  <style>
-    :root { color-scheme: light dark; --bg:#fff; --fg:#1b1b1b; --muted:#505050; --rule:#d6d6d6; --code:#f3f3f1; --link:#0b4f9c; --accent:#8a6100; }
-    @media (prefers-color-scheme: dark) { :root { --bg:#131313; --fg:#e8e6e1; --muted:#b0aea8; --rule:#3a3a3a; --code:#1e1e1d; --link:#8ab4f8; --accent:#e3b341; } }
-    * { box-sizing: border-box; }
-    body { margin: 0 auto; max-width: 42rem; padding: 1rem 1rem 3rem; background: var(--bg); color: var(--fg); font: 1.0625rem/1.55 ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif; }
-    header { padding: .5rem 0 .25rem; }
-    .skip { position: absolute; left: .5rem; top: -4rem; padding: .5rem .75rem; background: var(--bg); color: var(--fg); border: 1px solid var(--fg); z-index: 1; }
-    .skip:focus { top: .5rem; }
-    .brand { display: flex; align-items: center; gap: .5rem; }
-    .brand img { display: block; width: 28px; height: 28px; background: #fff; border: 1px solid var(--rule); }
-    header p { margin: 0; font: 700 .9rem/1.4 ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace; letter-spacing: .02em; color: var(--accent); }
-    h1 { margin: .35rem 0 .75rem; font-size: clamp(1.55rem, 5.5vw, 2.15rem); line-height: 1.15; }
-    h2 { margin: 2rem 0 .5rem; padding-top: .75rem; border-top: 1px solid var(--rule); font-size: 1.25rem; line-height: 1.25; }
-    h3 { margin: 1.25rem 0 .35rem; font-size: 1rem; }
-    p, ul { margin: .6rem 0; }
-    li { margin: .4rem 0; }
-    ul { padding-left: 1.25rem; }
-    a { color: var(--link); text-underline-offset: .15em; }
-    a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
-    code, pre { font-family: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace; font-size: .85rem; }
-    :not(pre) > code { background: var(--code); padding: .05em .3em; border-radius: 3px; }
-    pre { margin: .75rem 0; padding: .7rem .85rem; background: var(--code); border-left: 3px solid var(--accent); white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.5; }
-    footer { margin-top: 2.5rem; padding-top: .75rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
-    footer a { color: inherit; }
-  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header>
-  <p class="brand"><img src="./railspike-logo.png" alt="" width="28" height="28"><strong>Railspike</strong></p>
-  <h1>Make your coding agent write the plan down first.</h1>
-</header>
-<main id="main">
-  <p>Railspike is a set of Markdown instructions your agent follows. The agent writes requirements and a staged plan into your repo, then stops until you approve each one. After that it works on a branch, one stage at a time, verifying and committing each stage with a record of what changed.</p>
-
-  <h2>Install</h2>
-  <p>From the root of a clean Git working tree:</p>
-  <pre><code>git submodule add https://github.com/gulkily/railspike.git docs/railspike</code></pre>
-  <p>Review and commit <code>.gitmodules</code> and the submodule pointer. If you would rather not use a submodule, you can copy the files into your project instead (a vendored directory works too, and <a href="https://github.com/gulkily/railspike/blob/master/RAILSPIKE.md#repository-boundary">RAILSPIKE.md</a> covers how its paths resolve); you then update your copy by hand.</p>
-  <p>Use it with Claude Code, Codex, GitHub Copilot, or another agent that can read your project files. There is no CLI and there are no runtime dependencies; installation and updates use Git. Then give your agent a task:</p>
-  <pre><code>I want to export my saved searches as CSV. Write Step 1 of @railspike.</code></pre>
-  <p>Open the file the agent wrote in <code>docs/plans/</code>, edit it or ask for changes, and when it says what you want, reply <code>Approved Step 1</code>. Repeat for each step. The <a href="https://github.com/gulkily/railspike#quick-start">quick start</a> has the full walkthrough.</p>
-  <h2>A real example</h2>
-  <p>Railspike is built with Railspike. This is one small feature from this repository: <a href="https://github.com/gulkily/railspike/blob/68663ca/docs/plans/quiet_debug_mode/quiet_debug_mode_step1_solution_assessment.md">the Step 1 file</a> the agent wrote, trimmed for length. Omissions are marked <code>[…]</code>; the rest is verbatim.</p>
-
-  <h3>The request</h3>
-  <pre><code>## Original Query
-I want to restrict/limit debug mode to almost entirely write to the md file and not write to the conversation much. Please write Step 1 of Railspike.</code></pre>
-
-  <h3>What the agent proposed</h3>
-  <p>Three options came back; here is the first, and the headings of the others.</p>
-  <pre><code>## Option A — File-first diagnostics with a one-line link
-Write all diagnostic findings and required report groups to the existing debug log. At each completed-step handoff, include at most one short debug line linking to it, without repeating findings in the conversation.
-
-- **Pros:** Predictable conversation limit; preserves discoverability and the complete diagnostic record; fits the existing handoff workflow.
-- **Cons:** Users must open the log to review findings; still adds one line per completed step.
-
-[…]
-
-## Option B — Silent logging by default
-## Option C — File-first diagnostics with selectable conversation verbosity</code></pre>
-
-  <h3>The recommendation</h3>
-  <pre><code>## Recommendation
-Choose **Option A** as one bounded documentation-only feature: complete diagnostic reports in `{feature_name}_debug_log.md`, with at most one short link line in each completed-step conversation. Required useful/redundant groups, source references, evidence, suggestions, and any inapplicable/uncertain findings belong in the log only. Do not narrate diagnostic collection or echo empty groups in chat.
-
-Keep exceptions narrow: briefly disclose log-write failures or request genuinely necessary mode-state clarification; provide findings in chat when explicitly requested. Ordinary task updates, blockers, and approval requests remain available. Instruction reprints are a separate source of conversation volume and are outside this debug-specific change.</code></pre>
-
-  <p>The reply <code>Approved Step 1</code> is typed in the conversation and is not stored in a file. Steps 2 and 3 follow the same way; after <code>Approved Step 3</code> the plans are committed first and then each stage gets its own commit:</p>
-  <pre><code>68663ca docs: organize approved quiet debug mode plans
-d84023f docs(stage 1): keep debug reports in Markdown logs
-4b36f75 docs(stage 2): explain quiet debug handoffs and recovery</code></pre>
-  <p>Browse them in the <a href="https://github.com/gulkily/railspike/tree/68663ca/docs/plans/quiet_debug_mode">feature folder</a> or the <a href="https://github.com/gulkily/railspike/commit/d84023f">first stage commit</a>.</p>
-  <h2>Limits and failure modes</h2>
+<main>
+  <h1>Introducing Railspike and the plan-prompt</h1>
+  <p>Railspike is a prompting framework we created to help our agentic developers and us stay on track in our work.</p>
+  <p>The pain points Railspike addresses are:</p>
   <ul>
-    <li><strong>The gates are instructions, not enforcement.</strong> The instructions require the agent to stop until you type <code>Approved Step N</code>. These are instructions the agent follows, not a technical enforcement mechanism.</li>
-    <li><strong>It does not read for you.</strong> A request for revisions does not approve the next step, and you should not approve a file you have not read.</li>
-    <li><strong>It adds process.</strong> Use it when a change touches more than a few files, when there is a real choice between approaches, or when the work will run across more than one session. For a one-line fix it is overkill.</li>
-    <li><strong>Plans must stay small.</strong> Each Step 1–3 file should fit on one page; if it does not, the scope is probably too big.</li>
+    <li>requirements drift,</li>
+    <li>misunderstandings in what’s being developed,</li>
+    <li>unprompted additions of undesired frameworks and third-party components, and</li>
+    <li>agent working for a long time before we realize what’s happening.</li>
   </ul>
-  <p>The <a href="https://github.com/gulkily/railspike/blob/master/docs/failure-modes.md">failure-modes guide</a> lists signals and recovery steps. The three you are most likely to meet:</p>
-  <ul>
-    <li><strong>Approval was skipped.</strong> The agent started a later step before you approved. Stop, review the current artifact, and resume only from the last explicitly approved step.</li>
-    <li><strong>Scope expands during Step 4.</strong> A new requirement or risk is needed to finish a stage. The agent should not fold it in; it records the discovery and returns to Step 2, then Step 3.</li>
-    <li><strong>A stage commit or its verification is missing.</strong> Do not begin the next stage; run the check, update the summary, and commit the stage first.</li>
-  </ul>
+  <p>The goals of Railspike are to document much of the planning, keep intent clear as a feature is developed, and keep reminding the agent what it is working on.</p>
+  <p>This also makes it much easier to read and modify large amounts of agentic output in our preferred editors and viewers, which is often not the same as our console.</p>
+  <p>Railspike accomplishes this with multiple instruction prompts that split the development process into four steps: brainstorming, outlining, planning, and actual development work. This process has proven to work well for us in developing new features, reshaping existing features, fixing bugs, writing documentation, writing checklists for bigger pieces of work that take multiple cycles, and basically any task that we have thrown at it.</p>
+  <p>Sometimes even a simple, seemingly one-shot bugfix can go off-track when an agent misunderstands what we meant or intended, or chooses a solution that we do not agree with. Railspike has almost completely eliminated this occurrence by locking in what is planned. (Sometimes a one-shot fix really is, and we’ve had good results asking the agent this question.)</p>
+  <p>The main building block of Railspike is the plan-prompt: a plan, stored in a file, that the agent then follows as its prompt. Railspike began to take shape when we realized that, for most tasks, it is helpful to have the agent write its own prompt before actually starting the work. We could inspect this plan-prompt and alter it, also with the agent’s help, before any actual code was written.</p>
+  <p>We then set out to emulate a minimal planning process, not unlike agile or waterfall, where we first ideated on possible solution types and made a decision for what to do, fleshed out our decision in a detailed high-level plan, wrote an even more detailed development plan, breaking down the task into multiple atomic sub-tasks, and then began development following this third plan-prompt.</p>
+  <p>The process started out as one file with instructions, but we soon noticed that the instructions would often be forgotten out of the context window, so we split it into several files that we inserted into the conversation as they were needed. We then further added instructions for before, during, and after certain steps.</p>
+  <p>We spent a year refining these prompts as we used them to build multiple projects (mostly web-based online social spaces frameworks, but also some random things like documentation.)</p>
+  <p>We started keeping the prompting system in a repo so that it could be synchronized between projects.</p>
+  <p>As we worked on Railspike and refined it with several different coding agents like Cursor, Windsurf, Copilot, Claude Code, and Codex, we noticed that it can gradually bring different agents to work within similar constraints, often allowing us to compensate for weaker but less compute-intensive (and more affordable) models.</p>
+  <p>Many agents now include a built-in plan mode, where the agent explores the codebase and proposes a plan for you to approve before doing the actual edits. Railspike offers clear advantages over these. First and foremost, the plans are written as plaintext, searchable files in your repo, so they survive context window slide, compaction, your session, and transitions between multiple coding agents.</p>
+  <p>The second advantage is documentation: you (and your agent, even if you are now using a different one) can inspect the thinking that went into a feature.</p>
+  <p>Third, the process is consistent across agents, allowing a much more agent-agnostic development workflow. For example, we sometimes pass a task between Claude Code and Codex mid-task, because Codex appears to be better at complex features, while Claude Code seems to be better at UI.</p>
+  <p>This is not all, we keep finding new benefits, such as that we have to do a lot less manual explaining. We let the agent come up with its own explanation, and correct it if needed. Most of the time it has the right idea.</p>
+  <p>Eventually, we started recommending this process to others and seeing it help them, and realized that it needed a catchier name than FEATURE_DEVELOPMENT_PROCESS.md. We also realized that it needed a debug mode, so we added that.</p>
+  <p>And here it is!</p>
+  <p>Railspike is super easy to drop into an existing project. If you want to start now, super quickly, just copy it anywhere into your project and next time you’re developing a feature, append to your prompt: “Write Step 1 of RAILSPIKE.md.” Important note: Your original promt will be preserved in the generated Step 1 document, so don’t write anything you don’t want to end up in your repo.</p>
+  <p>Railspike is pretty stable at this point, but if you want to keep up with the hopefully infrequent updates, you can also use it as a git submodule. Instructions for this are included.</p>
 </main>
 <footer>
-  <p><a href="https://github.com/gulkily/railspike">Source on GitHub</a> · <a href="https://github.com/gulkily/railspike#quick-start">Quick start</a> · <a href="https://github.com/gulkily/railspike/blob/master/RAILSPIKE.md">RAILSPIKE.md</a> · <a href="https://github.com/gulkily/railspike/blob/master/docs/failure-modes.md">Failure modes</a> · <a href="https://github.com/gulkily/railspike/blob/master/LICENSE">MIT license</a></p>
+  <p><a href="https://github.com/gulkily/railspike">https://github.com/gulkily/railspike</a></p>
 </footer>
 </body>
 </html>
