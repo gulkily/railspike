@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <title>Railspike — A reviewable workflow for AI-assisted feature work</title>
+  <title>Railspike — Keep AI-assisted feature work on track</title>
   <meta name="description" content="Small Markdown instructions. Explicit approvals. A plan before implementation and a reviewable record of every stage. Install Railspike with one Git command.">
   <link rel="canonical" href="https://gulkily.github.io/railspike/">
   <link rel="icon" type="image/png" href="./railspike-logo.png">
@@ -22,7 +22,7 @@
     body { margin:0; color:var(--ink); background:var(--paper); font-family:Arial,Helvetica,sans-serif; line-height:1.6; }
     a { color:inherit; text-underline-offset:4px; }
     a:hover { text-decoration-thickness:2px; }
-    a:focus-visible { outline:3px solid var(--ink); outline-offset:5px; }
+    a:focus-visible, input:focus-visible { outline:3px solid var(--ink); outline-offset:5px; }
     .skip { position:absolute; left:16px; top:-100px; background:#fff; padding:12px; z-index:2; }
     .skip:focus { top:12px; }
     .site-header { border-bottom:2px solid var(--ink); }
@@ -55,6 +55,10 @@
     .note { border-left:3px solid var(--ink); padding:12px 20px; background:var(--wash); }
     .split { display:grid; grid-template-columns:1fr 1.3fr; gap:48px; }
     .split > * { min-width:0; }
+    .preflight { list-style:none; padding:0; margin:20px 0; }
+    .preflight li { margin:12px 0; }
+    .preflight label { display:flex; align-items:baseline; gap:10px; cursor:pointer; }
+    .preflight input { flex-shrink:0; accent-color:var(--ink); }
     pre { padding:20px; background:var(--ink); color:#fff; overflow-x:auto; white-space:pre-wrap; overflow-wrap:anywhere; font-size:.88rem; line-height:1.7; }
     code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
     blockquote { margin:20px 0; border-left:3px solid var(--ink); padding:4px 20px; }
@@ -89,8 +93,8 @@
       </a>
       <nav class="nav" aria-label="Main navigation">
         <a href="#workflow">Workflow</a>
-        <a href="https://github.com/gulkily/railspike#quick-start">Docs</a>
-        <a class="button" href="#get-started">Get started <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/gulkily/railspike#quick-start">Docs <span aria-hidden="true">↗</span></a>
+        <a class="button" href="#get-started">Get started</a>
       </nav>
     </div>
   </header>
@@ -100,31 +104,38 @@
         <p class="eyebrow">A file-based workflow for your AI pair</p>
         <h1>Keep feature work<br>on track.</h1>
         <p class="lead">Give your assistant a clear scope, a plan you approve, and a record you can review. Railspike turns feature work into four deliberate steps, written in plain Markdown.</p>
-        <div class="actions"><a class="button" href="#get-started">Start with one Git command</a><a href="#workflow">Explore the workflow ↗</a></div>
+        <div class="actions"><a class="button" href="#get-started">Start with one Git command</a><a href="#workflow">Explore the workflow</a></div>
       </div>
       <aside class="hero-aside" aria-label="What the workflow gives you">
         <p><strong>A decision before a diff.</strong><span>Surface assumptions and risks before implementation begins.</span></p>
         <p><strong>You approve the next step.</strong><span>Review the assessment, feature description, and plan before moving forward.</span></p>
-        <p><strong>A record with every stage.</strong><span>Keep changes, verification, and the implementation summary together in a commit.</span></p>
+        <p><strong>A record of every stage.</strong><span>Keep changes, verification, and the implementation summary together in a commit.</span></p>
       </aside>
     </div>
     <section id="workflow" aria-labelledby="workflow-title">
       <p class="eyebrow">The workflow</p>
       <h2 id="workflow-title">Four steps. Explicit handoffs.</h2>
+      <p>Use Railspike alongside your assistant's plan mode when you want plans preserved as committed files, explicit approvals, and implementation stages verified and committed one at a time.</p>
       <ol class="steps">
-        <li><span class="step-number">01 / OPTIONAL</span><h3>Assess the options</h3><p>Compare approaches, expose tradeoffs, and choose a direction when the answer is uncertain.</p></li>
+        <li><span class="step-number">01 / ASSESS (optional)</span><h3>Assess the options</h3><p>Compare approaches, expose tradeoffs, and choose a direction when the answer is uncertain.</p></li>
         <li><span class="step-number">02 / DEFINE</span><h3>Describe the feature</h3><p>Capture the problem, user stories, requirements, risks, and a clear completion boundary.</p></li>
-        <li><span class="step-number">03 / PLAN</span><h3>Make work reviewable</h3><p>Break the feature into small stages with dependencies and an explicit verification plan.</p></li>
+        <li><span class="step-number">03 / PLAN</span><h3>Plan the stages</h3><p>Break the feature into small stages with dependencies and an explicit verification plan.</p></li>
         <li><span class="step-number">04 / IMPLEMENT</span><h3>Build and verify</h3><p>Work on a feature branch. Verify each stage and commit it with its updated summary.</p></li>
       </ol>
-      <p class="note">Each planning step waits for your explicit approval. After <code>Approved Step 3</code>, the assistant creates a feature branch and commits the approved plans before implementation. If scope changes, return to planning.</p>
+      <p class="note">Each planning step waits for your explicit approval. After reviewing its artifact, type <code>Approved Step N</code> with the step number to proceed. After you approve Step 3, the assistant creates a feature branch and commits the approved plans before implementation. If scope changes, return to planning.</p>
     </section>
     <section id="get-started" class="split" aria-labelledby="start-title">
       <div>
         <p class="eyebrow">Get started</p>
         <h2 id="start-title">One submodule.<br>Your existing assistant.</h2>
         <p>Use Railspike with an assistant that can read your project files, such as Claude Code, GitHub Copilot, or Codex.</p>
-        <p>Start in a clean Git repository, at its root, with <code>docs/railspike</code> unused. <a href="https://github.com/gulkily/railspike#quick-start">Read the preflight checks</a> before running the command.</p>
+        <p>Check these in your project before running the command:</p>
+        <ul class="preflight" aria-label="Installation prerequisites">
+          <li><label><input type="checkbox"><span>I'm at the root of my Git working tree.</span></label></li>
+          <li><label><input type="checkbox"><span>There are no staged, unstaged, or untracked changes.</span></label></li>
+          <li><label><input type="checkbox"><span><code>docs/railspike</code> doesn't exist, including as a symlink, and <code>docs</code> isn't a symlink.</span></label></li>
+        </ul>
+        <p>A submodule pins the instructions to a specific revision and lets you review upstream updates without managing a copied set of files.</p>
         <p>The instructions live in the submodule. Your feature plans belong in your project's <code>docs/plans/</code>.</p>
       </div>
       <div>
@@ -136,16 +147,15 @@
         <p>Select <code>RAILSPIKE.md</code> if autocomplete offers it, or reference <code>docs/railspike/RAILSPIKE.md</code> directly.</p>
         <h3>3. Review, then approve</h3>
         <p>Read the artifact before replying <code>Approved Step 1</code>. Continue through the approval loop. For straightforward work, you can start at Step 2.</p>
-        <p>For updates, <a href="https://github.com/gulkily/railspike#ask-your-agent-to-update-railspike">ask your agent to run the Git update workflow</a>. It summarizes the changes and offers to commit the pointer or leave it for review.</p>
       </div>
     </section>
     <section aria-labelledby="fit-title">
       <p class="eyebrow">When to use it</p>
       <h2 id="fit-title">When reviewability is worth the extra step.</h2>
       <p>Use Railspike for feature work with meaningful scope, decisions, or recovery paths. The approval loop adds overhead and can be excessive for a trivial edit. It helps structure engineering judgment; the quality of the decisions still depends on you and your assistant.</p>
-      <a href="https://github.com/gulkily/railspike">Explore the repository ↗</a>
+      <a href="https://github.com/gulkily/railspike">Explore the repository <span aria-hidden="true">↗</span></a>
     </section>
   </main>
-  <footer><div class="footer-inner"><span><a href="https://github.com/gulkily/railspike/blob/master/LICENSE">MIT license</a> · <a href="https://github.com/gulkily/railspike">GitHub</a></span></div></footer>
+  <footer><div class="footer-inner"><a href="https://github.com/gulkily/railspike#ask-your-agent-to-update-railspike">Updating Railspike <span aria-hidden="true">↗</span></a><span><a href="https://github.com/gulkily/railspike/blob/master/LICENSE">MIT license <span aria-hidden="true">↗</span></a> · <a href="https://github.com/gulkily/railspike">GitHub <span aria-hidden="true">↗</span></a></span></div></footer>
 </body>
 </html>
