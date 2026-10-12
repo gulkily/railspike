@@ -65,3 +65,17 @@ Debug mode: enabled
   - Not performed: screen reader testing and a no-script render with a scripting-disabled browser flag; the no-script state is the markup as served (hidden attributes, no tabs).
 - Notes:
   - Page weight rose to about 78 KB, all in one file with no extra requests.
+
+## Stage 5 - Polish and release readiness
+- Changes:
+  - `index.html` metadata: declared the favicon as 512×512 and added `og:image:width`/`og:image:height`; title, description, canonical URL, and og:image/URL were already correct for the new copy and were kept.
+- Verification:
+  - All in-page anchors (`#what`, `#workflow`, `#get-started`, `#main`) resolve to existing ids.
+  - Local references: only `./railspike-logo.png`, which exists (4,388 bytes). External links: five distinct GitHub/Pages URLs; the repository and LICENSE URLs returned HTTP 200, and the `#quick-start` and `#ask-your-agent-to-update-railspike` fragments match existing README headings. The Pages URL was not fetched because the site is not yet published from this branch.
+  - Repository checks: `check-markdown-links.py`, `.pl`, and `.mjs` each report 37 Markdown files with valid local links; `check-railspike-git-workflow.sh` passed.
+  - No third-party requests: the page contains no external scripts, stylesheets, fonts, or images.
+  - Rendering reviewed at 1200 px and 360 px, light and dark, including the selector with a long voice; no horizontal overflow.
+  - `git diff --check` clean.
+- Notes:
+  - Not done here: the live Pages URL check and the maintainer's visual review; both happen after merge to `master` per the Completion Contract.
+  - Open for the maintainer: whether to commit the `/temp/` entry in `.gitignore` (left uncommitted), and that this branch includes the unmerged quiet-debug-mode commits.
