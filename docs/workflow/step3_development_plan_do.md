@@ -2,6 +2,8 @@
 
 _Open only after completing Step 3 Before._
 
+On resumption, restore the current artifact’s state using [Railspike Debug Mode](../../RAILSPIKE.md#railspike-debug-mode). This phase does not trigger a diagnostic report.
+
 ## Objective
 Break the feature into atomic implementation stages, identify dependencies, and define verification expectations before coding starts.
 

@@ -2,6 +2,9 @@
 
 _Read this file only if the feature is complex enough to require Step 1. Pause again after finishing until the user replies with “Approved Step 1.”_
 
+## Debug state
+On entry or resumption, restore and record state using [Railspike Debug Mode](../../RAILSPIKE.md#railspike-debug-mode).
+
 ## Objective
 Resolve uncertainty when there are multiple viable approaches, complex trade-offs, or an unclear direction before investing in further planning.
 
@@ -25,4 +28,6 @@ Resolve uncertainty when there are multiple viable approaches, complex trade-off
 Treat the options as material for discussion. The user may choose one, combine compatible parts, reject assumptions, or ask for another approach. Revise the current assessment and recommendation, rechecking compatibility, tradeoffs, risks, and scope. Preserve the Original Query; record the revised direction separately. A request for changes does not approve the step or authorize Step 2.
 
 ## Next
+Before the completed-step handoff, restore mode state and, if enabled, log and present the diagnostic summary under [Railspike Debug Mode](../../RAILSPIKE.md#railspike-debug-mode), linking to the saved log.
+
 Share the document for review and stop. Do not create Step 2 until the user explicitly responds with “Approved Step 1.” When approval arrives, continue with `docs/workflow/step2_feature_description.md`.

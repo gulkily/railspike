@@ -2,6 +2,9 @@
 
 _Open this only after receiving “Approved Step 1” (or if Step 1 was skipped). Pause again after delivering Step 2 until the user sends “Approved Step 2.”_
 
+## Debug state
+On entry or resumption, restore and record state using [Railspike Debug Mode](../../RAILSPIKE.md#railspike-debug-mode).
+
 ## Objective
 Capture the problem framing, desired outcomes, and shared-component considerations before planning implementation work.
 
@@ -31,4 +34,6 @@ Capture the problem framing, desired outcomes, and shared-component consideratio
 - Keep the doc lightweight enough to consume at a glance
 
 ## Next
+Before the completed-step handoff, restore mode state and, if enabled, log and present the diagnostic summary under [Railspike Debug Mode](../../RAILSPIKE.md#railspike-debug-mode), linking to the saved log.
+
 Deliver the document, request confirmation, and wait for "Approved Step 2." Once approved, continue with `docs/workflow/step3_development_plan_before.md`.
