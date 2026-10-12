@@ -64,3 +64,25 @@ Mode was enabled by explicit user request mid-step, after initial exploration ha
 - The Before file's artifact path `docs/plans/{feature_name}_step3_development_plan.md` matches current layout; later organization into `docs/plans/website_redesign/` is stated in the Completion Contract per RAILSPIKE.md.
 - The Do file asks for risks "resolved before dependent work begins" while the voices question awaits the user's answer; handled as a Stage 4 gate. Unclear whether an open question should instead block Step 3 approval.
 - Stage sizes (≤1 hour) are estimates; image export in Stage 1 depends on tools not yet verified.
+
+## 2026-10-12T18:18Z — Step 4 (implementation)
+
+### Necessary/useful instructions
+- `docs/workflow/step4_implementation_before.md` § Planning Docs Commit Gate: produced a clean first commit (plans, debug log, index entry only) and a verifiable base for stage commits. Retain.
+- `docs/workflow/step4_implementation_do.md` § Stage Boundary Protocol: the `git status --short` check kept the user's uncommitted `.gitignore` edit out of every stage commit. Retain.
+- `RAILSPIKE.md` § Planning Artifacts organization rule: moving files without changing names meant the navigation bar needed no repair. Retain.
+- Step 3 § Key Risks gate: made the real-person voices decision an explicit stop before Stage 4 rather than something improvised. Retain.
+
+### Redundant/unnecessary instructions
+- One-commit-per-stage with summary update is stated in `RAILSPIKE.md` § Step 4 commit cadence, `step4_implementation_do.md` § Execution Rules and § Stage Boundary Protocol, and `step4_implementation_after.md` item 2–3. Suggest consolidating to the protocol with links.
+- `step4_implementation_after.md` item 6 (documentation updated, summary finalized) overlaps the per-stage summary rule. Suggest consolidating.
+
+### Inapplicable instructions
+- Documentation-only verification clauses in `step4_implementation_do.md` and `step4_implementation_after.md`: this was an application change.
+- Migration, role, and database dependency checks in `step4_implementation_after.md` item 5.
+
+### Uncertain assessments
+- The instructions do not say which base to branch from when the current branch holds unmerged workflow changes; the feature branch was created from `feature/quiet-debug-mode` so the contract in use applied.
+- A mid-flow user request outside the approved file scope (`.gitignore`) has no explicit handling; it was left uncommitted and flagged rather than committed.
+- Visual and interaction evidence for UI work is not described in the Step 4 guidance; headless-browser screenshots and scripted keyboard checks were used and labeled as such.
+- The deployment verification (live Pages URL) cannot occur before merge; it was recorded as pending rather than not applicable.
