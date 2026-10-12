@@ -57,3 +57,25 @@
 ### Uncertain assessments
 - The instructions do not say how to commit an unrelated user-requested edit made during planning (`BACKLOG.md`); it was left uncommitted and flagged.
 - A pre-planning file deletion has no defined commit slot; it was folded into the first working-page commit (Stage 1) so no commit leaves the site blank.
+
+## 2026-10-12T19:16Z — Step 4 (implementation)
+
+### Necessary/useful instructions
+- `step4_implementation_before.md` § Planning Docs Commit Gate: gave a clean first commit (plans, log, index entry) and a base for stage commits while an unrelated `BACKLOG.md` edit and the `index.html` deletion stayed out. Retain.
+- `step4_implementation_do.md` § Stage Boundary Protocol: `git status --short` before each commit kept `BACKLOG.md` out of all six stage commits. Retain.
+- Step 3 § Key Risks with a high-risk entry for the deleted page: led to folding the deletion into the first working-page commit. Retain.
+- Step 3 per-stage \"Early warning / validation\": made the verbatim-excerpt and first-screen checks concrete. Retain.
+
+### Redundant/unnecessary instructions
+- One commit per stage with the summary update is restated in `RAILSPIKE.md` § Step 4 commit cadence, `step4_implementation_do.md` § Execution Rules and § Stage Boundary Protocol, and `step4_implementation_after.md` item 2. Suggest consolidating to the protocol with links.
+- `step4_implementation_after.md` item 6 (documentation updated, summary finalized) overlaps the per-stage summary rule. Suggest consolidating.
+
+### Inapplicable instructions
+- Documentation-only verification clauses in the Do and After files: this was an application change.
+- Migration, role, and database dependency checks in `step4_implementation_after.md` item 5.
+
+### Uncertain assessments
+- A stage that makes no behavior change (Stage 6, verification only) still required its own commit carrying only the summary; the instructions do not say whether that is expected.
+- The instructions do not say how to handle a user-requested edit outside the approved file scope made during planning (`BACKLOG.md`); it was left uncommitted and flagged at each stage.
+- Verification that depends on the live Pages URL cannot occur before merge; it was recorded as pending, not as not applicable.
+- UI evidence guidance is absent from Step 4; scripted measurements, screenshots, and computed contrast were used and labeled as such. Real OS dark-mode emulation was unavailable.
