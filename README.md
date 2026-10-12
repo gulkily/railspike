@@ -4,9 +4,9 @@
 
 **Make your coding agent write the plan down first.**
 
-Railspike is a set of Markdown instructions your agent follows. The agent writes requirements and a staged plan into your repo, then stops until you approve each one. After that it builds on a branch, with one commit per stage.
+Railspike is a set of Markdown instructions your agent follows. The agent writes requirements and a staged plan into your repo, then stops until you approve each one. After that it works on a branch, one stage at a time, verifying and committing each stage with a record of what changed.
 
-It works with Claude Code, Codex, GitHub Copilot, and any other agent that can read files in your project. There's nothing to install beyond the files themselves: no CLI, no dependencies.
+Use it with Claude Code, Codex, GitHub Copilot, or another agent that can read your project files. Railspike has no CLI or runtime dependencies; installation and updates use Git.
 
 [Website](https://gulkily.github.io/railspike/) · [RAILSPIKE.md](RAILSPIKE.md) · [Step files](docs/workflow/)
 
@@ -15,6 +15,26 @@ It works with Claude Code, Codex, GitHub Copilot, and any other agent that can r
 I wanted plans that live in the repo, that I can edit in my own editor and come back to the next day, with explicit review points when the direction changes.
 
 So Railspike puts every plan in a Markdown file. You can read it in VS Code, Obsidian, vim, or a GitHub diff. You can edit it directly or ask the agent to change it. The instructions require the agent to stop until you type `Approved Step N`. These are instructions the agent follows, not a technical enforcement mechanism.
+
+Use Railspike alongside your agent’s plan mode when you want to keep decisions in editable files across sessions. Compare approaches, combine the parts that fit, and revise the requirements and stages before approving the work.
+
+## You shape the plan
+
+The agent's first draft is a starting point. Before you approve anything, you can change it two ways:
+
+- **Edit the file yourself.** Delete a requirement, rewrite a stage, add a note for the agent. Then tell it to reread the file.
+- **Ask the agent to revise it.** "Drop the caching stage." "Make the error message less technical." "What happens if the file is empty?"
+
+You can mix both in the same step.
+
+Step 1 is where this matters most. The agent lays out a few approaches, and you don't have to pick one as-is. You can take the parts you like from each and ask for a combined recommendation:
+
+```text
+Use option A's export flow with option B's privacy checks.
+Leave scheduled exports out of scope and update the recommendation.
+```
+
+The agent rewrites the recommendation and checks the tradeoffs again for the combined version.
 
 ## Quick start
 
@@ -36,33 +56,32 @@ I want to export my saved searches as CSV. Write Step 1 of @railspike.
 
 If your agent doesn't autocomplete `@railspike`, select `RAILSPIKE.md` if offered, or give it `docs/railspike/RAILSPIKE.md` directly. For a change with an obvious approach, start at Step 2.
 
-### 3. Review and approve
+### 3. Review, change, approve
 
-Open the file the agent wrote in `docs/plans/`. Edit it, or ask for changes:
-
-```text
-Use option A's export flow with option B's privacy checks.
-Leave scheduled exports out of scope.
-```
-
-Ask the agent to recheck the combined approach’s tradeoffs and update the recommendation. When it says what you want, reply:
+Open the file the agent wrote in `docs/plans/`. Edit it yourself, ask the agent for changes, or both (see [You shape the plan](#you-shape-the-plan)). When it says what you want, reply:
 
 ```text
 Approved Step 1
 ```
 
-Repeat for each step. Don't approve a file you haven't read.
+Repeat for each planning step. A request for revisions does not approve the next step. Don't approve a file you haven't read.
 
 ## The four steps
 
 | Step | The agent writes | You decide |
 |---|---|---|
-| 1. Assess (optional) | Up to four approaches with tradeoffs and a recommendation | Which approach, or which parts of two to combine |
-| 2. Define | Problem, user stories, requirements, out of scope, risks, success criteria | What "done" means |
-| 3. Plan | Numbered stages with dependencies and how each one gets verified | Whether the stages are small and in the right order |
+| 1. Assess (optional) | Up to four approaches with tradeoffs and a recommendation | Which approach, or which compatible parts of several to combine |
+| 2. Define | Problem, user stories, requirements, out of scope, risks, success criteria | What "done" means; add, cut, or reword requirements |
+| 3. Plan | Small, complete changes with dependencies and verification for each stage | Split, merge, or reorder stages before approving the plan |
 | 4. Build | Code, docs, tests, or checklists, one stage at a time, plus a running summary | Whether the result matches the plan |
 
 Each Step 1–3 plan file should fit on one page. If it doesn't, the scope is probably too big.
+
+### Finish and verify each stage
+
+Plan stages as small, complete changes that preserve a working project. Include the wiring and checks needed for the stage’s outcome, so later stages build on verified work. For code changes, run the applicable build, runtime, and test checks; for documents and checklists, verify their content, evidence, and links.
+
+Before starting the next stage, the agent records the results and any limitations in the Step 4 summary, then commits the stage and summary together. That gives the next session or reviewer a clear checkpoint: what changed, what was checked, and what remains. A stage commit records that evidence; it does not by itself prove that deployment or rollback is safe.
 
 ### How commits work
 
@@ -93,6 +112,7 @@ Use it for planning, documentation, development, bug fixes, test suites, and che
 
 - **Make the agent reprint the step file** before it starts each step. You'll both be working from the same instructions, and you'll see right away if it skipped one.
 - **Ask about existing components in Step 2.** Agents drift fastest when they rebuild something that already exists.
+- **Call out risks early.** Record impact, early validation, and mitigation in Step 2. Resolve material risks before dependent stages begin.
 - **Keep Step 4 to the plan.** New ideas go back to Step 2. That's the point of the gates.
 - **Split anything over eight stages** into a second Step 2/3 cycle.
 
@@ -106,7 +126,7 @@ docs/failure-modes.md What to do when a run goes wrong.
 
 See the [failure-mode guide](./docs/failure-modes.md) for recovery and the [maintainer backlog](./BACKLOG.md) for project follow-up.
 
-Your plans go in your project's `docs/plans/`, not here. The agent opens only the step file it needs, so it never has to hold one huge prompt in context.
+Your plans go in your project's `docs/plans/`, not here. Keep each step in its own file; group efforts with four or more planning artifacts under `docs/plans/{feature}/`. Each Step 1–4 artifact links to the others so the decision record stays navigable. The agent opens only the step file it needs, so it never has to hold one huge prompt in context.
 
 ## Customizing
 
