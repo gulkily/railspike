@@ -85,7 +85,7 @@ Before starting the next stage, the agent records the results and any limitation
 
 ### How commits work
 
-The plan files stay uncommitted while you revise them. When you type `Approved Step 3`, the agent creates a feature branch. Before the first commit, the agent groups the plans in `docs/plans/{feature}/`, even if Step 1 was skipped, and repairs the navigation and plan index. That commit contains the approved plans and only those necessary organization changes. The Step 4 summary is created afterward in the same folder. Then each stage gets its own commit, together with its section of the Step 4 summary. So a three-stage plan ends with at least four commits.
+The plan files stay uncommitted while you revise them. When you type `Approved Step 3`, the agent creates a feature branch. Before the first commit, the agent groups the plans in `docs/plans/{feature}/`, even if Step 1 was skipped, and repairs the navigation and plan index. That commit contains the approved plans, this feature’s existing debug log if present, and only those necessary organization changes. The Step 4 summary is created afterward in the same folder. Then each stage gets its own commit, together with its section of the Step 4 summary. So a three-stage plan ends with at least four commits.
 
 ### When scope changes
 
@@ -99,6 +99,36 @@ flowchart LR
   B --> S4[Step 4<br/>Build stage by stage]
   S4 -->|scope change| S2
 ```
+
+## Debug the workflow instructions
+
+Enable optional feedback about Railspike itself with:
+
+> Enable Railspike debug mode for this workflow.
+
+Turn it off with:
+
+> Disable Railspike debug mode.
+
+New workflows default off. The agent records `Debug mode: enabled` or `Debug mode: disabled` below the current artifact’s navigation bar, carries it into later artifacts, and restores it after context loss. The latest explicit request wins; unresolved missing or conflicting state on resumption needs clarification. Historical artifacts remain snapshots.
+
+When enabled, each completed step’s handoff includes evidence-backed findings about useful and redundant instructions, plus a link to `{feature_name}_debug_log.md`. Reports are saved before presentation with UTC timestamps and step identifiers. Corrections append labeled revisions; unchanged reports are skipped. Phases and implementation stages do not produce separate reports. Disabling stops diagnostics and preserves the log.
+
+Illustrative report format (use actual timestamps and observed step evidence):
+
+```text
+## <UTC timestamp> — Step 1
+Necessary/useful instructions
+- docs/workflow/step1_solution_assessment.md, Review and revision:
+  Rechecking the combined options exposed incompatible assumptions.
+  Retain this instruction.
+Redundant/unnecessary instructions
+- No supported findings.
+```
+
+Findings must cite their instruction source and observable evidence. Inapplicable and uncertain findings belong in separate groups; an unused instruction is not necessarily redundant. Findings are advisory: approval gates still apply, and changing instructions requires separate authorization.
+
+The log stays uncommitted during planning and moves with the plans into the feature folder. Include it in the initial planning commit; later additions accompany authorized stage commits or a final log-only handoff commit. Never amend completed commits. See the [debug contract](./RAILSPIKE.md#railspike-debug-mode) for recovery and commit rules, and the [failure guide](./docs/failure-modes.md#debug-state-or-logging-is-unclear) if state or saving fails.
 
 ## When to use it
 

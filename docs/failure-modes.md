@@ -47,3 +47,11 @@ Then confirm that the first Step 4 commit contains approved plans and only the [
 **Signal:** Moving approved plans would overwrite an artifact, leave ambiguous destinations or broken references, or require substantive changes.
 
 **Recovery:** Stop before the planning commit or implementation. Inspect the existing feature folder, preserve filenames and approved content, and resolve collisions without overwriting files. Repair relative links, affected references, and this feature’s plan-index entry. Request renewed approval for substantive revisions. Inspect staged contents against the organization allowance; create the Step 4 summary only after the planning commit.
+
+## Debug state or logging is unclear
+
+**Signal:** Resumed work lacks a reliable mode setting, prior artifacts disagree, a diagnostic log cannot be saved, or a report repeats earlier findings.
+
+**Recovery:** Apply the [debug contract](../RAILSPIKE.md#railspike-debug-mode): prefer the latest explicit request and current artifact state; historical snapshots do not override them. If evidence cannot resolve resumed state, ask rather than silently defaulting off. Mode changes do not grant approval to proceed.
+
+If saving fails, report the failure without claiming the log was saved; resolve it before presenting diagnostics as logged. Preserve existing entries and append labeled corrections identifying the superseded entry; skip unchanged reports. Keep inapplicable or uncertain findings separate from redundant instructions. Disabled mode preserves the log without new diagnostics. Include saved additions only in the authorized planning/stage commit or final log-only handoff commit; never amend completed commits or use the allowance for unrelated files.

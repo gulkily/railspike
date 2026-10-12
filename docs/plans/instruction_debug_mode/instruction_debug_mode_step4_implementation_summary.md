@@ -6,7 +6,7 @@ Debug mode: disabled
 
 ## Stage checklist
 - [x] Stage 1: canonical debug contract, recovery, step handoffs, and log commit lifecycle.
-- [ ] Stage 2: usage examples, failure guidance, backlog closure, and final verification.
+- [x] Stage 2: usage examples, failure guidance, backlog closure, and final verification.
 
 ## Stage 1 - Complete debug workflow
 - Changes: Added the shared Railspike contract for durable mode, evidence categories, completed-step reports, append-only logs, and bounded log commits. Wired all four step entry/resumption and completion paths while preserving approval and organization rules.
@@ -22,3 +22,14 @@ Debug mode: disabled
   - Organization/initial commit: move and relink the feature log without altering state/history; include only that log alongside the existing approved-plan allowance.
   - Stage/final handoff: no phase/stage reports; pending additions accompany authorized stage commits, while the final Step 4 report gets a log-only handoff commit without amendment.
 - Evidence boundary: These are documentation and manual scenario checks, not live agent execution tests or a claim that diagnostics ran during this workflow.
+
+## Stage 2 - Usage, recovery, and final verification
+- Changes: Added README enable/disable prompts, durable-state explanation, an explicitly illustrative report, and log commit guidance. Added recovery for unresolved state, failed logging, and duplicate reports. Closed the separate backlog item.
+- Verification: All 27 Markdown files pass local link checks; debug/recovery anchors, whitespace, and complete-cycle allowed paths pass. The existing Git workflow fixture passes without script changes. Reviewed README examples and recovery instructions against the canonical contract, including initial-log inclusion and final log-only commits. All four completed-step handoffs link the shared contract; phase/stage instructions explicitly avoid reports.
+- Notes: This is documentation and manual scenario verification, not a live agent execution guarantee. No runtime, website, deployment, migration, or release changes were made, so those checks are not applicable. The illustrative report is not evidence that diagnostics ran in this workflow.
+
+## Handoff
+- Planning commit: `f0a252e`, containing approved Steps 1–3 in their feature folder plus the index entry; no implementation or summary.
+- Stage 1 commit: `17d2028`; Stage 2 is the commit containing this completed checklist and summary. Each stage includes its summary update; no history was amended.
+- Debug mode is implemented and remains disabled for this workflow. No diagnostic log or log-only handoff commit is needed without diagnostic output.
+- Both stages complete; no remaining scope changes. Enable the feature in a workflow with “Enable Railspike debug mode for this workflow.”
