@@ -18,3 +18,22 @@ Debug mode enabled by the user's explicit request alongside Step 2 approval. Upd
 ### Uncertain assessments
 - `docs/workflow/step3_development_plan_after.md`, one-page check: Markdown has no fixed pagination. The plan uses compact bullets and two bounded stages, but actual rendered page count depends on presentation. Consider an explicit word or layout guideline separately; this feature does not authorize changing planning-length rules.
 - Scenario review will establish instruction consistency, not prove all agents obey the conversational limit. Retain that evidence boundary; observed agent adherence would require separate execution evidence.
+
+## 2026-10-12T17:32:29Z — Step 4
+
+### Necessary/useful instructions
+- `RAILSPIKE.md`, Planning Artifacts / organization and commit discipline: the approved plans and original log were moved unchanged and committed as `68663ca` before summary creation. SHA-256 comparison confirmed content preservation, and staged-path review excluded the existing backlog edit. Retain these boundaries.
+- `docs/workflow/step4_implementation_do.md`, Stage Boundary Protocol: Stage 1 (`d84023f`) and Stage 2 (`4b36f75`) each include their summary evidence; Stage 2 began after the Stage 1 commit. Retain this verifiable stage cadence.
+- `RAILSPIKE.md`, Completed-step report and Full report content: all four handoffs now request one short log-link line, while this entry retains findings and required groups. README and recovery guidance agree. Retain the separation between complete log content and minimal conversation output.
+- `docs/workflow/step4_implementation_after.md`, Final Verification Checklist: final review verified planning/stage commit boundaries, unchanged approved content, and allowed paths. Local links/anchors across 32 Markdown files, whitespace, original-log preservation, and documentation scenarios passed. Retain proportional documentation checks.
+
+### Redundant/unnecessary instructions
+- No supported findings.
+
+### Inapplicable instructions
+- `docs/workflow/step4_implementation_after.md`, external/deployment verification: no application, runtime, UI, migration, deployment, or release behavior changed. These checks were recorded as not applicable in the summary. Retain their conditional applicability rather than treating non-use as redundancy.
+
+### Uncertain assessments
+- Documentation review verifies intended behavior, not adherence by every future agent. The current handoff can demonstrate a single link line; it cannot prove general compliance. Retain the explicit evidence boundary and evaluate future observed failures if they occur.
+
+The former summary directives identified in the Step 3 entry were replaced within this approved implementation. This records the later outcome without rewriting that historical observation. Final diagnostics use a separate log-only handoff commit after both stage commits.
