@@ -58,3 +58,24 @@
 ### Uncertain assessments
 - The instructions do not address verification against an input file that is untracked in the repository; a recorded hash was used as the evidence anchor.
 - Three stages for a one-file page may be more ceremony than the work needs; the instructions have no lower bound or fast path other than skipping Step 1.
+
+## 2026-10-12T19:31Z — Step 4 (implementation)
+
+### Necessary/useful instructions
+- `step4_implementation_before.md` § Planning Docs Commit Gate: produced a clean first commit while the untracked `railspike.txt` stayed out. Retain.
+- `step4_implementation_do.md` § Stage Boundary Protocol: `git status --short` before each commit kept the source file out of stage commits. Retain.
+- Step 3 per-stage \"Early warning / validation\": made the character-level diff the gate, which caught no drift but did catch a real 360 px overflow in Stage 2 through the width check. Retain.
+
+### Redundant/unnecessary instructions
+- One commit per stage with the summary update is restated in `RAILSPIKE.md` § Step 4 commit cadence, `step4_implementation_do.md` § Execution Rules and § Stage Boundary Protocol, and `step4_implementation_after.md` item 2. Suggest consolidating.
+- `step4_implementation_after.md` item 6 overlaps the per-stage summary rule. Suggest consolidating.
+
+### Inapplicable instructions
+- Documentation-only verification clauses in the Do and After files: this was an application change.
+- Migration, role, and database dependency checks in `step4_implementation_after.md` item 5.
+
+### Uncertain assessments
+- A verification-only final stage (Stage 3) needed its own commit carrying only the summary; the instructions do not say whether that is expected.
+- The instructions have no guidance for a source file that the work depends on but must not commit (`railspike.txt`); a recorded hash was used as the evidence anchor.
+- The feature folder name no longer describes the final scope (essay only) because the name was fixed at Step 1.
+- Live-URL verification cannot occur before merge; recorded as pending rather than not applicable. Real OS dark-mode emulation was unavailable.
