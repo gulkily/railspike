@@ -32,6 +32,37 @@
   <p>Review and commit <code>.gitmodules</code> and the submodule pointer. Then give your agent a task:</p>
   <pre><code>I want to export my saved searches as CSV. Write Step 1 of @railspike.</code></pre>
   <p>Open the file the agent wrote in <code>docs/plans/</code>, edit it or ask for changes, and when it says what you want, reply <code>Approved Step 1</code>. Repeat for each step. The <a href="https://github.com/gulkily/railspike#quick-start">quick start</a> has the full walkthrough.</p>
+  <h2>A real example</h2>
+  <p>Railspike is built with Railspike. This is one small feature from this repository: <a href="https://github.com/gulkily/railspike/blob/68663ca/docs/plans/quiet_debug_mode/quiet_debug_mode_step1_solution_assessment.md">the Step 1 file</a> the agent wrote, trimmed for length. Omissions are marked <code>[…]</code>; the rest is verbatim.</p>
+
+  <h3>The request</h3>
+  <pre><code>## Original Query
+I want to restrict/limit debug mode to almost entirely write to the md file and not write to the conversation much. Please write Step 1 of Railspike.</code></pre>
+
+  <h3>What the agent proposed</h3>
+  <p>Three options came back; here is the first, and the headings of the others.</p>
+  <pre><code>## Option A — File-first diagnostics with a one-line link
+Write all diagnostic findings and required report groups to the existing debug log. At each completed-step handoff, include at most one short debug line linking to it, without repeating findings in the conversation.
+
+- **Pros:** Predictable conversation limit; preserves discoverability and the complete diagnostic record; fits the existing handoff workflow.
+- **Cons:** Users must open the log to review findings; still adds one line per completed step.
+
+[…]
+
+## Option B — Silent logging by default
+## Option C — File-first diagnostics with selectable conversation verbosity</code></pre>
+
+  <h3>The recommendation</h3>
+  <pre><code>## Recommendation
+Choose **Option A** as one bounded documentation-only feature: complete diagnostic reports in `{feature_name}_debug_log.md`, with at most one short link line in each completed-step conversation. Required useful/redundant groups, source references, evidence, suggestions, and any inapplicable/uncertain findings belong in the log only. Do not narrate diagnostic collection or echo empty groups in chat.
+
+Keep exceptions narrow: briefly disclose log-write failures or request genuinely necessary mode-state clarification; provide findings in chat when explicitly requested. Ordinary task updates, blockers, and approval requests remain available. Instruction reprints are a separate source of conversation volume and are outside this debug-specific change.</code></pre>
+
+  <p>The reply <code>Approved Step 1</code> is typed in the conversation and is not stored in a file. Steps 2 and 3 follow the same way; after <code>Approved Step 3</code> the plans are committed first and then each stage gets its own commit:</p>
+  <pre><code>68663ca docs: organize approved quiet debug mode plans
+d84023f docs(stage 1): keep debug reports in Markdown logs
+4b36f75 docs(stage 2): explain quiet debug handoffs and recovery</code></pre>
+  <p>Browse them in the <a href="https://github.com/gulkily/railspike/tree/68663ca/docs/plans/quiet_debug_mode">feature folder</a> or the <a href="https://github.com/gulkily/railspike/commit/d84023f">first stage commit</a>.</p>
 </main>
 <footer>
   <p><a href="https://github.com/gulkily/railspike">Source on GitHub</a> · <a href="https://github.com/gulkily/railspike/blob/master/LICENSE">MIT license</a></p>
