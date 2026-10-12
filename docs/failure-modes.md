@@ -40,4 +40,10 @@ git status --short
 git log --oneline
 ```
 
-Then confirm that the first Step 4 commit contains only approved Steps 1–3, every completed stage has a summary update and commit, and the final artifact satisfies the Step 3 Completion Contract.
+Then confirm that the first Step 4 commit contains approved plans and only the [organization allowance](../RAILSPIKE.md#planning-artifacts), every completed stage has a summary update and commit, and the final artifact satisfies the Step 3 Completion Contract.
+
+## Plan organization is blocked
+
+**Signal:** Moving approved plans would overwrite an artifact, leave ambiguous destinations or broken references, or require substantive changes.
+
+**Recovery:** Stop before the planning commit or implementation. Inspect the existing feature folder, preserve filenames and approved content, and resolve collisions without overwriting files. Repair relative links, affected references, and this feature’s plan-index entry. Request renewed approval for substantive revisions. Inspect staged contents against the organization allowance; create the Step 4 summary only after the planning commit.

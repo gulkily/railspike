@@ -85,7 +85,7 @@ Before starting the next stage, the agent records the results and any limitation
 
 ### How commits work
 
-The plan files stay uncommitted while you revise them. When you type `Approved Step 3`, the agent creates a feature branch. The first commit contains only the approved plans. Then each stage gets its own commit, together with its section of the Step 4 summary. So a three-stage plan ends with at least four commits.
+The plan files stay uncommitted while you revise them. When you type `Approved Step 3`, the agent creates a feature branch. Before the first commit, the agent groups the plans in `docs/plans/{feature}/`, even if Step 1 was skipped, and repairs the navigation and plan index. That commit contains the approved plans and only those necessary organization changes. The Step 4 summary is created afterward in the same folder. Then each stage gets its own commit, together with its section of the Step 4 summary. So a three-stage plan ends with at least four commits.
 
 ### When scope changes
 
@@ -126,7 +126,7 @@ docs/failure-modes.md What to do when a run goes wrong.
 
 See the [failure-mode guide](./docs/failure-modes.md) for recovery and the [maintainer backlog](./BACKLOG.md) for project follow-up.
 
-Your plans go in your project's `docs/plans/`, not here. Keep each step in its own file; group efforts with four or more planning artifacts under `docs/plans/{feature}/`. Each Step 1–4 artifact links to the others so the decision record stays navigable. The agent opens only the step file it needs, so it never has to hold one huge prompt in context.
+Your plans go in your project's `docs/plans/`, not here. Keep each step in its own file; organize every feature under `docs/plans/{feature}/` after Step 3 approval and branching, before the initial planning commit. Reuse an existing feature folder. Each Step 1–4 artifact links to the others so the decision record stays navigable. The agent opens only the step file it needs, so it never has to hold one huge prompt in context.
 
 ## Customizing
 

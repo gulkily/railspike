@@ -1,4 +1,4 @@
-> **Feature plan:** [Step 1](./fdp_feature_integration_step1_solution_assessment.md) · [Step 2](./fdp_feature_integration_step2_feature_description.md) · [Step 3](./fdp_feature_integration_step3_development_plan.md) · Step 4 (pending)
+> **Feature plan:** [Step 1](./fdp_feature_integration_step1_solution_assessment.md) · [Step 2](./fdp_feature_integration_step2_feature_description.md) · [Step 3](./fdp_feature_integration_step3_development_plan.md) · [Step 4](./fdp_feature_integration_step4_implementation_summary.md)
 
 ## Original Query
 We added two new features while still working on the FDP project. Let us fold them into this one, please. Review the latest commits for `~/fdp` and write Step 1 of `RAILSPIKE.md` to fold them into this project.

@@ -24,7 +24,7 @@ At every stage boundary (including Stage 1), complete this sequence before start
 7. Only then begin the next stage.
 
 ## Implementation Summary Artifact
-- Location: `docs/plans/`
+- Location: `docs/plans/{feature_name}/`, beside the approved plans; create only after the initial planning commit.
 - Filename: `{feature_name}_step4_implementation_summary.md`
 - Begin with the standard Plan navigation bar (template in `RAILSPIKE.md`; omit skipped Step 1)
 - Preferred format per stage:

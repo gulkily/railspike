@@ -27,7 +27,11 @@ Each step MUST be a separate file in `docs/plans/`:
 - **Step 3**: `{feature_name}_step3_development_plan.md`
 - **Step 4**: `{feature_name}_step4_implementation_summary.md`
 
-**Directory structure**: When a feature accumulates four or more planning artifacts (e.g., all Step 1–4 docs plus auxiliary notes), move them into `docs/plans/{feature_name}/`. Keep smaller efforts at the root until they grow, and update `docs/plans/README.md` when a new folder appears so others can navigate.
+**Directory structure and organization rule**: After explicit `Approved Step 3` and creation of the Step 4 feature branch, organize the current feature's planning artifacts in `docs/plans/{feature_name}/` before the first commit or implementation, regardless of artifact count or whether Step 1 was skipped. Reuse an existing feature folder. Preserve filenames, separate step files, and approved substantive content. Repair relative plan navigation and affected repository references; add or update this feature's entry in `docs/plans/README.md`, creating the index if absent.
+
+The initial planning commit contains only approved Steps 1–3 (Steps 2–3 if Step 1 was skipped), plus the moves, index entries, and reference fixes necessary for this feature's organization. Exclude implementation, the Step 4 summary, unrelated plans, and unapproved auxiliary content. This narrow organization allowance qualifies the [Step 4 planning-commit gate](./docs/workflow/step4_implementation_before.md#planning-docs-commit-gate-required); it does not authorize substantive revisions to approved plans. Create the Step 4 summary in the same folder only after the planning commit.
+
+Inspect destinations and affected references before moving files. If files conflict, the destination is ambiguous, or organization requires substantive changes, stop and resolve the issue before committing or implementing. Do not overwrite artifacts or silently revise approved scope; seek renewed approval for substantive changes.
 
 **Plan navigation**: Start every artifact with this relative-link bar; omit Step 1 only when skipped.
 
@@ -39,13 +43,13 @@ Each step MUST be a separate file in `docs/plans/`:
 - Keep Step 1-3 planning documents uncommitted while they are being drafted/revised.
 - Do not commit Step 1-3 planning documents when Step 1 or Step 2 is approved.
 - After the user explicitly responds `Approved Step 3`, create the Step 4 feature branch.
-- The first commit on that feature branch must contain only the approved Step 1-3 planning documents.
+- Before the first commit on that branch, organize the plans under the rule above; limit the commit to approved planning documents and its organization allowance.
 - During Step 4, each completed stage must be committed with its Step 4 summary update in the same commit before starting the next stage.
 
-**Plan review**: Plans are working documents. The user may edit the current artifact or request revisions, including a combination of compatible Step 1 options. Recheck tradeoffs and scope after revisions; a revision request is not approval to advance. Do not begin Step 4 until the user explicitly responds `Approved Step 3`. The first commit after branching for Step 4 must capture the approved Step 1-3 planning files.
+**Plan review**: Plans are working documents. The user may edit the current artifact or request revisions, including a combination of compatible Step 1 options. Recheck tradeoffs and scope after revisions; a revision request is not approval to advance. Do not begin Step 4 until the user explicitly responds `Approved Step 3`. Organize and commit the approved plans under the organization rule above before implementation.
 
 **Step 4 commit cadence (mandatory)**:
-- Make one planning commit at the start of Step 4 containing only approved Step 1–3 docs.
+- Make one planning commit at the start of Step 4 containing approved plans and only the organization allowance above.
 - Then make at least one stage-scoped artifact commit per Step 3 stage.
 - Do not start Stage `N+1` until Stage `N` has:
   - applicable verification completed,
@@ -67,7 +71,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - After delivering each step, explicitly request “Approved Step N” and pause until the user responds with that exact phrase
 - Create separate files for each step only after receiving the relevant approval
 - ALWAYS create a feature branch before Step 4 implementation
-- Enforce Step 4 commit cadence: first Step 4 commit contains approved Step 1-3 planning docs; each completed stage has a stage-scoped commit that includes the Step 4 summary update
+- Enforce Step 4 commit cadence: first organize and commit approved plans under the organization rule above; each completed stage has a stage-scoped commit that includes the Step 4 summary update
 - Treat documentation-only work as a Step 4 implementation only when its allowed documentation file scope was approved in Steps 2 and 3; use applicable verification and record non-applicable runtime checks in the summary
 - Prefer shared components/API contracts first; reuse or extend instead of forking markup, CSS, or payloads
 - Flag scope creep early and bounce back to planning steps rather than improvising mid-implementation
