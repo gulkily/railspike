@@ -47,3 +47,21 @@ Debug mode: enabled
 - Notes:
   - The essay says "we" and "my agentic developers and me"; it was kept verbatim per the plan. Maintainer may want to adjust wording later.
   - Hero headline now balances onto three lines at desktop width; acceptable, revisit in Stage 5 polish if desired.
+
+## Stage 4 - Voice selector
+- Changes:
+  - Maintainer decision (gate): ship all nine voices, each non-original clearly labeled "In the style of …" with a note that it is a pastiche, not a real quotation, and not written or endorsed by that person.
+  - `index.html`: the essay section now holds nine `<article class="voice">` blocks copied from the updated `temp/Railspike Readings.html`; only the Original is visible by default, the others carry `hidden`.
+  - A small inline script builds an ARIA tablist (click, ArrowLeft/Right, Home, End; roving tabindex; focusable panel) from the articles; without scripting there are no tabs and the Original stays visible alone.
+  - Styles for tabs, voice notes, and the sources' dateline, sign-off, and footnotes; section heading is now "Introducing Railspike" with the Original's own title as its h3.
+  - Voice text unchanged apart from the earlier "promt" typo fix; the voice preference is not stored.
+- Verification:
+  - Text of all nine articles compared to the source: identical (Original apart from the typo fix).
+  - Markup tag balance check passed; page references only GitHub and the Pages host, no fonts or scripts from third parties.
+  - Headless Chrome: 9 tabs, Original selected by default; click selects Graham; ArrowRight, End, wrap-around, ArrowLeft, and a single tab stop worked as expected.
+  - 360 px: `scrollWidth` equals `clientWidth` with a long voice (Torvalds) selected.
+  - Rendered a selected voice (Graham) at 1200 px: tabs, label, heading, dateline, and body read cleanly.
+  - `git diff --check` clean; only `index.html` and this summary changed.
+  - Not performed: screen reader testing and a no-script render with a scripting-disabled browser flag; the no-script state is the markup as served (hidden attributes, no tabs).
+- Notes:
+  - Page weight rose to about 78 KB, all in one file with no extra requests.
