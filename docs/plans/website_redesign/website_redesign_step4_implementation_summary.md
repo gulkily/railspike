@@ -33,3 +33,17 @@ Debug mode: enabled
 - Notes:
   - The logo keeps its opaque white tile, shown as a badge on the amber bar; dark mode needs no separate asset.
   - Keyboard focus styles were restyled but not yet exercised; Stage 4 and 5 cover keyboard walkthroughs.
+
+## Stage 3 - Original essay as the explanation
+- Changes:
+  - `index.html`: new `#what` section after the hero with the maintainer's updated essay ("Gulko's original" from `temp/Railspike Readings.html`) as plain HTML, wrapped in `<article id="v-original">` for the Stage 4 selector; "What it is" added to the menu.
+  - Essay text copied verbatim except one typo fix ("promt" → "prompt"); the essay's own title became the section heading, and the hero, workflow, install, and fit sections are untouched.
+- Verification:
+  - Text comparison of the page article against the source article: identical apart from the typo fix (835 words).
+  - Rendered at 1200 px: readable 68-character column, list and headings intact.
+  - The page has no scripts, so the essay is fully visible without scripting; the essay contains no links to check.
+  - `git diff --check` clean; only `index.html` and this summary changed.
+  - Deployment and release checks not applicable to this stage.
+- Notes:
+  - The essay says "we" and "my agentic developers and me"; it was kept verbatim per the plan. Maintainer may want to adjust wording later.
+  - Hero headline now balances onto three lines at desktop width; acceptable, revisit in Stage 5 polish if desired.
