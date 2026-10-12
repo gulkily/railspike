@@ -47,8 +47,9 @@ printf 'host\n' > "$host/README.md"
 git -C "$host" add README.md
 git -C "$host" commit -qm 'initial host'
 # Same one-command installation as the README, substituting the fixture upstream.
-git -C "$host" submodule add --branch master "$upstream_bare" docs/railspike >/dev/null 2>&1
-test "$(git -C "$host" config --file .gitmodules --get submodule.docs/railspike.branch)" = master
+git -C "$host" submodule add "$upstream_bare" docs/railspike >/dev/null 2>&1
+test -z "$(git -C "$host" config --file .gitmodules --get submodule.docs/railspike.branch || :)"
+test "$(git -C "$host/docs/railspike" branch --show-current)" = master
 test "$(git -C "$host" diff --cached --name-only | sort)" = $'.gitmodules\ndocs/railspike'
 git -C "$host" commit -qm 'add Railspike'
 initial_revision="$(git -C "$host/docs/railspike" rev-parse HEAD)"

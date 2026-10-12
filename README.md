@@ -41,7 +41,7 @@ test ! -e docs/railspike && test ! -L docs/railspike
 When all checks pass, add Railspike. This command writes `.gitmodules`, stages the new submodule entry, and creates `docs/railspike`; it does not create a commit.
 
 ```bash
-git submodule add --branch master https://github.com/gulkily/railspike.git docs/railspike
+git submodule add https://github.com/gulkily/railspike.git docs/railspike
 git status --short
 git diff --cached -- .gitmodules docs/railspike
 ```
