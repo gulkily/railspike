@@ -1,5 +1,7 @@
 # Railspike backlog
 
+Track the current copy changes and deferred case studies in the [positioning checklist](./docs/positioning-checklist.md).
+
 Maintainer follow-up work. Completed plans and superseded drafts remain available in Git history.
 
 - [ ] Confirm GitHub Pages publishes `master` from `/` (root) with HTTPS at `https://gulkily.github.io/railspike/`; verify the live navigation, images, and external links.
