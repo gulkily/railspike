@@ -21,5 +21,8 @@ Resolve uncertainty when there are multiple viable approaches, complex trade-off
 - Keep content at a high level; no implementation details, code, or verbose prose
 - Favor bullets over paragraphs for fast comparisons
 
+## Review and revision
+Treat the options as material for discussion. The user may choose one, combine compatible parts, reject assumptions, or ask for another approach. Revise the current assessment and recommendation, rechecking compatibility, tradeoffs, risks, and scope. Preserve the Original Query; record the revised direction separately. A request for changes does not approve the step or authorize Step 2.
+
 ## Next
 Share the document for review and stop. Do not create Step 2 until the user explicitly responds with “Approved Step 1.” When approval arrives, continue with `docs/workflow/step2_feature_description.md`.

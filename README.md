@@ -2,17 +2,21 @@
 
 <img src="./railspike-logo.png" alt="Railspike rail and spike logo" width="96" height="96">
 
-Railspike is a file-based, approval-gated workflow for keeping AI-assisted feature work scoped, reviewable, and verified.
+**Shape the plan before the agent builds.**
 
-Use it with Claude Code, GitHub Copilot, or Codex when a feature needs a decision record and deliberate review points—not just a plausible patch.
+Railspike structures agent-driven work for planning, documentation, development, bug fixes, test suites, and checklists. Editable Markdown plans give you clear points to review, revise, and approve the work.
+
+Use it with Claude Code, GitHub Copilot, or Codex. Compare approaches, combine the parts that fit, and change the requirements or stages until they describe what you actually want.
 
 ## Why use this?
-- Keeps multi-step feature work inside the model context window by splitting guidance across files.
-- Forces approvals between steps so the agent cannot sprint ahead without human review.
-- Encourages reuse of shared UI/API components instead of letting the AI fork markup or payloads.
-- Limits plan bloat so every deliverable stays within a page and can be reviewed quickly.
+- Shape the direction in Step 1: question assumptions, combine compatible options, and revise the recommendation before approving it.
+- Review and edit requirements and staged plans as plain files, including across sessions.
+- Keep explicit approval points between steps, then verify and commit each delivery stage with its summary.
+- Keep guidance and plans small enough to review without burying the decisions.
 
-If you frequently see Claude/Codex derail because requirements evolve mid-stream, treat this repo as the “rails” that keep both you and the agent honest.
+Use Railspike alongside your agent's plan mode when you want a written decision process you can reshape and carry forward. Planning drafts stay editable and uncommitted until Step 3 is approved; the approved plans then become the first commit before delivery.
+
+The deliverable can be code, documentation, a test suite, or a checklist. You can also stop at a planning handoff and resume later; a finished plan does not imply that implementation is complete. Documentation-only work keeps its approved file boundary and uses checks appropriate to the document.
 
 ## Quick start
 
@@ -54,7 +58,11 @@ In your project, create `docs/plans/` if it does not exist. Then send your suppo
 
 > As a user, I would like to export my saved searches as CSV, please write Step 1 of `@railspike`.
 
-If the decision is straightforward, you may skip Step 1 and ask for Step 2 instead. Review each artifact before continuing. For example:
+If the decision is straightforward, you may skip Step 1 and ask for Step 2 instead. Review and revise the current artifact before continuing. For example, if the proposed CSV approaches differ in setup and privacy safeguards:
+
+> Combine option A’s simple export flow with option B’s privacy safeguards. Leave scheduled exports out of scope and update the recommendation.
+
+You can edit the file directly or ask the agent to revise it. Combining options should produce a coherent recommendation with its tradeoffs checked again. When the revised artifact matches your intent:
 
 > Approved Step 1, please continue to Step 2.
 
@@ -130,7 +138,7 @@ If a check fails, stop and explain it. Do not reset, clean, stash, delete files,
 
 ## How to run the chain with your agent
 1. Kick things off with a plain request like `As a user, I would like to <story>, please write Step 1 of RAILSPIKE.md.` Make the story explicit so the agent starts from the user’s perspective.
-2. Let the agent draft the artifact in `docs/plans/`, then review/edit it directly or issue follow-up instructions until you’re satisfied.
+2. Let the agent draft the current artifact in `docs/plans/`. Compare and combine compatible options in Step 1; revise requirements in Step 2 and stages in Step 3. Edit directly or request changes until the current artifact matches your intent.
 3. When the doc hits the bar, reply verbatim with `Approved Step N, please continue to Step N+1.` The bot must stop until that phrase arrives, so you control scope creep.
 4. Repeat the review/approval loop for each step. Keep Step 1-3 planning docs uncommitted through drafting/review.
 5. After `Approved Step 3`, create the Step 4 feature branch and make the first commit with only the approved Step 1-3 docs.

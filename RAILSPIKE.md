@@ -1,7 +1,7 @@
 # Railspike
 
 ## Overview
-Feature work flows through four tightly scoped steps with an optional solution assessment upfront. To keep the instructions inside the context window, the detailed guidance for each step now lives in separate files that you open only when you are ready for that step.
+Planning, documentation, development, bug fixes, test suites, and checklists can use this four-step workflow, with an optional solution assessment upfront. Review and revise the current artifact before approving the next step; a planning handoff can pause before implementation. To keep the instructions inside the context window, the detailed guidance for each step now lives in separate files that you open only when you are ready for that step.
 
 ## Repository Boundary
 Instruction files under `docs/workflow/` belong to the Railspike repository. If Railspike is included in another repository as a submodule or vendored directory, resolve those paths relative to the Railspike repository root, not the host repository root. Planning artifacts still belong in the host repository under `docs/plans/`.
@@ -13,7 +13,7 @@ Instruction files under `docs/workflow/` belong to the Railspike repository. If 
 4. Request approval in the format `Approved Step N` when required, and do not open the next step's files until approval is received.
 
 ## Step Guide
-- **Step 1 – Solution Assessment (Optional)**: resolve uncertainty across multiple approaches. `docs/workflow/step1_solution_assessment.md`
+- **Step 1 – Solution Assessment (Optional)**: compare approaches, combine compatible options, and refine the recommendation before approval. `docs/workflow/step1_solution_assessment.md`
 - **Step 2 – Feature Description**: capture problem framing, user stories, requirements, and success criteria. `docs/workflow/step2_feature_description.md`
 - **Step 3 – Development Plan**: break work into atomic stages with dependencies and verification notes. Start with `docs/workflow/step3_development_plan_before.md`, then follow the `do` and `after` files.
 - **Step 4 – Implementation**: execute the approved artifact on a feature branch and maintain the implementation summary. The artifact may be application changes or explicitly scoped documentation-only work. Start with `docs/workflow/step4_implementation_before.md`, then follow the `do` and `after` files.
@@ -42,7 +42,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - The first commit on that feature branch must contain only the approved Step 1-3 planning documents.
 - During Step 4, each completed stage must be committed with its Step 4 summary update in the same commit before starting the next stage.
 
-**Plan review**: Do not begin Step 4 until the user explicitly responds `Approved Step 3`. The first commit after branching for Step 4 must capture the approved Step 1-3 planning files.
+**Plan review**: Plans are working documents. The user may edit the current artifact or request revisions, including a combination of compatible Step 1 options. Recheck tradeoffs and scope after revisions; a revision request is not approval to advance. Do not begin Step 4 until the user explicitly responds `Approved Step 3`. The first commit after branching for Step 4 must capture the approved Step 1-3 planning files.
 
 **Step 4 commit cadence (mandatory)**:
 - Make one planning commit at the start of Step 4 containing only approved Step 1–3 docs.
@@ -82,7 +82,7 @@ Each step MUST be a separate file in `docs/plans/`:
 - For Step 4 summaries, prefer `## Stage N - title` headers with bullet lists for changes, verification, and notes so stage handoff stays easy to audit
 
 **User**
-- Review and approve explicitly at each step
+- Review, revise, and approve explicitly at each step; question assumptions and combine compatible options before settling on a direction
 - Flag issues early so adjustments happen before implementation
 - Resist adding scope during Step 4
 - Prefer solutions that avoid database migrations; rely on existing schema where feasible

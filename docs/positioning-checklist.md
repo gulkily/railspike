@@ -4,7 +4,7 @@ Work on one item at a time. Commit each completed item with its checklist update
 
 - [x] 1. Save this checklist and an evidence-based case-study shortlist for review.
 - [x] 2. Use agent terminology consistently throughout the repository.
-- [ ] 3. Center README and workflow guidance on reviewing, revising, and combining options; describe planning, documentation, development, bug fixes, test suites, and checklists.
+- [x] 3. Center README and workflow guidance on reviewing, revising, and combining options; describe planning, documentation, development, bug fixes, test suites, and checklists.
 - [ ] 4. Update website copy and metadata with the same positioning and a concrete revision prompt; verify desktop and mobile layout.
 - [ ] 5. Align the HN draft and readiness checklist; prepare a concise GitHub description and run final consistency checks.
 - [ ] 6. After selection, write and verify case studies from the approved candidates. Distinguish planning from completed delivery and report verification limits.
@@ -18,3 +18,4 @@ Work on one item at a time. Commit each completed item with its checklist update
 
 - Item 1: shortlist separates completed work from local planning drafts; case studies remain unwritten.
 - Item 2: repository search found no remaining old terminology; Markdown links pass.
+- Item 3: README and Step 1 now explain revision and option combinations; approval gates, artifact names, and commit cadence remain intact. Markdown links pass.
