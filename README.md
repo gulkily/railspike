@@ -70,6 +70,7 @@ The first run should take only a few minutes: read the four-step overview, send 
   - `step3_development_plan_before.md`, `step3_development_plan_do.md`, `step3_development_plan_after.md`
   - `step4_implementation_before.md`, `step4_implementation_do.md`, `step4_implementation_after.md`
 - `docs/plans/` (create per feature) – where you store the working artifacts: `{feature}_stepN_*.md` plus any auxiliary research. Move large efforts into `docs/plans/{feature}/` and update a local README for navigation.
+- [BACKLOG.md](./BACKLOG.md) – remaining maintainer tasks, including launch verification and replacement examples.
 
 ## Reusing across projects
 
@@ -213,15 +214,20 @@ Returning to planning is a feature, not a failure: a new requirement or unresolv
 
 Run these before sharing a Railspike change. The link check validates local Markdown paths; review rendered Mermaid diagrams on GitHub after publication because GitHub owns the renderer.
 
+The Markdown-link checker is available in Python, Perl, and Node.js so it can run in installation environments with different runtimes available. Choose whichever version fits your environment; installing all three runtimes is not required. We intentionally maintain these language alternatives with equivalent behavior and no third-party dependencies. When changing the checker itself, verify all three implementations.
+
 ```bash
-# Python 2.7+ or Python 3 (recommended; no third-party packages)
+# Choose one Markdown-link checker:
+# Python 2.7+ or Python 3
 python scripts/check-markdown-links.py
 
 # Perl (core modules only)
 perl scripts/check-markdown-links.pl
 
-# Node.js remains an optional equivalent
+# Node.js
 node scripts/check-markdown-links.mjs
+
+# Then run the Git workflow and whitespace checks:
 bash scripts/check-railspike-git-workflow.sh
 git diff --check
 git status --short
