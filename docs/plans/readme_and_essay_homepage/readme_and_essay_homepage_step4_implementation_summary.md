@@ -27,3 +27,16 @@ Debug mode: enabled
 - Notes:
   - Real OS dark-mode switching and non-Chromium browsers were not tested.
   - The page's old `theme-color` (amber) belonged to the removed design and is replaced by light and dark values.
+
+## Stage 3 - Release verification
+- Changes:
+  - None to `index.html`; verification only.
+- Verification:
+  - Weight and dependencies: 7.9 KB (limit 15 KB); zero scripts, external stylesheets, fonts, images, or `url()` references, so no third-party requests and it works without scripting by construction; one `h1`.
+  - Verbatim: re-run in Stage 2 after the last markup change; no change to `index.html` since.
+  - Links: repository link returns HTTP 200; the page's other references are the canonical URL and the local logo file; `node scripts/check-markdown-links.mjs` passes for 47 Markdown files.
+  - Scope: only `index.html` and this feature's plan files changed on the branch; `railspike.txt` remains untracked and unmodified.
+- Notes:
+  - Pending the maintainer: review of the rendered page in light, dark, and phone widths, then merge; check the live Pages URL after deploy.
+  - Not exercised: real OS dark-mode toggle, non-Chromium browsers, and screen readers.
+  - Content removed from the homepage by design (install command, worked example, limits) remains in Git history; the README is unchanged.
