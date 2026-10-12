@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <title>Railspike — Keep AI-assisted feature work on track</title>
-  <meta name="description" content="Small Markdown instructions. Explicit approvals. A plan before implementation and a reviewable record of every stage. Install Railspike with one Git command.">
+  <title>Railspike — Shape the plan before the agent builds</title>
+  <meta name="description" content="Review options, combine approaches, and revise Markdown plans before approving agent-driven work. For development, documentation, bug fixes, test suites, and checklists.">
   <link rel="canonical" href="https://gulkily.github.io/railspike/">
   <link rel="icon" type="image/png" href="./railspike-logo.png">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Railspike — Keep AI-assisted feature work on track">
-  <meta property="og:description" content="A four-step Markdown workflow with explicit approvals, scoped plans, and stage-by-stage verification.">
+  <meta property="og:title" content="Railspike — Shape the plan before the agent builds">
+  <meta property="og:description" content="Review options, combine approaches, and revise Markdown plans before approving agent-driven work. For development, documentation, bug fixes, test suites, and checklists.">
   <meta property="og:url" content="https://gulkily.github.io/railspike/">
   <meta property="og:image" content="https://gulkily.github.io/railspike/railspike-logo.png">
   <meta property="og:image:alt" content="Railspike rail and spike logo">
@@ -102,25 +102,25 @@
     <div class="hero">
       <div>
         <p class="eyebrow">A file-based workflow for your agent</p>
-        <h1>Keep feature work<br>on track.</h1>
-        <p class="lead">Give your agent a clear scope, a plan you approve, and a record you can review. Railspike turns feature work into four deliberate steps, written in plain Markdown.</p>
+        <h1>Shape the plan before<br>the agent builds.</h1>
+        <p class="lead">Review the options. Combine the parts that fit. Revise the requirements and plan until they describe what you actually want—then approve the next step.</p>
         <div class="actions"><a class="button" href="#get-started">Start with one Git command</a><a href="#workflow">Explore the workflow</a></div>
       </div>
       <aside class="hero-aside" aria-label="What the workflow gives you">
-        <p><strong>A decision before a diff.</strong><span>Surface assumptions and risks before implementation begins.</span></p>
-        <p><strong>You approve the next step.</strong><span>Review the assessment, feature description, and plan before moving forward.</span></p>
+        <p><strong>A plan you can reshape.</strong><span>Question assumptions, combine compatible approaches, and revise the recommendation.</span></p>
+        <p><strong>You approve the next step.</strong><span>Review and revise the assessment, requirements, and stages before moving forward.</span></p>
         <p><strong>A record of every stage.</strong><span>Keep changes, verification, and the implementation summary together in a commit.</span></p>
       </aside>
     </div>
     <section id="workflow" aria-labelledby="workflow-title">
       <p class="eyebrow">The workflow</p>
       <h2 id="workflow-title">Four steps. Explicit handoffs.</h2>
-      <p>Use Railspike alongside your agent's plan mode when you want plans preserved as committed files, explicit approvals, and implementation stages verified and committed one at a time.</p>
+      <p>Use Railspike alongside your agent's plan mode to keep decisions in editable Markdown files you can revisit across sessions. After approval, plans are committed before delivery; each stage is verified and committed with its summary.</p>
       <ol class="steps">
-        <li><span class="step-number">01 / ASSESS (optional)</span><h3>Assess the options</h3><p>Compare approaches, expose tradeoffs, and choose a direction when the answer is uncertain.</p></li>
-        <li><span class="step-number">02 / DEFINE</span><h3>Describe the feature</h3><p>Capture the problem, user stories, requirements, risks, and a clear completion boundary.</p></li>
-        <li><span class="step-number">03 / PLAN</span><h3>Plan the stages</h3><p>Break the feature into small stages with dependencies and an explicit verification plan.</p></li>
-        <li><span class="step-number">04 / IMPLEMENT</span><h3>Build and verify</h3><p>Work on a feature branch. Verify each stage and commit it with its updated summary.</p></li>
+        <li><span class="step-number">01 / ASSESS (optional)</span><h3>Assess the options</h3><p>Compare approaches, combine compatible options, and refine the recommendation when the answer is uncertain.</p></li>
+        <li><span class="step-number">02 / DEFINE</span><h3>Define the outcome</h3><p>Refine the requirements, exclusions, risks, and success criteria until the scope matches your intent.</p></li>
+        <li><span class="step-number">03 / PLAN</span><h3>Plan the stages</h3><p>Revise the stages, dependencies, and verification plan before committing to the work.</p></li>
+        <li><span class="step-number">04 / DELIVER</span><h3>Deliver and verify</h3><p>Produce the approved code, documents, tests, or checklist on a feature branch. Verify each stage and commit it with its updated summary.</p></li>
       </ol>
       <p class="note">Each planning step waits for your explicit approval. After reviewing its artifact, type <code>Approved Step N</code> with the step number to proceed. After you approve Step 3, the agent creates a feature branch and commits the approved plans before implementation. If scope changes, return to planning.</p>
     </section>
@@ -136,23 +136,26 @@
           <li><label><input type="checkbox"><span><code>docs/railspike</code> doesn't exist, including as a symlink, and <code>docs</code> isn't a symlink.</span></label></li>
         </ul>
         <p>A submodule pins the instructions to a specific revision and lets you review upstream updates without managing a copied set of files.</p>
-        <p>The instructions live in the submodule. Your feature plans belong in your project's <code>docs/plans/</code>.</p>
+        <p>The instructions live in the submodule. Your plans belong in your project's <code>docs/plans/</code>.</p>
       </div>
       <div>
         <h3>1. Add Railspike</h3>
         <pre><code>git submodule add https://github.com/gulkily/railspike.git docs/railspike</code></pre>
         <p>Review and commit <code>.gitmodules</code> and the submodule pointer.</p>
-        <h3>2. Give your agent a feature</h3>
+        <h3>2. Give your agent a task</h3>
         <blockquote>As a user, I would like to export my saved searches as CSV. Please write Step 1 of <code>@railspike</code>.</blockquote>
         <p>Select <code>RAILSPIKE.md</code> if autocomplete offers it, or reference <code>docs/railspike/RAILSPIKE.md</code> directly.</p>
-        <h3>3. Review, then approve</h3>
-        <p>Read the artifact before replying <code>Approved Step 1</code>. Continue through the approval loop. For straightforward work, you can start at Step 2.</p>
+        <h3>3. Review, revise, then approve</h3>
+        <p>Ask for changes before approving. For example, if the CSV options differ in setup and privacy safeguards:</p>
+        <blockquote>Combine option A’s simple export flow with option B’s privacy safeguards. Leave scheduled exports out of scope and update the recommendation.</blockquote>
+        <p>Review the revised artifact, then reply <code>Approved Step 1</code> when it matches your intent. Continue through the approval loop. For straightforward work, you can start at Step 2.</p>
       </div>
     </section>
     <section aria-labelledby="fit-title">
       <p class="eyebrow">When to use it</p>
       <h2 id="fit-title">When reviewability is worth the extra step.</h2>
-      <p>Use Railspike for feature work with meaningful scope, decisions, or recovery paths. The approval loop adds overhead and can be excessive for a trivial edit. It helps structure engineering judgment; the quality of the decisions still depends on you and your agent.</p>
+      <p>Use Railspike for planning, documentation, development, bug fixes, test suites, and checklists when the work has meaningful scope or decisions to resolve. A reviewed plan can be a useful handoff even before implementation begins.</p>
+      <p>The approval loop adds overhead and can be excessive for a trivial edit. It helps structure engineering judgment; the quality of the decisions still depends on you and your agent.</p>
       <a href="https://github.com/gulkily/railspike">Explore the repository <span aria-hidden="true">↗</span></a>
     </section>
   </main>
