@@ -13,3 +13,17 @@ Debug mode: enabled
 - Notes:
   - The link is the only added text and is the URL itself.
   - Styling, contrast, and head comparison with `master` follow in Stage 2.
+
+## Stage 2 - Simple styling and metadata check
+- Changes:
+  - Inline stylesheet in `index.html`: system serif at 1.125rem, a 40rem measure, light and dark through `prefers-color-scheme`, link and focus styles, and a quiet footer for the repository link; `color-scheme` and `theme-color` metas added.
+  - `overflow-wrap: anywhere` on paragraphs and list items so long tokens wrap; no text changed.
+- Verification:
+  - Contrast (WCAG): light text 17.2, muted 8.1, link 8.0; dark text 14.9, muted 8.4, link 8.8.
+  - Width: an iframe at 360 px first showed horizontal overflow (scrollWidth 377 vs 345) from a paragraph with a long unbreakable token; after the wrap rule scrollWidth equals clientWidth (345).
+  - Head comparison with `master`: canonical, icon, `og:url`, `og:image` and its width, height, and alt, `og:type`, and `twitter:card` are identical.
+  - Verbatim check re-run after styling: page text equals `railspike.txt` (hash prefix `575d95c6b2d20bea`), "promt" present, one `h1`, zero scripts; page is 7.9 KB.
+  - Light render at 900 px and dark render (media query unwrapped; headless Chrome could not emulate the system preference) inspected.
+- Notes:
+  - Real OS dark-mode switching and non-Chromium browsers were not tested.
+  - The page's old `theme-color` (amber) belonged to the removed design and is replaced by light and dark values.

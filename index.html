@@ -16,6 +16,23 @@
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta name="twitter:card" content="summary">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131313" media="(prefers-color-scheme: dark)">
+  <style>
+    :root { color-scheme: light dark; --bg:#fff; --fg:#1b1b1b; --muted:#505050; --rule:#d6d6d6; --link:#0b4f9c; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#131313; --fg:#e8e6e1; --muted:#b0aea8; --rule:#3a3a3a; --link:#8ab4f8; } }
+    body { margin: 0 auto; max-width: 40rem; padding: 1.5rem 1rem 3rem; background: var(--bg); color: var(--fg); font: 1.125rem/1.6 ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif; }
+    h1 { margin: 0 0 1.25rem; font-size: clamp(1.6rem, 5.5vw, 2.1rem); line-height: 1.2; }
+    p, ul { margin: 0 0 1.1rem; }
+    p, li { overflow-wrap: anywhere; }
+    ul { padding-left: 1.4rem; }
+    li { margin: .25rem 0; }
+    a { color: var(--link); text-underline-offset: .15em; overflow-wrap: anywhere; }
+    a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+    footer { margin-top: 2rem; padding-top: .75rem; border-top: 1px solid var(--rule); font-size: .95rem; color: var(--muted); }
+    footer p { margin: 0; }
+  </style>
 </head>
 <body>
 <main>
