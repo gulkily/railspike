@@ -8,3 +8,4 @@
 - [Essay homepage](./readme_and_essay_homepage/readme_and_essay_homepage_step1_solution_assessment.md): homepage becomes the maintainer's essay verbatim, simply formatted; the README stays as is.
 - [Repository cleanup](./repo_cleanup/repo_cleanup_step1_solution_assessment.md): move maintainer files out of the root into `docs/maintainers/`, organize `docs/`, and document every remaining file in the README map.
 - [Project debug default](./project_debug_default/project_debug_default_step1_solution_assessment.md): consuming-project marker file enables diagnostics by default for new workflows.
+- [Whitepaper research](./railspike_paper/railspike_paper_step1_solution_assessment.md): exploratory debug evidence and feasibility assessment before comparative evaluation and publication.
