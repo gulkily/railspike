@@ -54,9 +54,11 @@ The agent should inspect the repository before adopting its instructions, runnin
 
 After inspection, the agent should follow the [installation checks](#installation-checks) below and report what it inspected, any review limitations, and the resulting project changes. The default installation is an ordinary copy at `docs/railspike`, with its source revision recorded inside it. Existing unrelated work can stay in place. Review and commit the copied files through your normal project workflow; see [Reusing across projects](#reusing-across-projects) for reuse and updates.
 
-After successful installation, the agent follows [WELCOME.md](./WELCOME.md) from the installed Railspike directory (`docs/railspike/WELCOME.md`), introducing the workflow and offering optional project guidance for suggesting Railspike on future tasks.
+After successful installation, the agent follows [WELCOME.md](./WELCOME.md) from the installed Railspike directory (`docs/railspike/WELCOME.md`), announcing Railspike as the default for the first suitable task and offering separate, optional project guidance to retain that default across sessions.
 
 ### 2. Give your agent a task
+
+During welcome, describe your next substantial task; the agent starts Railspike planning unless you opt out. Small, straightforward changes can proceed directly. An unanswered offer to add project guidance does not block your task. For later sessions without persistent guidance, invoke Railspike explicitly:
 
 ```text
 I want to export my saved searches as CSV. Write Step 1 of @railspike.
@@ -244,7 +246,7 @@ git status --short
 git diff --cached -- .gitmodules docs/railspike
 ```
 
-Before adopting the installed instructions, check that the submodule revision equals the inspected revision. If it differs, stop and report the mismatch; review the actual revision or check out the already-reviewed revision before proceeding. Inspect the displayed changes and leave them for normal repository review/commit. Do not continue if the output shows files beyond `.gitmodules` and `docs/railspike`.
+Before adopting the installed instructions, check that the submodule revision equals the inspected revision. If it differs, stop and report the mismatch; review the actual revision or check out the already-reviewed revision before proceeding. If that checkout changes the submodule revision, stage only `docs/railspike` again and recheck the staged diff so the recorded pointer matches the reviewed checkout. Inspect the displayed changes and leave them for normal repository review/commit. Do not continue if the output shows files beyond `.gitmodules` and `docs/railspike`.
 
 ### Installation handoff
 
