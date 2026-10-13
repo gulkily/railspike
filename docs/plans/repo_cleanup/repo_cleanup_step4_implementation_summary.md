@@ -78,3 +78,17 @@ Debug mode: enabled
   - Runtime, UI, deployment, and migration checks: not applicable.
 - Notes:
   - Allowed-scope check: `RAILSPIKE.md`, `docs/workflow/`, `scripts/`, `index.html`, and `CONTRIBUTING.md` are unchanged.
+
+## Stage 6 - Update the README map and final verification
+- Changes:
+  - `README.md` "What's in this repo" map rewritten to the new layout (`docs/maintainers/`, `docs/README.md` pointer); `docs/plans/README.md` entry reworded to the actual outcome.
+  - Removed the empty `docs/launch/` directory left after the move (`rmdir`, not `rm`).
+- Verification:
+  - Root: `.gitignore`, `.nojekyll`, `CONTRIBUTING.md`, `LICENSE`, `RAILSPIKE.md`, `README.md`, `docs/`, `index.html`, `railspike-logo.png`, `scripts/`, plus local-only `railspike.txt`, `temp/`, `.idea/`. `docs/`: `README.md`, `failure-modes.md`, `maintainers/`, `plans/`, `workflow/`.
+  - Every tracked root file and `docs/` area appears in the README map or `docs/README.md`.
+  - Python, Perl, and Node link checkers: 53 files valid; workflow fixture passed; `git diff --check` clean.
+  - Hashes: `railspike.txt` `575d95c6…` and `temp/` `db5080d1…` match the Stage 1 baseline; `HN_POST_DRAFT.md` `66293b50…` is unchanged.
+  - `docs/plans/` changed only by its index entry and this feature's artifacts; `RAILSPIKE.md`, `docs/workflow/`, `scripts/`, `index.html`, and `CONTRIBUTING.md` are unchanged.
+  - Runtime, UI, deployment, and migration checks: not applicable.
+- Notes:
+  - Open for the maintainer: `.git/info/exclude` still ignores `HN_WRITEUP_READINESS_CHECKLIST.md` by name; the tracked file is unaffected. The "Clean up the repo" item in `docs/maintainers/BACKLOG.md` is left unchecked for the maintainer to tick on merge. `railspike.txt` remains untracked.
