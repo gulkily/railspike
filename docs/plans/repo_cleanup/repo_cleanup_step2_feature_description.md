@@ -59,3 +59,11 @@ The maintainer's direction after Stage 1 supersedes the items below; everything 
 - **Allowed files:** the two moves, `BACKLOG.md` (links and pending whitespace fix), `README.md` map, `docs/plans/README.md`, and this feature's artifacts.
 - **Success criteria:** the root contains no HN drafts or checklists, the two files exist unmodified under `docs/launch/`, no Markdown link is broken, and `railspike.txt` and `temp/` are byte-identical.
 - **Risks:** dropped backlog items no longer apply since nothing is removed; broken relative links inside the moved files are the new risk, validated by the link checkers.
+
+## Revision after Step 4 handoff (pending approval)
+The maintainer asked to move `BACKLOG.md` under `docs/` and to organize the `docs/` directory.
+- **Target layout:** `docs/failure-modes.md` (user-facing, stays), `docs/workflow/` and `docs/plans/` (unchanged), and a new `docs/maintainers/` holding `BACKLOG.md`, `RELEASES.md`, `positioning-checklist.md`, `case-study-candidates.md`, and `launch/` (the two HN files, moved from `docs/launch/`). A short `docs/README.md` indexes the four entries.
+- **Links to repair (found by search):** the moved files' own relative links, `README.md` (backlog link and repository map), and `docs/plans/README.md` wording if needed. `RAILSPIKE.md`, `docs/workflow/`, `scripts/`, `index.html`, and `CONTRIBUTING.md` contain no references and stay unchanged; historical plans mention these files only as text.
+- **Allowed files:** the moves above, the new `docs/README.md`, `README.md`, `docs/plans/README.md`, and this feature's artifacts. Nothing else; content of moved files changes only in link paths.
+- **Success criteria:** root has no `BACKLOG.md`; every `docs/` entry is listed in `docs/README.md` and the README map; all three link checkers pass.
+- **Risk:** external links to the old paths on GitHub (the HN post or the website) would break. Low impact; none exist in the repository, and moved files remain in Git history.

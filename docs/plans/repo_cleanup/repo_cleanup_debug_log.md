@@ -158,3 +158,34 @@ Revision to the 2026-10-12T23:55Z Step 3 entry: the maintainer excluded `BACKLOG
 - The instructions do not warn that a repo-local exclude file can silently untrack a moved file; the correction commit `9abcd20` followed. A "stage the move, then inspect staged renames" check could be added.
 - Whether one `Approved Step 3` covers a revised Step 2 is not specified; it was taken as covering it, with the choice recorded in the summary.
 - The `feature/repo-cleanup` branch name follows existing `feature/*` branches; the instructions do not name a convention.
+
+## 2026-10-13T00:06Z — Step 4 handoff, planning revision
+
+### Necessary/useful instructions
+- `step4_implementation_after.md` § Next ("If additional scope emerges, return to the appropriate earlier step instead of improvising"): applied to the request to move `BACKLOG.md`, which was outside the approved moves. Retain.
+
+### Redundant/unnecessary instructions
+- No supported findings.
+
+### Inapplicable instructions
+- No supported findings.
+
+### Uncertain assessments
+- The destination `docs/BACKLOG.md` was chosen by the assistant; the user said only "out of top-level dir". A one-file move still passes through Step 2/3 approval; the instructions do not offer a lighter path for trivial additions.
+
+## 2026-10-13T01:37Z — Step 4 handoff, planning revision (Revision)
+
+Revision superseding the preceding planning-revision entry's scope: the request now includes organizing `docs/`.
+
+### Necessary/useful instructions
+- `RAILSPIKE.md` § Key Rules ("Flag scope creep early and bounce back to planning steps"): applied again, because "organize the docs directory" widened the one-file move. Retain.
+
+### Redundant/unnecessary instructions
+- No supported findings.
+
+### Inapplicable instructions
+- No supported findings.
+
+### Uncertain assessments
+- "Organize the docs directory" is open-ended; the layout under `docs/maintainers/` and a `docs/README.md` index are the assistant's proposal, not a stated preference.
+- The user message was not the exact phrase `Approved Step N`, so it was treated as a revision request.

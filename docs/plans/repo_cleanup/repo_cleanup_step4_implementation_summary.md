@@ -62,3 +62,19 @@ Debug mode: enabled
 - Notes:
   - Commit count on the branch: planning, Stages 1–3, one Stage 2 correction, and this stage; not below `1 + 4`.
   - Open for the maintainer: `.git/info/exclude` ignores `HN_WRITEUP_READINESS_CHECKLIST.md` by name; the tracked file is unaffected but a future re-add needs `-f`. The pending README essay-site items in `BACKLOG.md` are unchanged; the cleanup item itself is left unchecked for the maintainer to tick on merge. `railspike.txt` remains untracked.
+
+## Revision after the Step 4 handoff
+- The maintainer asked to move `BACKLOG.md` under `docs/` and organize `docs/`. Recorded as pending revisions in Steps 2–3; `Approved Step 3` was given and taken as covering the Step 2 revision, as before. Layout: `docs/maintainers/` for backlog, releases, positioning, case-study candidates, and `launch/`; `docs/README.md` indexes it.
+
+## Stage 5 - Move files and repair links
+- Changes:
+  - `git mv`: `BACKLOG.md`, `docs/RELEASES.md`, `docs/positioning-checklist.md`, `docs/case-study-candidates.md` into `docs/maintainers/`; `docs/launch/` files into `docs/maintainers/launch/`. No `rm`.
+  - Relative links in the moved backlog and positioning checklist rewritten; the checklist and case-study files needed none.
+  - New `docs/README.md` index; the `README.md` backlog link repointed (done here, not Stage 6, so this commit passes the link checkers).
+- Verification:
+  - Word-level comparison with `HEAD`: the backlog and positioning checklist differ from their previous versions only in link targets; the other four moved files are byte-identical (rename similarity 100%).
+  - Link checkers (Python, Perl, Node): 53 files valid; workflow fixture passed; `git diff --check` clean.
+  - The excluded checklist name stayed tracked because `git mv` moved a tracked file; `git ls-files docs/maintainers/launch` lists both HN files.
+  - Runtime, UI, deployment, and migration checks: not applicable.
+- Notes:
+  - Allowed-scope check: `RAILSPIKE.md`, `docs/workflow/`, `scripts/`, `index.html`, and `CONTRIBUTING.md` are unchanged.

@@ -69,3 +69,8 @@ Supersedes the Approval note, Stage 1's `BACKLOG.md` exclusion, and Stages 2–3
 - **Stage 3 - Document:** README map and `docs/plans/README.md` as planned, listing `docs/launch/`.
 - **Stage 4 - Verification:** unchanged, with the archive hash check replaced by the `docs/launch/` hash check.
 - **Risk:** the pending `BACKLOG.md` whitespace fix is committed with Stage 2's link repairs.
+
+## Revision after Step 4 handoff (pending approval)
+- **Stage 5 - Reorganize docs:** `git mv` `BACKLOG.md`, `docs/RELEASES.md`, `docs/positioning-checklist.md`, `docs/case-study-candidates.md`, and `docs/launch/` into `docs/maintainers/`; rewrite the relative links inside them; add `docs/README.md`. Verify: three link checkers, workflow fixture, `git diff --check`; content diffs limited to link paths; the force-add caveat for the excluded checklist name is applied explicitly. Commit named paths with a summary update.
+- **Stage 6 - Update references and map:** repair `README.md` (backlog link and map) and the `docs/plans/README.md` entry; re-run the checks and hash comparison for `railspike.txt`, `temp/`, and the moved files; commit, then make the log-only handoff commit.
+- **Risk:** `.git/info/exclude` again hides the checklist after the move; check `git status` shows it staged before committing.
