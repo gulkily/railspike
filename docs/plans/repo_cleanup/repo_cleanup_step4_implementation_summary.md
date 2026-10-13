@@ -49,3 +49,16 @@ Debug mode: enabled
   - Runtime, UI, deployment, and migration checks: not applicable.
 - Notes:
   - The README's debug-mode and update-block markers were not touched; only the map block changed.
+
+## Stage 4 - Release verification
+- Changes:
+  - None beyond this summary.
+- Verification:
+  - Root now lists only `.gitignore`, `.nojekyll`, `BACKLOG.md`, `CONTRIBUTING.md`, `LICENSE`, `RAILSPIKE.md`, `README.md`, `docs/`, `index.html`, `railspike-logo.png`, `scripts/`, plus local-only `railspike.txt`, `temp/`, `.idea/`. `docs/` holds `launch/`, `plans/`, `workflow/` and four Markdown files.
+  - Changed vs `master`: `BACKLOG.md` and `README.md` edited, the two HN files moved to `docs/launch/`, `docs/plans/README.md` plus this feature's artifacts under `docs/plans/repo_cleanup/`; no other plan or file touched.
+  - Hashes: `railspike.txt` `575d95c6…` and `temp/` `db5080d1…` match the Stage 1 baseline; `HN_POST_DRAFT.md` is byte-identical; the checklist differs only in two relative-link lines.
+  - Link checkers (Python, Perl, Node): 52 files valid; workflow fixture passed; `git diff --check` clean.
+  - Runtime, UI, deployment, and migration checks: not applicable (documentation-only).
+- Notes:
+  - Commit count on the branch: planning, Stages 1–3, one Stage 2 correction, and this stage; not below `1 + 4`.
+  - Open for the maintainer: `.git/info/exclude` ignores `HN_WRITEUP_READINESS_CHECKLIST.md` by name; the tracked file is unaffected but a future re-add needs `-f`. The pending README essay-site items in `BACKLOG.md` are unchanged; the cleanup item itself is left unchecked for the maintainer to tick on merge. `railspike.txt` remains untracked.
