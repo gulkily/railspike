@@ -37,3 +37,4 @@ Debug mode: enabled
   - Runtime, UI, deployment, and migration checks: not applicable.
 - Notes:
   - `docs/case-study-candidates.md` and `docs/positioning-checklist.md` were already outside the root and are unchanged.
+  - **Correction:** commit `5be94c9` recorded the checklist as deleted because `.git/info/exclude` (local, line 7) ignores `HN_WRITEUP_READINESS_CHECKLIST.md` by bare name, so the moved file was not staged. The file is intact at `docs/launch/`; it was re-added with `git add -f` in the follow-up commit so it stays tracked as before. The exclude entry was left unchanged and is a maintainer decision.
