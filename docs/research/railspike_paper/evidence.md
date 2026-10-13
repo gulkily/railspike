@@ -132,6 +132,10 @@ Historical instruction version and execution agent/model are unknown unless a pi
 
 <!-- end-workflow-observations -->
 
+## Post-capture source movement
+
+At final verification, 2026-10-13T05:54:47Z, 31/34 source paths still matched their captured bytes. V06, S15, and S16 had moved into `~/v3/docs/plans/startup_dependency_recovery/`. V06 and S16 matched their frozen hashes at the new paths; S15 differed only in its relative checklist link (`./local_server_dependency_recovery_checklist.md` became `../local_server_dependency_recovery_checklist.md`). These live changes were observed, not made by this research. The original paths/statuses and all frozen source blocks remain unchanged. New implementation/commits after cutoff are outside the findings; the planning-only classification refers to the captured state.
+
 ## Frozen source appendix
 
 <a id="source-r01"></a>
