@@ -17,3 +17,8 @@ Debug mode: disabled
 - Changes: Coded all six Railspike logs against six frozen summaries; recorded reported benefits/friction, approval and scope questions, rework, and verification limits. Preserved repository recovery, reprint counterevidence, and a timestamp conflict.
 - Verification: Inspected commit manifests for `86a9b65`, `d84023f`, `4b36f75`, and `9abcd20`; the cleanup correction and summary-with-change cadence are artifact-supported. Reconciled six rows with six included Railspike candidates; checked active links, unchanged snapshot hashes, whitespace, and allowed scope.
 - Notes: Human effort and model identity remain unknown; user approval histories are incomplete. Recorded checks were not rerun, and causal instruction-benefit claims remain self-report.
+
+## Stage 3 - v3 evidence and incident reconciliation
+- Changes: Coded six v3 workflows including planning-only recovery; linked F01 with V04/V06 as one installation/recovery incident. Dispositioned four duplicate installed logs and the contextual application-debug handoff. Recorded non-green verification and unknown approval/model/effort data explicitly.
+- Verification: Inspected five v3 stage-commit manifests for summary co-presence; parsed frozen S14's 39 transaction records and 31 runtime-check strings. Rechecked all 34 live-source hashes: unchanged. Reconciled 12 total workflow rows; checked snapshot integrity, links, whitespace, and allowed paths.
+- Notes: No runtime tests rerun; benchmark numbers concern application indexing, not development productivity. The requested report remains a required analyzed source, with its original test evidence and later contradictory user-outcome account both preserved.
