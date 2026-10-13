@@ -84,7 +84,29 @@ Required account: [F01](#source-f01); original assessment and later revision: [V
 
 <!-- workflow-observations -->
 
-Workflow extraction continues in Stages 2 and 3.
+### Railspike workflows — extracted Stage 2
+
+Each row codes one workflow, not a vote on instruction effectiveness. Steps and outcomes below are what the frozen records report. Exact execution model and historical instruction revision remain unknown for all six; sources cite `RAILSPIKE.md`/phase files. R02 initially used FDP and records recovery to Railspike. A log's claim that an instruction caused an outcome stays **reported**, even where the underlying edit/commit is artifact-supported.
+
+| Workflow / task / steps | Reported usefulness and friction | Approval/scope/rework observations | Corroboration and verification limits |
+|---|---|---|---|
+| [R01](#source-r01) Homepage from scratch; static website; Steps 1–4 | Original-query preservation, scope/risk gates, and commits called useful; duplicated rules, stage-sizing and verification-only commit ambiguity. | Pre-planning page deletion reported, despite implementation gate; no transcript to adjudicate authorization. Paper/logo excluded; follow-up copy change recorded. | [S01](#source-s01) records replacement in the first working-page commit and bounded browser checks. Dark-mode simulation is not real OS testing; live deployment unverified. |
+| [R02](#source-r02) Project debug default; documentation contract; Steps 1–4 with revisions | Durable state and scope useful; full reprint value uncertain. Reprint exposed different rules after wrong-repository recovery: counterevidence to treating it as pure waste. | Repository correction and JSON-to-marker revision retained; no measured rework time. Future-step links fail general checker but are expected pending artifacts. | [S02](#source-s02) records 14 manual scenarios and limitations. Commit `86a9b65` inspected: canonical contract, README, failure guide, and contemporaneous summary changed together. No executable parser or measured agent compliance. |
+| [R03](#source-r03) Quiet debug mode; documentation contract; Steps 3–4 | Persistent reports, scope and stage gates useful; repeating diagnostics in conversation considered overhead. | Mode enabled at Step 2 approval; earlier reports not invented. Plan/log organization and two stage commits recorded. | [S03](#source-s03); `d84023f` and `4b36f75` inspected, each includes summary with documentation changes. Establishes recorded/checkable cadence, not causal benefit. |
+| [R04](#source-r04) Essay homepage; static website; Steps 1–4 | Verbatim-copy requirement and risk checks useful; duplicate gates and three-stage overhead questioned. | Log admits substituting a short summary for a full reprint; scope changed to essay only; defaults filled unanswered requirements. Authorization/adherence cannot be fully audited without transcript. | [S04](#source-s04) records source hash, copy checks and 360px overflow correction. Untracked source hashing anchors text, not human intent; live/OS/accessibility limitations remain. |
+| [R05](#source-r05) Repository cleanup; documentation; Steps 1–4, several revisions | Scope/commit/link gates useful; duplicated instructions and approval semantics questioned. | Step 2 preceded Step 1; later scope redirections and interpretation of Step 3 approval documented. Excluded moved checklist required corrective commit: genuine rework, duration unknown. | [S05](#source-s05); inspected `9abcd20`, adding the moved checklist and updating summary. Its commit trailer attributes co-authorship to Claude Sonnet 5.5; this is recorded attribution, not verified execution-model identity. Logs' “caught before handoff” wording must not imply caught before the faulty commit. |
+| [R06](#source-r06) Website redesign; static website; Steps 1–4 | Scope allowlist, risks, and stage gates useful; duplicate guidance and page-length ambiguity. | Voice decision gated; unrelated ignore-file edit excluded. Step 4 timestamp precedes Step 3 in the log: chronology conflict, not reliable elapsed-time data. | [S06](#source-s06) records checks and missing screen-reader/live-site validation. Source-order and stage labels retained; timestamp conflict unresolved. |
+
+**Coding limits:** Approval violations and scope deviations are not assigned a zero when absent. R01/R04/R05 provide reported boundary questions/deviations, not independently adjudicated violation rates. R02/R04/R05 contain concrete correction/rework accounts; no complete change-event denominator exists. Human effort and independent human coding review remain unknown/pending. No runtime reruns performed.
+
+**Read-only history checks (Stage 2):** `git show --format=oneline --name-only 86a9b65 d84023f 4b36f75` and `git show --format=fuller --stat 9abcd20` were inspected in the Railspike repository. Hashes resolve to immutable commits; the facts above concern their file manifests, not the accuracy of recorded runtime results.
+
+<!-- v3-observations -->
+
+v3 workflow extraction remains pending Stage 3.
+
+<!-- end-v3-observations -->
+
 
 <!-- end-workflow-observations -->
 
