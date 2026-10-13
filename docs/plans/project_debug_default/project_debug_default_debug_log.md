@@ -80,3 +80,21 @@ Supersedes the preference-format discussion in the 2026-10-13T05:02:03Z Step 3 e
 
 **Inapplicable instructions**
 - No new findings beyond the prior Step 3 report.
+
+
+## 2026-10-13T05:21:57Z — Step 4
+
+**Necessary/useful instructions**
+- `docs/workflow/step4_implementation_before.md`, Planning Docs Commit Gate: branch `feature/project-debug-default` and planning commit `96e6236` captured only the approved plans, existing log, and plan-index entry. Byte comparison verified that organization preserved the approved artifacts and log history; the summary was created afterward. Retain this gate.
+- `docs/workflow/step4_implementation_do.md`, Stage Boundary Protocol: stage commit `86a9b65` includes the instruction contract, README examples, failure recovery, and corresponding summary together. Recorded evidence covers 14 manual documentation scenarios, 35 affected local links, allowed-file scope, whitespace, and the passing Git workflow fixture. Retain proportional documentation verification.
+- `RAILSPIKE.md`, Railspike Debug Mode / Durable state and recovery: inherited enabled state remained recorded in the summary while the marker contract was implemented. Explicit/current workflow state has priority over a new-project default; this workflow therefore required no actual marker file. Retain that distinction.
+- `docs/workflow/step4_implementation_after.md`, Final Verification Checklist: inspecting both commits confirmed the required planning/stage separation, complete feature navigation, and documented evidence boundary. Retain these checks.
+
+**Redundant/unnecessary instructions**
+- No supported findings.
+
+**Inapplicable instructions**
+- `docs/workflow/step4_implementation_after.md`, scoped deployment/release/migration dependencies: there is no application or executable setting parser in this approved change. The summary marks runtime, UI, migration, deployment, and external release checks inapplicable with reasons. Retain the scope qualification.
+
+**Uncertain assessments**
+- `README.md`, Documentation checks: the repository-wide Markdown checker fails on six pre-existing future-step links in unrelated untracked plans, while all 35 affected local links resolve. The stage summary records those failures without editing unrelated plans. Clarify treatment of intentionally incomplete plans if repository-wide checks are later automated; no checker change was needed or authorized here.
