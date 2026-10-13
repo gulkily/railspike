@@ -62,3 +62,10 @@ At `Approved Step 3` the maintainer directed: "You can leave the backlog file." 
   - Early warning / validation: the checkers and the maintainer's review of the listing.
   - Mitigation: fix within scope; return to Step 2 for new scope.
 - Canonical components/API contracts touched: whole repository listing.
+
+## Revision during Step 4 (pending approval)
+Supersedes the Approval note, Stage 1's `BACKLOG.md` exclusion, and Stages 2–3 as follows; Stage 1 is complete.
+- **Stage 2 - Move and repair links:** `mv` the two HN files into `docs/launch/` (hashes must match the Stage 1 baseline), then update `BACKLOG.md` links (lines 3, 12, 14), the relative links inside the moved files, and `docs/case-study-candidates.md` or `docs/positioning-checklist.md` if they link them. Verify: three link checkers pass, `git diff --check`, `git status` shows only the moves and intended edits; commit named paths only.
+- **Stage 3 - Document:** README map and `docs/plans/README.md` as planned, listing `docs/launch/`.
+- **Stage 4 - Verification:** unchanged, with the archive hash check replaced by the `docs/launch/` hash check.
+- **Risk:** the pending `BACKLOG.md` whitespace fix is committed with Stage 2's link repairs.

@@ -40,3 +40,6 @@ The user chose **Option C, prune aggressively**, to make the GitHub repository p
 - **Unchanged constraints:** untracked files (`railspike.txt`, `temp/`, `.idea/`) are not visible on GitHub and cannot be recovered, so they are not deleted without an explicit instruction. The three link checkers and workflow files stay.
 - **Open decision:** whether completed plans under `docs/plans/` (29 files) are also pruned or only indexed; they are outside the root view and are the project's decision record, so the default is to keep them.
 - **Slice viability:** unchanged: a pruned, documented, link-clean layout merged to `master`, verified by the three link checkers.
+
+## Further Revised Direction (during Step 4, pending approval)
+After Stage 1 the maintainer replaced the "move out of the repository" part of Option C: "Move them somewhere not in the top-level directory and fix the links." Files are kept in the repository under a subdirectory, not pruned or moved to `~`, and `BACKLOG.md` is edited to repair links. This is Option B's archive idea with Option C's goal (a clean root); nothing is removed.

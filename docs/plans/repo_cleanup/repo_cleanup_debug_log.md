@@ -124,3 +124,19 @@ Revision to the 2026-10-12T23:55Z Step 3 entry: the maintainer excluded `BACKLOG
 
 ### Uncertain assessments
 - "You can leave the backlog file" can mean either "do not edit `BACKLOG.md`" or "leave the files it cites in place". It was read as the former, which conflicts with moving files that `BACKLOG.md` links to; the instructions do not say how to resolve a scope conflict raised at approval time, so Stage 2 is held for clarification.
+
+## 2026-10-13T00:01Z — Step 4 (implementation, Stage 1 boundary), planning revision
+
+### Necessary/useful instructions
+- `RAILSPIKE.md` § Key Rules ("Flag scope creep early and bounce back to planning steps rather than improvising"): stopped a changed destination and an in-scope `BACKLOG.md` edit from being applied without renewed approval. Retain.
+- Step 4 Stage Boundary Protocol (hash baseline, link check): exposed the dead-link conflict before any file was moved. Retain.
+
+### Redundant/unnecessary instructions
+- No supported findings.
+
+### Inapplicable instructions
+- No supported findings.
+
+### Uncertain assessments
+- "Move them somewhere not in the top-level directory" was read as applying to the two root files only (the other two are already under `docs/`); the destination `docs/launch/` was chosen by the assistant.
+- The instructions do not say whether a scope change stated mid-Step 4 needs both `Approved Step 2` and `Approved Step 3`; both are requested conservatively.

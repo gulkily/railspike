@@ -22,3 +22,18 @@ Debug mode: enabled
   - Runtime, UI, deployment, and migration checks: not applicable (documentation-only).
 - Notes:
   - **Open for the maintainer:** `BACKLOG.md` lines 3, 12, and 14 link three of the four files. Moving them leaves those links dead and the link checkers fail. Stage 2 is held until the maintainer chooses: edit those lines after all, keep the cited files in place, or accept the dead links.
+
+## Revision before Stage 2
+- The maintainer redirected the work after Stage 1: move the two root HN files into `docs/launch/` (not to `~`), and fix links including `BACKLOG.md`. Recorded as revisions in Steps 1–3; `Approved Step 3` was given and taken as covering the Step 2 revision, which Step 3 restates.
+- Stage 1's "Open for the maintainer" note is resolved: `BACKLOG.md` is edited.
+
+## Stage 2 - Move and repair links
+- Changes:
+  - `HN_POST_DRAFT.md` and `HN_WRITEUP_READINESS_CHECKLIST.md` moved with `mv` to `docs/launch/`; no `rm`, no copies left at the root.
+  - Relative links inside the checklist changed from `./docs/…` to `../…`; `BACKLOG.md` links to the two files point to `docs/launch/`; the pending whitespace fix is included.
+- Verification:
+  - `HN_POST_DRAFT.md` is byte-identical to the Stage 1 baseline (`66293b50…`). The checklist differs from its baseline only in the link lines listed by diff against `HEAD`, as intended.
+  - Python, Perl, and Node link checkers: 52 Markdown files, local links valid. `git diff --check` clean.
+  - Runtime, UI, deployment, and migration checks: not applicable.
+- Notes:
+  - `docs/case-study-candidates.md` and `docs/positioning-checklist.md` were already outside the root and are unchanged.

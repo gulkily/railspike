@@ -51,3 +51,11 @@ Document completion: a pruned, link-clean repository merged to `master`. Intende
 - Every tracked root file and `docs/*.md` file appears in the README map.
 - No `BACKLOG.md` item links a removed file.
 - `railspike.txt` and `temp/` are byte-identical before and after, and `docs/plans/` changes only by the new index entry and this feature's artifacts.
+
+## Revision during Step 4 (pending approval)
+The maintainer's direction after Stage 1 supersedes the items below; everything else stands.
+- **Core requirement 1:** move only the two root files, `HN_POST_DRAFT.md` and `HN_WRITEUP_READINESS_CHECKLIST.md`, into the new directory `docs/launch/`, keeping their names. `docs/case-study-candidates.md` and `docs/positioning-checklist.md` already sit outside the root and stay. No file leaves the repository; `~/railspike-archive/` is not used.
+- **Links:** all references are repaired, including `BACKLOG.md`, `docs/case-study-candidates.md` and the moved files' own relative links; the earlier "leave the backlog file" direction is superseded.
+- **Allowed files:** the two moves, `BACKLOG.md` (links and pending whitespace fix), `README.md` map, `docs/plans/README.md`, and this feature's artifacts.
+- **Success criteria:** the root contains no HN drafts or checklists, the two files exist unmodified under `docs/launch/`, no Markdown link is broken, and `railspike.txt` and `temp/` are byte-identical.
+- **Risks:** dropped backlog items no longer apply since nothing is removed; broken relative links inside the moved files are the new risk, validated by the link checkers.
