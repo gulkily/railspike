@@ -110,7 +110,23 @@ Turn it off with:
 
 > Disable Railspike debug mode.
 
-New workflows default off. The agent records `Debug mode: enabled` or `Debug mode: disabled` below the current artifact’s navigation bar, carries it into later artifacts, and restores it after context loss. The latest explicit request wins; unresolved missing or conflicting state on resumption needs clarification. Historical artifacts remain snapshots.
+To enable debug by default for a project, create `.railspike_debug_on` at the consuming-project root (run this there):
+
+```bash
+touch .railspike_debug_on
+```
+
+Only the file's presence matters. Contents are ignored, including empty content or “false”; agents do not need to read the file. For submodule or vendored installations, put it at the host project root, outside the installed Railspike directory. For standalone work on Railspike itself, use this repository root. Share the file through your project's normal version-control process if the default should apply to the team.
+
+To restore the disabled default for future workflows, remove the marker from that same root:
+
+```bash
+rm .railspike_debug_on
+```
+
+Without a marker, new workflows default off. The latest explicit mode request wins, followed by existing workflow state, then the project default for a new workflow. “Disable Railspike debug mode” overrides the project default for the current workflow without changing the marker. Agents ask when a needed marker lookup cannot establish the consuming root or file presence; they do not search ancestor directories or inherit user-global/nested-project defaults.
+
+The agent records `Debug mode: enabled` or `Debug mode: disabled` below the current artifact’s navigation bar, carries it into later artifacts, and restores it after context loss. Adding or removing the marker never changes an ongoing workflow; editing its contents never changes the default. Unresolved missing or conflicting state on resumption needs clarification, not a fresh marker lookup. Historical artifacts remain snapshots.
 
 When enabled, full evidence-backed findings go in `{feature_name}_debug_log.md`. Each completed step’s handoff includes just one short debug line linking to the saved log, before approval where applicable. Findings, group headings, and empty-group markers stay in the file; diagnostic collection is not narrated in chat. Reports use UTC timestamps and step identifiers. Corrections append labeled revisions; unchanged reports reuse the existing log link without a new entry. Phases and implementation stages do not produce separate reports. Disabling stops diagnostics and debug links while preserving the log.
 
