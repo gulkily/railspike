@@ -140,3 +140,21 @@ Revision to the 2026-10-12T23:55Z Step 3 entry: the maintainer excluded `BACKLOG
 ### Uncertain assessments
 - "Move them somewhere not in the top-level directory" was read as applying to the two root files only (the other two are already under `docs/`); the destination `docs/launch/` was chosen by the assistant.
 - The instructions do not say whether a scope change stated mid-Step 4 needs both `Approved Step 2` and `Approved Step 3`; both are requested conservatively.
+
+## 2026-10-13T00:04Z — Step 4 (implementation)
+
+### Necessary/useful instructions
+- `step4_implementation_do.md` § Stage Boundary Protocol (hash baseline, link check, `git status` before commit): the Stage 2 status check exposed that the moved checklist was not staged, so the loss was caught before handoff. Retain.
+- `step4_implementation_before.md` § Planning Docs Commit Gate: produced a clean first commit that excluded `BACKLOG.md` and `railspike.txt`. Retain.
+- `RAILSPIKE.md` § Key Rules (bounce back to planning on scope change): handled the redirect after Stage 1. Retain.
+
+### Redundant/unnecessary instructions
+- The commit-count rule (`1 + stages`) appears in `RAILSPIKE.md` and `step4_implementation_after.md`; suggest one statement with a link.
+
+### Inapplicable instructions
+- Step 4 After item 5 (deployment, release, migration dependencies): documentation-only; recorded as not applicable.
+
+### Uncertain assessments
+- The instructions do not warn that a repo-local exclude file can silently untrack a moved file; the correction commit `9abcd20` followed. A "stage the move, then inspect staged renames" check could be added.
+- Whether one `Approved Step 3` covers a revised Step 2 is not specified; it was taken as covering it, with the choice recorded in the summary.
+- The `feature/repo-cleanup` branch name follows existing `feature/*` branches; the instructions do not name a convention.
