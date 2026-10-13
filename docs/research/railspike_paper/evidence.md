@@ -18,7 +18,7 @@ Capture window: **2026-10-13T05:47:56.607396+00:00 — 2026-10-13T05:47:57.15195
 | [V02](#source-v02) | `v3/docs/plans/case_insensitive_tags/case_insensitive_tags_debug_log.md` | Included canonical workflow log |
 | [V03](#source-v03) | `v3/docs/plans/fdp_to_railspike/fdp_to_railspike_debug_log.md` | Included canonical workflow log |
 | [V04](#source-v04) | `v3/docs/plans/local_server_dependency_install/local_server_dependency_install_debug_log.md` | Included canonical workflow log |
-| [V04](#source-v04) | `v3/docs/plans/rebuild_thread_label_stall/rebuild_thread_label_stall_debug_log.md` | Included canonical workflow log |
+| [V05](#source-v05) | `v3/docs/plans/rebuild_thread_label_stall/rebuild_thread_label_stall_debug_log.md` | Included canonical workflow log |
 | [V06](#source-v06) | `v3/docs/plans/startup_dependency_recovery_debug_log.md` | Included canonical workflow log |
 | [F01](#source-f01) | `v3/docs/plans/local_server_dependency_recovery_railspike_failure_report.md` | Included required report; incident shared with V04 |
 | [H01](#source-h01) | `v3/docs/plans/backlog/approved_members_identity_publication_debug_handoff.md` | Context only: application debugging, excluded from workflow-theme denominator |
@@ -131,6 +131,10 @@ Historical instruction version and execution agent/model are unknown unless a pi
 
 
 <!-- end-workflow-observations -->
+
+## Research correction record
+
+Final reconciliation corrected the rebuild-log inventory label/link from V04 to V05. The V05 snapshot, workflow coding, and intended 12-workflow denominator were already correct; no source text or interpretation changed. The initial Stage 4 reconciliation assertion failed and the command sequence nevertheless reached the commit; this follow-up records the correction rather than amending that history.
 
 ## Post-capture source movement
 
