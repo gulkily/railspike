@@ -189,3 +189,22 @@ Revision superseding the preceding planning-revision entry's scope: the request 
 ### Uncertain assessments
 - "Organize the docs directory" is open-ended; the layout under `docs/maintainers/` and a `docs/README.md` index are the assistant's proposal, not a stated preference.
 - The user message was not the exact phrase `Approved Step N`, so it was treated as a revision request.
+
+## 2026-10-13T01:55Z — Step 4 (implementation), Revision
+
+Revision superseding the 2026-10-12 Step 4 entry's counts and stage list: Stages 5–6 were added after the handoff.
+
+### Necessary/useful instructions
+- `step4_implementation_do.md` § Stage Boundary Protocol (git status before commit, link checks): confirmed the excluded checklist stayed tracked via `git mv` this time. Retain.
+- Documentation-only verification list (`git diff --check`, scope check, link validation): word-level comparison against `HEAD` proved moved files changed only in link targets. Retain.
+
+### Redundant/unnecessary instructions
+- No supported findings.
+
+### Inapplicable instructions
+- Step 4 After item 5 (deployment, release, migration): not applicable to this documentation-only work.
+
+### Uncertain assessments
+- Stage 5 absorbed the `README.md` backlog link repair planned for Stage 6 so that its commit passed the link checkers; the plan's stage boundary was adjusted, not its scope.
+- The instructions do not define how to treat an empty directory left by a move; it was removed with `rmdir`.
+- A second `Approved Step 3` alone was taken as covering the revised Step 2, as in the earlier revision.
