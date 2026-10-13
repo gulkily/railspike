@@ -157,9 +157,19 @@ Use it for planning, documentation, development, bug fixes, test suites, and che
 ## What's in this repo
 
 ```text
-RAILSPIKE.md          The entry point. The agent reads this first.
-docs/workflow/        One instruction file per step (Steps 3 and 4 have before/do/after phases).
-docs/failure-modes.md What to do when a run goes wrong.
+RAILSPIKE.md             The entry point. The agent reads this first.
+docs/workflow/           One instruction file per step (Steps 3 and 4 have before/do/after phases).
+docs/failure-modes.md    What to do when a run goes wrong.
+docs/RELEASES.md         Release and versioning approach.
+docs/plans/              Plans and debug logs for Railspike's own features.
+docs/launch/             Maintainer drafts: HN post and its readiness checklist.
+docs/positioning-checklist.md, docs/case-study-candidates.md
+                         Maintainer positioning checklist and case-study shortlist.
+scripts/                 Markdown-link and Git-workflow checks (see Documentation checks).
+index.html, railspike-logo.png, .nojekyll
+                         The website served by GitHub Pages.
+BACKLOG.md               Maintainer follow-up work.
+CONTRIBUTING.md, LICENSE How to contribute; MIT license.
 ```
 
 See the [failure-mode guide](./docs/failure-modes.md) for recovery and the [maintainer backlog](./BACKLOG.md) for project follow-up.

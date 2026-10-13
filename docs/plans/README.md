@@ -6,4 +6,4 @@
 - [Website redesign](./website_redesign/website_redesign_step1_solution_assessment.md): redesigned landing page with the new logo, the Readings essay and voice selector, and a modernized QDB look.
 - [Homepage from scratch](./homepage_from_scratch/homepage_from_scratch_step1_solution_assessment.md): new plain, text-first homepage with a real worked example and a limits section; the logo and paper are separate backlog features.
 - [Essay homepage](./readme_and_essay_homepage/readme_and_essay_homepage_step1_solution_assessment.md): homepage becomes the maintainer's essay verbatim, simply formatted; the README stays as is.
-- [Repository cleanup](./repo_cleanup/repo_cleanup_step1_solution_assessment.md): move finished maintainer drafts out of the repository so the GitHub page shows only product and site files.
+- [Repository cleanup](./repo_cleanup/repo_cleanup_step1_solution_assessment.md): move maintainer HN drafts from the root into `docs/launch/` and document every remaining file in the README map.

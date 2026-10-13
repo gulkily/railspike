@@ -38,3 +38,14 @@ Debug mode: enabled
 - Notes:
   - `docs/case-study-candidates.md` and `docs/positioning-checklist.md` were already outside the root and are unchanged.
   - **Correction:** commit `5be94c9` recorded the checklist as deleted because `.git/info/exclude` (local, line 7) ignores `HN_WRITEUP_READINESS_CHECKLIST.md` by bare name, so the moved file was not staged. The file is intact at `docs/launch/`; it was re-added with `git add -f` in the follow-up commit so it stays tracked as before. The exclude entry was left unchanged and is a maintainer decision.
+
+## Stage 3 - Document what remains
+- Changes:
+  - `README.md` "What's in this repo" map now lists every tracked root file and `docs/` area (workflow, failure modes, releases, plans, launch drafts, positioning files, scripts, site files, backlog, contributing, license).
+  - `docs/plans/README.md` entry for this feature reworded to the actual outcome (move to `docs/launch/`, not out of the repository).
+- Verification:
+  - Every tracked root file and `docs/*.md` file appears in the map (compared with `git ls-files`).
+  - Link checkers (Python, Perl, Node) and `bash scripts/check-railspike-git-workflow.sh`: all three report 52 files valid; the workflow fixture passed; `git diff --check` clean.
+  - Runtime, UI, deployment, and migration checks: not applicable.
+- Notes:
+  - The README's debug-mode and update-block markers were not touched; only the map block changed.
